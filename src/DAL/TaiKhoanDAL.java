@@ -13,25 +13,25 @@ import java.sql.ResultSet;
  *
  * @author Aki
  */
-public class AccountDAL extends DataAcessHelper{
-    
+public class TaiKhoanDAL extends DataAcessHelper {
+
+    private final String GET_LOGIN = "select * from nhanvien where tendangnhap=? and matkhau=?";
+
 //     private final String UPDATE_DATA="Update Account set Username=?,Password=?,maxacnhan=? where AccID=?";
 //     private final String CHECK_DATA="select * from Account where Username=? and maxacnhan=?";
 //     private final String UPDATE_PASS="Update Account set Password=? where AccID=?";
-    
-    public boolean getLogin(String u, String p)
-    { boolean check = false;
+    public String getLogin(String u, String p) {
+        String check ="";
         try {
             getConnect();
-            String GET_LOGIN ;
+
+            PreparedStatement ps = con.prepareStatement(GET_LOGIN);
+            ps.setString(1, u);
+            ps.setString(2, p);
+            ResultSet rs = ps.executeQuery();
             
-            PreparedStatement ps=con.prepareStatement("select * from nhanvien where tendangnhap='admin' and matkhau='123'");
-            //ps.setString(1, u);
-            //ps.setString(2, p);
-            ResultSet rs=ps.executeQuery();
-            if(rs!=null && rs.next())
-            {
-                check=true;
+            if (rs != null && rs.next()) {
+                check = rs.getString(9);
             }
             getClose();
         } catch (Exception e) {
@@ -102,5 +102,5 @@ public class AccountDAL extends DataAcessHelper{
 //        }
 //        return check;
 //    }
-    
+
 }

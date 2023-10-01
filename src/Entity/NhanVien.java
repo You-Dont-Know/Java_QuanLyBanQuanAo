@@ -5,6 +5,8 @@
  */
 package Entity;
 
+import java.util.Date;
+
 /**
  *
  * @author Aki
@@ -13,12 +15,26 @@ public class NhanVien {
     private String maNhanVien;
     private String tenNhanVien;
     private String gioiTinh;
-    private String ngaySinh;
+    private Date ngaySinh;
     private String diaChi;
     private String sdt;
     private String tenDangNhap;
     private String matKhau;
     private String chucVu;
+
+    public NhanVien(String maNhanVien, String tenNhanVien, String gioiTinh, Date ngaySinh, String diaChi, String sdt, String tenDangNhap, String matKhau, String chucVu) {
+        this.maNhanVien = maNhanVien;
+        this.tenNhanVien = tenNhanVien;
+        this.gioiTinh = gioiTinh;
+        this.ngaySinh = ngaySinh;
+        this.diaChi = diaChi;
+        this.sdt = sdt;
+        this.tenDangNhap = tenDangNhap;
+        this.matKhau = matKhau;
+        this.chucVu = chucVu;
+    }
+    
+    
     
     public String getMaNhanVien() {
         return maNhanVien;
@@ -44,11 +60,11 @@ public class NhanVien {
         this.gioiTinh = gioiTinh;
     }
 
-    public String getNgaySinh() {
+    public Date getNgaySinh() {
         return ngaySinh;
     }
 
-    public void setNgaySinh(String ngaySinh) {
+    public void setNgaySinh(Date ngaySinh) {
         this.ngaySinh = ngaySinh;
     }
 
@@ -92,38 +108,6 @@ public class NhanVien {
         this.chucVu = chucVu;
     }
     
-//    private int AccID;
-//    private String Username;
-//    private  String Password;
-//    private String maxacnhan;
-//    public int getaccid(){
-//        return AccID;
-//    }
-//
-//    public String getMaxacnhan() {
-//        return maxacnhan;
-//    }
-//    public void setaccid(int id){
-//        this.AccID=id;
-//    }
-//    public String getuser(){
-//        return Username;
-//        
-//    }
-//    public void setuser(String s)
-//    {
-//        this.Username=s;
-//    }
-//    public String getpass(){
-//        return Password;
-//    }
-//    public void setpass(String p){
-//        this.Password=p;
-//    }
-//
-//    public void setMaxacnhan(String maxacnhan) {
-//        this.maxacnhan = maxacnhan;
-//    }
 
     
     

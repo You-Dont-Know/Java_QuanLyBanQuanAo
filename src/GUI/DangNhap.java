@@ -21,10 +21,11 @@ public class DangNhap extends javax.swing.JFrame {
     public DangNhap() {
         initComponents();
     }
-    
-    AccountDLL accdll=new AccountDLL();
+
+    AccountDLL accdll = new AccountDLL();
+
     //close window
-    public void close(){
+    public void close() {
         WindowEvent closeWindow = new WindowEvent(this, WindowEvent.WINDOW_CLOSING);
         Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(closeWindow);
     }
@@ -202,31 +203,38 @@ public class DangNhap extends javax.swing.JFrame {
 
     private void btn_DangNhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_DangNhapActionPerformed
         // TODO add your handling code here:
-        String user1=txt_DangNhap.getText();
-        String pass1= String.valueOf(this.txt_MatKhau.getPassword());
+        String user1 = txt_DangNhap.getText();
+        String pass1 = String.valueOf(this.txt_MatKhau.getPassword());
         boolean check = true;
-        if(check&user1.isEmpty())
-        {
+        if (check & user1.isEmpty()) {
             check = false;
             JOptionPane.showMessageDialog(this, "Không được để trống!Mời nhập username");
         }
-        if (check&pass1.isEmpty()) {
-            check=false;
+        if (check & pass1.isEmpty()) {
+            check = false;
             JOptionPane.showMessageDialog(this, "Không được để trống!Mời nhập password");
-            
+
         }
-        if(check==true){
-            if(accdll.getLogin(user1, pass1)){
+        if (check == true) {
+            if (accdll.getLogin(user1, pass1).equals("NHÂN VIÊN"))
+            {
                 close();
                 Main m = new Main();
                 m.setVisible(true);
-            }else{
+            }
+            else if (accdll.getLogin(user1, pass1).equals("QUẢN LÝ")
+                    || accdll.getLogin(user1, pass1).equals("CHỦ SHOP"))
+            {
+                close();
+                Main m = new Main();
+                m.btn_NhanVien.setEnabled(true);
+                m.setVisible(true);
+            } else {
                 JOptionPane.showMessageDialog(this, "Không thể đăng nhập! Kiểm tra lại user và pass");
             }
         }
-        
-        
-        
+
+
     }//GEN-LAST:event_btn_DangNhapActionPerformed
 
     private void btn_ThoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ThoatActionPerformed
@@ -279,7 +287,7 @@ public class DangNhap extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JTextField txt_DangNhap;
-    private javax.swing.JPasswordField txt_MatKhau;
+    public javax.swing.JTextField txt_DangNhap;
+    public javax.swing.JPasswordField txt_MatKhau;
     // End of variables declaration//GEN-END:variables
 }

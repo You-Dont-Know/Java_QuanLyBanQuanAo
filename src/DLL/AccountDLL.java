@@ -5,7 +5,7 @@
  */
 package DLL;
 
-import DAL.AccountDAL;
+import DAL.TaiKhoanDAL;
 import Entity.NhanVien;
 
 /**
@@ -13,18 +13,9 @@ import Entity.NhanVien;
  * @author Aki
  */
 public class AccountDLL {
-    AccountDAL acc= new AccountDAL();
-    public boolean getLogin(String u, String p)
+    TaiKhoanDAL acc= new TaiKhoanDAL();
+    public String getLogin(String u, String p)
     {
         return acc.getLogin(u, p);
     }
-//    public boolean UpdateData(NhanVien acc1){
-//        return acc.UpdateData(acc1);
-//    }
-//    public boolean CheckData(String u,String m){
-//        return acc.getCheck(u, m);
-//    }
-//    public boolean UpdatePass(NhanVien acc2){
-//        return acc.UpdatePass(acc2);
-//    }
 }
