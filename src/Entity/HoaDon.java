@@ -4,6 +4,7 @@
  */
 package Entity;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -51,8 +52,9 @@ public class HoaDon {
         this.nhanVienLap = nhanVienLap;
     }
 
-    public Date getNgayLap() {
-        return ngayLap;
+    public String getNgayLap() {
+        SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy");
+        return df.format(ngayLap);
     }
 
     public void setNgayLap(Date ngayLap) {

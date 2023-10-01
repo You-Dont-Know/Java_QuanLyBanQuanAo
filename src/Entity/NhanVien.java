@@ -5,6 +5,7 @@
  */
 package Entity;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -60,8 +61,9 @@ public class NhanVien {
         this.gioiTinh = gioiTinh;
     }
 
-    public Date getNgaySinh() {
-        return ngaySinh;
+    public String getNgaySinh() {
+        SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy");
+        return df.format(ngaySinh);
     }
 
     public void setNgaySinh(Date ngaySinh) {

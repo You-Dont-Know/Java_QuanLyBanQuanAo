@@ -16,6 +16,15 @@ public class ChiTietHoaDon {
     private int soLuong;
     private float tongTien;
 
+    public ChiTietHoaDon(String soHD, String maSanPham, String sanPham, float donGia, int soLuong, float tongTien) {
+        this.soHD = soHD;
+        this.maSanPham = maSanPham;
+        this.sanPham = sanPham;
+        this.donGia = donGia;
+        this.soLuong = soLuong;
+        this.tongTien = tongTien;
+    }    
+    
     public String getSoHD() {
         return soHD;
     }

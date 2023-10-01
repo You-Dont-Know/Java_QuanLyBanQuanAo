@@ -4,6 +4,7 @@
  */
 package Entity;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 
@@ -72,8 +73,9 @@ public class SanPham {
         this.size = size;
     }
 
-    public Date getNgaySanXuat() {
-        return ngaySanXuat;
+    public String getNgaySanXuat() {
+        SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy");
+        return df.format(ngaySanXuat);
     }
 
     public void setNgaySanXuat(Date ngaySanXuat) {
