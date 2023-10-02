@@ -76,7 +76,7 @@ public class SanPham {
     }
     
     public String getNgaySanXuat() {
-        SimpleDateFormat df = new SimpleDateFormat("MM-dd-yyyy");
+        SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy");
         return df.format(ngaySanXuat);
     }
     

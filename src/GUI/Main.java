@@ -1735,7 +1735,8 @@ public class Main extends javax.swing.JFrame {
             String size = jTextField4.getText();
             String ngaysx = jFormattedTextField1.getText();          
             int soluong = Integer.parseInt(jTextField6.getText());
-
+            
+            
             if (masp.equals("")) {
                 JOptionPane.showMessageDialog(this, "Vui lòng điền 'mã sản phẩm'");
             } else if (tensp.equals("")) {
@@ -1752,7 +1753,7 @@ public class Main extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Vui lòng điền 'số lượng sản phẩm'");
             } else {
                 SanPham e = new SanPham();
-                spdll.UpdateSP(masp, tensp, giasp, motasp, size, ngaysx, soluong);
+                spdll.UpdateSP(masp, tensp, giasp, motasp, size, doiDate(ngaysx), soluong);
                 LoadDatabaseSanPham();
                 btn_SuaSP.setText("Sửa");
             }
@@ -1760,6 +1761,26 @@ public class Main extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btn_SuaSPActionPerformed
 
+    //đổi định dàng date 
+    private String doiDate(String nsx){
+        Date s1 = null;
+            try {
+                System.out.println(nsx);
+                SimpleDateFormat sdf1 = new SimpleDateFormat("dd-MM-yyyy");
+                System.out.println(sdf1.parse(nsx));
+                s1 = sdf1.parse(nsx);
+            } catch (Exception e) {
+            }
+            
+            try {
+                 SimpleDateFormat df = new SimpleDateFormat("MM-dd-yyyy");
+                 System.out.println(df.format(s1));
+                return df.format(s1);
+            } catch (Exception e) {
+            }
+            return "";
+    }
+    
     private void jButton21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton21ActionPerformed
         List<SanPham> listSP = spdll.GetALLTenSanPham(jTextField7.getText());
         DefaultTableModel model = (DefaultTableModel) jTableSanPham.getModel();
