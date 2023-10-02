@@ -20,7 +20,9 @@ public class SanPham {
     private String size;
     private Date ngaySanXuat;
     private int soLuong;
-
+    public SanPham(){
+        
+    }
     public SanPham(String maSanPham, String tenSanPham, float giaSanPham, String moTaSanPham, String size, Date ngaySanXuat, int soLuong) {
         this.maSanPham = maSanPham;
         this.tenSanPham = tenSanPham;
@@ -72,12 +74,12 @@ public class SanPham {
     public void setSize(String size) {
         this.size = size;
     }
-
+    
     public String getNgaySanXuat() {
-        SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy");
+        SimpleDateFormat df = new SimpleDateFormat("MM-dd-yyyy");
         return df.format(ngaySanXuat);
     }
-
+    
     public void setNgaySanXuat(Date ngaySanXuat) {
         this.ngaySanXuat = ngaySanXuat;
     }

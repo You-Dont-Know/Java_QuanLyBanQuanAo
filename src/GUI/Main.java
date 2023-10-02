@@ -19,8 +19,14 @@ import DLL.SanPhamDLL;
 
 import java.awt.Toolkit;
 import java.awt.event.WindowEvent;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -37,14 +43,19 @@ public class Main extends javax.swing.JFrame {
     public Main() {
         initComponents();
     }
-    SanPhamDLL spdll = new SanPhamDLL();
 
     //close window
     public void close() {
         WindowEvent closeWindow = new WindowEvent(this, WindowEvent.WINDOW_CLOSING);
         Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(closeWindow);
     }
+    //DLL
     AccountDLL accdll = new AccountDLL();
+    SanPhamDLL spdll = new SanPhamDLL();
+    ChiTietHoaDonDLL cthddll = new ChiTietHoaDonDLL();
+    HoaDonDLL hddll = new HoaDonDLL();
+    NhanVienDLL nvdll = new NhanVienDLL();
+    KhachHangDLL khdll = new KhachHangDLL();
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -90,7 +101,7 @@ public class Main extends javax.swing.JFrame {
         jTextField6 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        btn_SuaSP = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jFormattedTextField1 = new javax.swing.JFormattedTextField();
         jLabel22 = new javax.swing.JLabel();
@@ -98,6 +109,8 @@ public class Main extends javax.swing.JFrame {
         jPanel16 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableSanPham = new javax.swing.JTable();
+        jTextField7 = new javax.swing.JTextField();
+        jButton21 = new javax.swing.JButton();
         jPanel8 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
@@ -458,8 +471,13 @@ public class Main extends javax.swing.JFrame {
         jButton2.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         jButton2.setText("Thêm");
 
-        jButton3.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        jButton3.setText("Sửa");
+        btn_SuaSP.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        btn_SuaSP.setText("Sửa");
+        btn_SuaSP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_SuaSPActionPerformed(evt);
+            }
+        });
 
         jButton4.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         jButton4.setText("Xóa");
@@ -514,7 +532,7 @@ public class Main extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jButton2)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton3)
+                        .addComponent(btn_SuaSP)
                         .addGap(18, 18, 18)
                         .addComponent(jButton4)))
                 .addContainerGap(78, Short.MAX_VALUE))
@@ -545,7 +563,7 @@ public class Main extends javax.swing.JFrame {
                             .addGroup(jPanel15Layout.createSequentialGroup()
                                 .addGap(37, 37, 37)
                                 .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btn_SuaSP, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
@@ -584,15 +602,34 @@ public class Main extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTableSanPham);
 
+        jButton21.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        jButton21.setText("Tìm");
+        jButton21.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton21ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel16Layout = new javax.swing.GroupLayout(jPanel16);
         jPanel16.setLayout(jPanel16Layout);
         jPanel16Layout.setHorizontalGroup(
             jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 874, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel16Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButton21)
+                .addGap(137, 137, 137))
         );
         jPanel16Layout.setVerticalGroup(
             jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 267, Short.MAX_VALUE)
+            .addGroup(jPanel16Layout.createSequentialGroup()
+                .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton21, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 242, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
@@ -616,7 +653,7 @@ public class Main extends javax.swing.JFrame {
                 .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(jPanel15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(0, 0, 0)
                 .addComponent(jPanel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
@@ -1508,7 +1545,7 @@ public class Main extends javax.swing.JFrame {
     private void LoadDatabaseKhachHang() {
         DefaultTableModel model = (DefaultTableModel) jTableKhachHang.getModel();
         model.setRowCount(0);
-        KhachHangDLL khdll = new KhachHangDLL();
+
         List<KhachHang> listKH = khdll.getALLKhachHang();
         for (KhachHang o : listKH) {
             model.addRow(new Object[]{o.getMaKH(), o.getTenKhach(), o.getDiaChi(), o.getGioiTinh(), o.getSdt()});
@@ -1522,7 +1559,7 @@ public class Main extends javax.swing.JFrame {
 
     //load database Nhân Viên
     private void LoadDatabaseNhanVien() {
-        NhanVienDLL nvdll = new NhanVienDLL();
+
         List<NhanVien> listNV = nvdll.getALLNhanvien();
         DefaultTableModel model = (DefaultTableModel) jTableNhanVien.getModel();
         model.setRowCount(0);
@@ -1539,7 +1576,7 @@ public class Main extends javax.swing.JFrame {
 
     //load database Hóa Đơn
     private void LoadDatabaseHoaDon() {
-        HoaDonDLL hddll = new HoaDonDLL();
+
         List<HoaDon> listHD = hddll.getALLHoaDon();
         DefaultTableModel model = (DefaultTableModel) jTableHD.getModel();
         model.setRowCount(0);
@@ -1555,7 +1592,6 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_ChiTietHoaDonActionPerformed
 
     private void LoadDatabaseChiTietHoaDon() {
-        ChiTietHoaDonDLL cthddll = new ChiTietHoaDonDLL();
         List<ChiTietHoaDon> listCTHD = cthddll.getALLChiTietHoaDon();
         DefaultTableModel model = (DefaultTableModel) jTableCTHoaDon.getModel();
         model.setRowCount(0);
@@ -1607,7 +1643,7 @@ public class Main extends javax.swing.JFrame {
         jTextField4.setText(s5);
         jFormattedTextField1.setText(s6);
         jTextField6.setText(s7);
-        
+
     }//GEN-LAST:event_jTableSanPhamMouseClicked
 
     private void jTableKhachHangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableKhachHangMouseClicked
@@ -1617,15 +1653,15 @@ public class Main extends javax.swing.JFrame {
         String s3 = jTableKhachHang.getValueAt(row, 2).toString();
         String s4 = jTableKhachHang.getValueAt(row, 3).toString();
         String s5 = jTableKhachHang.getValueAt(row, 4).toString();
-        
+
         jTextField8.setText(s1);
         jTextField9.setText(s2);
-        jTextField10.setText(s3);       
+        jTextField10.setText(s3);
         jTextField11.setText(s5);
         int i = 0;
-        while(true){
+        while (true) {
             String nameFromeCbbox = jComboBox1.getItemAt(i);
-            if(nameFromeCbbox.equalsIgnoreCase(s4)){
+            if (nameFromeCbbox.equalsIgnoreCase(s4)) {
                 jComboBox1.setSelectedIndex(i);
                 break;
             }
@@ -1644,29 +1680,27 @@ public class Main extends javax.swing.JFrame {
         String s6 = jTableNhanVien.getValueAt(row, 6).toString();
         String s7 = jTableNhanVien.getValueAt(row, 7).toString();
         String s8 = jTableNhanVien.getValueAt(row, 8).toString();
-        
-        
-        
+
         jTextField15.setText(s0);
         jTextField12.setText(s1);
         int i = 0, j = 0;
-        
-        while(true){
+
+        while (true) {
             String nameFromeCbbox = jComboBox2.getItemAt(i);
-            if(nameFromeCbbox.equalsIgnoreCase(s2)){
+            if (nameFromeCbbox.equalsIgnoreCase(s2)) {
                 jComboBox2.setSelectedIndex(i);
                 break;
             }
             i++;
         }
-        jFormattedTextField2.setText(s3);       
+        jFormattedTextField2.setText(s3);
         jTextField13.setText(s4);
         jTextField17.setText(s5);
         jTextField16.setText(s6);
-        jTextField14.setText(s7); 
-        while(true){
+        jTextField14.setText(s7);
+        while (true) {
             String nameFromeCbbox2 = jComboBox3.getItemAt(j);
-            if(nameFromeCbbox2.equalsIgnoreCase(s8)){
+            if (nameFromeCbbox2.equalsIgnoreCase(s8)) {
                 jComboBox3.setSelectedIndex(j);
                 break;
             }
@@ -1681,14 +1715,60 @@ public class Main extends javax.swing.JFrame {
         String s2 = jTableHD.getValueAt(row, 2).toString();
         String s3 = jTableHD.getValueAt(row, 3).toString();
         String s4 = jTableHD.getValueAt(row, 4).toString();
-        
-             
+
         jTextField18.setText(s0);
         jTextField19.setText(s1);
         jTextField20.setText(s2);
-        jFormattedTextField3.setText(s3);  
-        jTextField21.setText(s4); 
+        jFormattedTextField3.setText(s3);
+        jTextField21.setText(s4);
     }//GEN-LAST:event_jTableHDMouseClicked
+
+    private void btn_SuaSPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_SuaSPActionPerformed
+
+        if (btn_SuaSP.getText().equals("Sửa")) {
+            btn_SuaSP.setText("LƯU");
+        } else if (btn_SuaSP.getText().equals("LƯU")) {
+            String masp = jTextField1.getText();
+            String tensp = jTextField2.getText();
+            float giasp = Float.parseFloat(jTextField3.getText());
+            String motasp = jTextField5.getText();
+            String size = jTextField4.getText();
+            String ngaysx = jFormattedTextField1.getText();          
+            int soluong = Integer.parseInt(jTextField6.getText());
+
+            if (masp.equals("")) {
+                JOptionPane.showMessageDialog(this, "Vui lòng điền 'mã sản phẩm'");
+            } else if (tensp.equals("")) {
+                JOptionPane.showMessageDialog(this, "Vui lòng điền 'tên sản phẩm'");
+            } else if (giasp <= 0) {
+                JOptionPane.showMessageDialog(this, "Vui lòng điền 'giá sản phẩm'");
+            } else if (motasp.equals("")) {
+                JOptionPane.showMessageDialog(this, "Vui lòng điền 'mô tả sản phẩm'");
+            } else if (size.equals("")) {
+                JOptionPane.showMessageDialog(this, "Vui lòng điền 'size sản phẩm'");
+            } else if (ngaysx.equals("")) {
+                JOptionPane.showMessageDialog(this, "Vui lòng điền 'ngày sản xuất sản phẩm'");
+            } else if (soluong <= 0) {
+                JOptionPane.showMessageDialog(this, "Vui lòng điền 'số lượng sản phẩm'");
+            } else {
+                SanPham e = new SanPham();
+                spdll.UpdateSP(masp, tensp, giasp, motasp, size, ngaysx, soluong);
+                LoadDatabaseSanPham();
+                btn_SuaSP.setText("Sửa");
+            }
+        }
+
+    }//GEN-LAST:event_btn_SuaSPActionPerformed
+
+    private void jButton21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton21ActionPerformed
+        List<SanPham> listSP = spdll.GetALLTenSanPham(jTextField7.getText());
+        DefaultTableModel model = (DefaultTableModel) jTableSanPham.getModel();
+        model.setRowCount(0);
+        for (SanPham o : listSP) {
+            model.addRow(new Object[]{o.getMaSanPham(), o.getTenSanPham(),
+                o.getGiaSanPham(), o.getMoTaSanPham(), o.getSize(), o.getNgaySanXuat(), o.getSoLuong()});
+        }
+    }//GEN-LAST:event_jButton21ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1731,6 +1811,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton btn_KhachHang;
     public javax.swing.JButton btn_NhanVien;
     private javax.swing.JButton btn_SanPham;
+    private javax.swing.JButton btn_SuaSP;
     private javax.swing.JButton btn_Thoat;
     private javax.swing.JButton btn_TrangChu;
     private javax.swing.JButton jButton1;
@@ -1746,7 +1827,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton jButton19;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton20;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton21;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
@@ -1870,6 +1951,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
+    private javax.swing.JTextField jTextField7;
     private javax.swing.JTextField jTextField8;
     private javax.swing.JTextField jTextField9;
     private javax.swing.JTextField txt_SoHD;
