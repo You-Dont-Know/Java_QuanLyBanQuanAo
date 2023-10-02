@@ -101,11 +101,12 @@ public class Main extends javax.swing.JFrame {
         jTextField6 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        btn_SuaSP = new javax.swing.JButton();
+        jbtn_SuaSP = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jFormattedTextField1 = new javax.swing.JFormattedTextField();
         jLabel22 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
         jPanel16 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableSanPham = new javax.swing.JTable();
@@ -467,27 +468,48 @@ public class Main extends javax.swing.JFrame {
 
         jButton1.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         jButton1.setText("Hủy");
+        jButton1.setEnabled(false);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         jButton2.setText("Thêm");
-
-        btn_SuaSP.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        btn_SuaSP.setText("Sửa");
-        btn_SuaSP.addActionListener(new java.awt.event.ActionListener() {
+        jButton2.setEnabled(false);
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_SuaSPActionPerformed(evt);
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        jbtn_SuaSP.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        jbtn_SuaSP.setText("Sửa");
+        jbtn_SuaSP.setEnabled(false);
+        jbtn_SuaSP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtn_SuaSPActionPerformed(evt);
             }
         });
 
         jButton4.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         jButton4.setText("Xóa");
+        jButton4.setEnabled(false);
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         jFormattedTextField1.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
 
         jLabel22.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         jLabel22.setText("mô tả sản phẩm");
 
-        jTextField5.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jScrollPane6.setViewportView(jTextArea1);
 
         javax.swing.GroupLayout jPanel15Layout = new javax.swing.GroupLayout(jPanel15);
         jPanel15.setLayout(jPanel15Layout);
@@ -526,13 +548,13 @@ public class Main extends javax.swing.JFrame {
                             .addComponent(jTextField6)
                             .addComponent(jFormattedTextField1)))
                     .addGroup(jPanel15Layout.createSequentialGroup()
-                        .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton1)
                         .addGap(18, 18, 18)
                         .addComponent(jButton2)
                         .addGap(18, 18, 18)
-                        .addComponent(btn_SuaSP)
+                        .addComponent(jbtn_SuaSP)
                         .addGap(18, 18, 18)
                         .addComponent(jButton4)))
                 .addContainerGap(78, Short.MAX_VALUE))
@@ -559,21 +581,20 @@ public class Main extends javax.swing.JFrame {
                     .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel15Layout.createSequentialGroup()
+                        .addComponent(jLabel22)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel15Layout.createSequentialGroup()
                         .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel15Layout.createSequentialGroup()
-                                .addGap(37, 37, 37)
-                                .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(btn_SuaSP, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(43, 43, 43)
+                                .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jbtn_SuaSP, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                             .addGroup(jPanel15Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jTextField5)))
-                        .addGap(15, 15, 15))
-                    .addGroup(jPanel15Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel22)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
@@ -628,8 +649,8 @@ public class Main extends javax.swing.JFrame {
                 .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton21, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 242, Short.MAX_VALUE))
+                .addGap(0, 16, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 231, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
@@ -1520,7 +1541,9 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_TrangChuActionPerformed
 
     private void btn_SanPhamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_SanPhamActionPerformed
-
+        jButton2.setEnabled(true);
+        jbtn_SuaSP.setEnabled(true);
+        jButton4.setEnabled(true);
         LoadDatabaseSanPham();
         jTabbedPane1.setSelectedIndex(1);
     }//GEN-LAST:event_btn_SanPhamActionPerformed
@@ -1639,7 +1662,7 @@ public class Main extends javax.swing.JFrame {
         jTextField1.setText(s1);
         jTextField2.setText(s2);
         jTextField3.setText(s3);
-        jTextField5.setText(s4);
+        jTextArea1.setText(s4);
         jTextField4.setText(s5);
         jFormattedTextField1.setText(s6);
         jTextField6.setText(s7);
@@ -1723,20 +1746,22 @@ public class Main extends javax.swing.JFrame {
         jTextField21.setText(s4);
     }//GEN-LAST:event_jTableHDMouseClicked
 
-    private void btn_SuaSPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_SuaSPActionPerformed
+    private void jbtn_SuaSPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn_SuaSPActionPerformed
 
-        if (btn_SuaSP.getText().equals("Sửa")) {
-            btn_SuaSP.setText("LƯU");
-        } else if (btn_SuaSP.getText().equals("LƯU")) {
+        if (jbtn_SuaSP.getText().equals("Sửa")) {               
+                jButton4.setEnabled(false);
+                jButton1.setEnabled(true);
+                jButton2.setEnabled(false);
+            jbtn_SuaSP.setText("LƯU");
+        } else if (jbtn_SuaSP.getText().equals("LƯU")) {
             String masp = jTextField1.getText();
             String tensp = jTextField2.getText();
             float giasp = Float.parseFloat(jTextField3.getText());
-            String motasp = jTextField5.getText();
+            String motasp = jTextArea1.getText();
             String size = jTextField4.getText();
-            String ngaysx = jFormattedTextField1.getText();          
+            String ngaysx = jFormattedTextField1.getText();
             int soluong = Integer.parseInt(jTextField6.getText());
-            
-            
+
             if (masp.equals("")) {
                 JOptionPane.showMessageDialog(this, "Vui lòng điền 'mã sản phẩm'");
             } else if (tensp.equals("")) {
@@ -1752,35 +1777,31 @@ public class Main extends javax.swing.JFrame {
             } else if (soluong <= 0) {
                 JOptionPane.showMessageDialog(this, "Vui lòng điền 'số lượng sản phẩm'");
             } else {
-                SanPham e = new SanPham();
                 spdll.UpdateSP(masp, tensp, giasp, motasp, size, doiDate(ngaysx), soluong);
                 LoadDatabaseSanPham();
-                btn_SuaSP.setText("Sửa");
+                jbtn_SuaSP.setText("Sửa");
+                jButton4.setEnabled(true);
+                jButton1.setEnabled(false);
+                jButton2.setEnabled(true);
             }
         }
 
-    }//GEN-LAST:event_btn_SuaSPActionPerformed
+    }//GEN-LAST:event_jbtn_SuaSPActionPerformed
 
     //đổi định dàng date 
-    private String doiDate(String nsx){
-        Date s1 = null;
-            try {
-                System.out.println(nsx);
-                SimpleDateFormat sdf1 = new SimpleDateFormat("dd-MM-yyyy");
-                System.out.println(sdf1.parse(nsx));
-                s1 = sdf1.parse(nsx);
-            } catch (Exception e) {
-            }
-            
-            try {
-                 SimpleDateFormat df = new SimpleDateFormat("MM-dd-yyyy");
-                 System.out.println(df.format(s1));
-                return df.format(s1);
-            } catch (Exception e) {
-            }
-            return "";
+    private String doiDate(String nsx) {
+        Date s1;
+        try {
+            SimpleDateFormat df = new SimpleDateFormat("MM-dd-yyyy");
+            SimpleDateFormat sdf1 = new SimpleDateFormat("dd-MM-yyyy");
+            s1 = sdf1.parse(nsx);
+            return df.format(s1);
+        } catch (Exception e) {
+        }
+        return "";
+
     }
-    
+
     private void jButton21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton21ActionPerformed
         List<SanPham> listSP = spdll.GetALLTenSanPham(jTextField7.getText());
         DefaultTableModel model = (DefaultTableModel) jTableSanPham.getModel();
@@ -1790,6 +1811,89 @@ public class Main extends javax.swing.JFrame {
                 o.getGiaSanPham(), o.getMoTaSanPham(), o.getSize(), o.getNgaySanXuat(), o.getSoLuong()});
         }
     }//GEN-LAST:event_jButton21ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        try {
+            if (jTextField1.getText().equals("")) {
+                JOptionPane.showMessageDialog(this, "Nhập mã Sản Phẩm");
+                jTextField1.requestFocus();
+            } else if (spdll.deleteSP(jTextField1.getText()) > 0) {
+                spdll.deleteSP(jTextField1.getText());
+                JOptionPane.showMessageDialog(this, "Delete Thành Công");
+            } else {
+                JOptionPane.showMessageDialog(this, "Delete không Thành Công");
+            }
+
+            LoadDatabaseSanPham();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Error");
+        }
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    public void resetForm() {
+        jTextField1.setText("");
+        jTextField2.setText("");
+        jTextField3.setText("");
+        jTextField4.setText("");
+        jTextField6.setText("");
+        jTextArea1.setText("");
+        jFormattedTextField1.setText("");
+
+    }
+
+    
+    
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+
+        if (jButton2.getText().equals("Thêm")) {
+            resetForm();
+            jbtn_SuaSP.setEnabled(false);
+            jButton4.setEnabled(false);
+            jButton1.setEnabled(true);
+            jButton2.setText("LƯU");
+        } else if (jButton2.getText().equals("LƯU")) {
+            String masp = jTextField1.getText();
+            String tensp = jTextField2.getText();
+            float giasp = Float.parseFloat(jTextField3.getText());
+            String motasp = jTextArea1.getText();
+            String size = jTextField4.getText();
+            String ngaysx = doiDate(jFormattedTextField1.getText());
+            int soluong = Integer.parseInt(jTextField6.getText());
+
+            if (masp.equals("")) {
+                JOptionPane.showMessageDialog(this, "Vui lòng điền 'mã sản phẩm'");
+            } else if (tensp.equals("")) {
+                JOptionPane.showMessageDialog(this, "Vui lòng điền 'tên sản phẩm'");
+            } else if (giasp <= 0) {
+                JOptionPane.showMessageDialog(this, "Vui lòng điền 'giá sản phẩm'");
+            } else if (motasp.equals("")) {
+                JOptionPane.showMessageDialog(this, "Vui lòng điền 'mô tả sản phẩm'");
+            } else if (size.equals("")) {
+                JOptionPane.showMessageDialog(this, "Vui lòng điền 'size sản phẩm'");
+            } else if (ngaysx.equals("")) {
+                JOptionPane.showMessageDialog(this, "Vui lòng điền 'ngày sản xuất sản phẩm'");
+            } else if (soluong <= 0) {
+                JOptionPane.showMessageDialog(this, "Vui lòng điền 'số lượng sản phẩm'");
+            } else {
+                spdll.AddSP(masp, tensp, giasp, motasp, size, doiDate(ngaysx), soluong);
+                LoadDatabaseSanPham();
+                jButton2.setText("Thêm");
+                jbtn_SuaSP.setEnabled(true);
+                jButton4.setEnabled(true);
+                jButton1.setEnabled(false);
+            }
+        }
+
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        jbtn_SuaSP.setEnabled(true);
+        jButton4.setEnabled(true);
+        jButton2.setEnabled(true);
+        jButton2.setText("Thêm");
+        jbtn_SuaSP.setText("Sửa");
+        jButton4.setText("Xóa");       
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1832,7 +1936,6 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton btn_KhachHang;
     public javax.swing.JButton btn_NhanVien;
     private javax.swing.JButton btn_SanPham;
-    private javax.swing.JButton btn_SuaSP;
     private javax.swing.JButton btn_Thoat;
     private javax.swing.JButton btn_TrangChu;
     private javax.swing.JButton jButton1;
@@ -1941,6 +2044,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable jTableCTHoaDon;
@@ -1948,6 +2052,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JTable jTableKhachHang;
     private javax.swing.JTable jTableNhanVien;
     private javax.swing.JTable jTableSanPham;
+    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField10;
     private javax.swing.JTextField jTextField11;
@@ -1970,11 +2075,11 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField27;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField7;
     private javax.swing.JTextField jTextField8;
     private javax.swing.JTextField jTextField9;
+    private javax.swing.JButton jbtn_SuaSP;
     private javax.swing.JTextField txt_SoHD;
     // End of variables declaration//GEN-END:variables
 }

@@ -20,8 +20,15 @@ public class SanPhamDLL {
     public void UpdateSP(String maSP, String tenSP, float giaSP, String motaSP, String size, String Date, int soLuong){
         spdal.UpdateSP(maSP, tenSP, giaSP, motaSP, size, Date, soLuong);
     }
+    public void AddSP(String maSP, String tenSP, float giaSP, String motaSP, String size, String date, int soLuong){
+        spdal.AddSP(maSP, tenSP, giaSP, motaSP, size, date, soLuong);
+    }
     
     public List<SanPham> GetALLTenSanPham(String Tensp){
         return spdal.GetALLTenSanPham(Tensp);
+    }
+    
+    public int deleteSP(String maSP){
+        return spdal.deleteSP(maSP);
     }
 }
