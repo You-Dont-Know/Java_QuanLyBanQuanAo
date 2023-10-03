@@ -17,4 +17,21 @@ public class ChiTietHoaDonDLL {
     public List<ChiTietHoaDon> getALLChiTietHoaDon(){
         return cchddal.getALLChiTietHoaDon();
     }
+    public List<ChiTietHoaDon> GetALLChiTietHoaDon(String soHD){
+        return cchddal.GetALLChiTietHoaDon(soHD);
+    }
+    
+    public void UpdateCTHD(String sohd, String masanpham, String sanpham, float dongia, int soluong, float tongtien){
+        cchddal.UpdateCTHD(sohd, masanpham, sanpham, dongia, soluong, tongtien);
+    }
+    
+    public int deleteCTHD(String maCTHD, String maSP){
+      return cchddal.deleteCTHD(maCTHD, maSP);
+    }
+    
+    public void AddCTHD(String sohd, String masanpham, String sanpham, float dongia, int soluong, float tongtien){
+        cchddal.AddCTHD(sohd, masanpham, sanpham, dongia, soluong, tongtien);
+    }
+    
+    
 }

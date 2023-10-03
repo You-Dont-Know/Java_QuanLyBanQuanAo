@@ -24,7 +24,8 @@ public class NhanVienDAL extends DataAcessHelper {
     private final String GET_DELETENHANVIEN = "DELETE FROM NhanVien WHERE manhanvien = ?";
     private final String GET_ADDNV = "INSERT INTO NhanVien VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
     private final String GET_CHECKNV = "select manhanvien from nhanvien where manhanvien = ?";
-
+    
+    
     public List<NhanVien> getALLNhanvien() {
         getConnect();
         try {

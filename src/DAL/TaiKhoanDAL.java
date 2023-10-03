@@ -30,7 +30,8 @@ public class TaiKhoanDAL extends DataAcessHelper {
             ps.setString(2, p);
             ResultSet rs = ps.executeQuery();
             
-            if (rs != null && rs.next()) {
+            if (rs != null && rs.next()) { 
+                
                 check = rs.getString(9);
             }
             getClose();

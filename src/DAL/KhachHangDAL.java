@@ -23,7 +23,8 @@ public class KhachHangDAL extends DataAcessHelper {
     private final String GET_SEARCHKHACHHANG = "SELECT * FROM KhachHang where tenkhach = ?";
     private final String GET_DELETEKHACHHANG = "DELETE from KhachHang WHERE makh = ? ";
     private final String GET_ADDKH = "INSERT INTO Khachhang VALUES (?, ?, ?, ?)";
-    private final String GET_CheckKNKH ="select count(*) from hoadon where makh= ?";
+    private final String GET_CheckKNKH ="select makh from hoadon where makh = ?";
+    
     public List<KhachHang> getALLKhachHang() {
         getConnect();
         try {

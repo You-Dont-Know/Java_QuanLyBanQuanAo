@@ -26,7 +26,9 @@ public class SanPhamDAL extends DataAcessHelper {
     private final String GET_DELETESP = "DELETE from SanPham WHERE masanpham = ? ";
     private final String GET_ADDSP = "insert into sanpham(masanpham,tensanpham,giasanpham, motasanpham,size,ngaysanxuat,soluong ) values(?, ?, ?, ?, ?, ?, ?)";
     private final String GET_CheckSP = "select masanpham from sanpham where masanpham = ?";
-
+    private final String GET_MASP = "SELECT masanpham from sanpham where motasanpham = ?";
+    private final String GET_GIASP = "SELECT giasanpham from sanpham where motasanpham = ?";
+    
     public List<SanPham> getALLSanPham() {
         getConnect();
         try {
@@ -140,5 +142,47 @@ public class SanPhamDAL extends DataAcessHelper {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+    
+    public String getMaSanPham(String s) {
+        String check ="";
+        try {
+            getConnect();
+
+            PreparedStatement ps = con.prepareStatement(GET_MASP);
+            ps.setString(1, s);
+            ResultSet rs = ps.executeQuery();
+            
+            if (rs != null && rs.next()) { 
+                
+                check = rs.getString(1);
+                
+            }
+            getClose();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return check;
+    }
+    
+    public String getGiaSP(String s) {
+        String check ="";
+        try {
+            getConnect();
+
+            PreparedStatement ps = con.prepareStatement(GET_GIASP);
+            ps.setString(1, s);
+            ResultSet rs = ps.executeQuery();
+            
+            if (rs != null && rs.next()) { 
+                
+                check = rs.getString(1);
+                
+            }
+            getClose();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return check;
     }
 }

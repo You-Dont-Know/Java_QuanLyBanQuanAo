@@ -31,4 +31,12 @@ public class SanPhamDLL {
     public int deleteSP(String maSP){
         return spdal.deleteSP(maSP);
     }
+    
+    public String getMaSanPham(String s){
+        return spdal.getMaSanPham(s);
+    }
+    
+    public String getGiaSP(String s){
+        return spdal.getGiaSP(s);
+    }
 }
