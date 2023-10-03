@@ -18,4 +18,15 @@ public class NhanVienDLL {
     public List<NhanVien> getALLNhanvien() {
         return nvdal.getALLNhanvien();
     }
+    public void UpdateNV(String manv, String tennv, String gioitinh, String ngaysinh, String diachi, String sdt, String tendn, String matkhau, String chucvu) {
+        nvdal.UpdateNV(manv, tennv, gioitinh, ngaysinh, diachi, sdt, tendn, matkhau, chucvu);
+    }
+    
+    public int deleteNV(String maNV){
+        return nvdal.deleteNV(maNV);
+    }
+    
+    public void Them(String manv, String tennv, String gioitinh, String ngaysinh, String diachi, String sdt, String tendn, String matkhau, String chucvu){
+        nvdal.Them(manv, tennv, gioitinh, ngaysinh, diachi, sdt, tendn, matkhau, chucvu);
+    }
 }

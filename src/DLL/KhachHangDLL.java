@@ -16,4 +16,19 @@ public class KhachHangDLL {
     public List<KhachHang> getALLKhachHang(){
         return khdal.getALLKhachHang();
     }
+    public List<KhachHang> GetALLTenKhachHang(String TenKH){
+        return khdal.GetALLTenKhachHang(TenKH);
+    }
+    
+    public void UpdateKH(int maKH, String tenKH, String diaChi, String gioiTinh, String sdt){
+        khdal.UpdateKH(maKH, tenKH, diaChi, gioiTinh, sdt);
+    }
+    
+    public int deleteKH(int maKH){
+        return khdal.deleteKH(maKH);
+    }
+    
+    public void AddKH(String tenKH, String diaChi, String gioiTinh, String sdt){
+        khdal.AddKH(tenKH, diaChi, gioiTinh, sdt);
+    }
 }
