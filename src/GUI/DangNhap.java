@@ -227,6 +227,9 @@ public class DangNhap extends javax.swing.JFrame {
             {
                 close();
                 Main m = new Main();
+                m.jButton2.setEnabled(true);
+                m.jButton4.setEnabled(true);
+                m.jbtn_SuaSP.setEnabled(true);
                 m.btn_NhanVien.setEnabled(true);
                 m.setVisible(true);
             } else {

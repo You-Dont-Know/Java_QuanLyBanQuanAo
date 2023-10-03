@@ -701,6 +701,7 @@ public class Main extends javax.swing.JFrame {
         jLabel25.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         jLabel25.setText("SĐT");
 
+        jTextField8.setEditable(false);
         jTextField8.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
 
         jTextField11.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
@@ -1372,11 +1373,13 @@ public class Main extends javax.swing.JFrame {
         jLabel42.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         jLabel42.setText("mã sản phẩm");
 
+        jTextField22.setEditable(false);
         jTextField22.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
 
         jLabel43.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         jLabel43.setText("Đơn giá");
 
+        jTextField23.setEditable(false);
         jTextField23.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
 
         jLabel44.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
@@ -1663,9 +1666,6 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_TrangChuActionPerformed
 
     private void btn_SanPhamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_SanPhamActionPerformed
-        jButton2.setEnabled(true);
-        jbtn_SuaSP.setEnabled(true);
-        jButton4.setEnabled(true);
         LoadDatabaseSanPham();
         jTabbedPane1.setSelectedIndex(1);
     }//GEN-LAST:event_btn_SanPhamActionPerformed
@@ -2631,11 +2631,11 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton jButton17;
     private javax.swing.JButton jButton18;
     private javax.swing.JButton jButton19;
-    private javax.swing.JButton jButton2;
+    public javax.swing.JButton jButton2;
     private javax.swing.JButton jButton20;
     private javax.swing.JButton jButton21;
     private javax.swing.JButton jButton22;
-    private javax.swing.JButton jButton4;
+    public javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
@@ -2758,7 +2758,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField7;
     private javax.swing.JTextField jTextField8;
     private javax.swing.JTextField jTextField9;
-    private javax.swing.JButton jbtn_SuaSP;
+    public javax.swing.JButton jbtn_SuaSP;
     private javax.swing.JFormattedTextField txt_NV_DATE;
     private javax.swing.JTextField txt_NV_DC;
     private javax.swing.JTextField txt_NV_MK;
