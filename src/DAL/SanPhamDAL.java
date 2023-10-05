@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package DAL;
-
+import Interface.Interface_SanPham;
 import java.util.List;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -13,22 +13,14 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.JOptionPane;
+import Interface.Interface_SanPham;
 
-/**
- *
- * @author hieun
- */
-public class SanPhamDAL extends DataAcessHelper {
 
-    private final String GET_ALLSANPHAM = "select * from sanpham";
-    private final String GET_UPDATESP = "UPDATE SanPham SET tensanpham = ?, giasanpham = ?, motasanpham = ?, size = ?,ngaysanxuat = ?, soluong = ? WHERE masanpham = ?";
-    private final String GET_SEARCHSP = "SELECT * FROM SanPham where tensanpham = ?";
-    private final String GET_DELETESP = "DELETE from SanPham WHERE masanpham = ? ";
-    private final String GET_ADDSP = "insert into sanpham(masanpham,tensanpham,giasanpham, motasanpham,size,ngaysanxuat,soluong ) values(?, ?, ?, ?, ?, ?, ?)";
-    private final String GET_CheckSP = "select masanpham from sanpham where masanpham = ?";
-    private final String GET_MASP = "SELECT masanpham from sanpham where motasanpham = ?";
-    private final String GET_GIASP = "SELECT giasanpham from sanpham where motasanpham = ?";
+public class SanPhamDAL extends DataAcessHelper implements Interface_SanPham{
+
     
+    
+    @Override
     public List<SanPham> getALLSanPham() {
         getConnect();
         try {
@@ -53,6 +45,7 @@ public class SanPhamDAL extends DataAcessHelper {
         return null;
     }
 
+    @Override
     public void UpdateSP(String maSP, String tenSP, float giaSP, String motaSP, String size, String date, int soLuong) {
         getConnect();
         try {
@@ -73,12 +66,13 @@ public class SanPhamDAL extends DataAcessHelper {
 
     }
 
+    @Override
     public List<SanPham> GetALLTenSanPham(String Tensp) {
         getConnect();
         try {
             List<SanPham> list = new ArrayList<>();
             PreparedStatement ps = con.prepareStatement(GET_SEARCHSP);
-            ps.setString(1, Tensp);
+            ps.setString(1,"%"+ Tensp +"%");
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
@@ -97,7 +91,34 @@ public class SanPhamDAL extends DataAcessHelper {
         }
         return null;
     }
+    
+    @Override
+    public List<SanPham> GetALLMaSanPham(String maSP) {
+        getConnect();
+        try {
+            List<SanPham> list = new ArrayList<>();
+            PreparedStatement ps = con.prepareStatement(GET_SEARCHMSP);
+            ps.setString(1, maSP);
+            ResultSet rs = ps.executeQuery();
 
+            while (rs.next()) {
+                list.add(new SanPham(rs.getString(1),
+                        rs.getString(2),
+                        rs.getFloat(3),
+                        rs.getString(4),
+                        rs.getString(5),
+                        rs.getDate(6),
+                        rs.getInt(7)));
+            }
+            getClose();
+            return list;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    
+    @Override
     public int deleteSP(String maSP) {
         getConnect();
         int row;
@@ -114,6 +135,7 @@ public class SanPhamDAL extends DataAcessHelper {
         return 0;
     }
 
+    @Override
     public void AddSP(String maSP, String tenSP, float giaSP, String motaSP, String size, String date, int soLuong) {
         try {
             getConnect();
@@ -122,7 +144,7 @@ public class SanPhamDAL extends DataAcessHelper {
             ResultSet rs = ps_Check.executeQuery();
             StringBuffer sb = new StringBuffer();
             if (rs.next()) {
-                sb.append("Khách Hàng đã tồn tại");
+                sb.append("Mã sản phẩm đã tồn tại");
             }
             if (sb.length() > 0) {
                 Main m = new Main();
@@ -144,6 +166,7 @@ public class SanPhamDAL extends DataAcessHelper {
         }
     }
     
+    @Override
     public String getMaSanPham(String s) {
         String check ="";
         try {
@@ -165,6 +188,7 @@ public class SanPhamDAL extends DataAcessHelper {
         return check;
     }
     
+    @Override
     public String getGiaSP(String s) {
         String check ="";
         try {

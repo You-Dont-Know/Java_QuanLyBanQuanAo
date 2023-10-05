@@ -6,6 +6,7 @@ package GUI;
 
 import DLL.AccountDLL;
 import java.awt.Toolkit;
+import java.awt.event.KeyEvent;
 import java.awt.event.WindowEvent;
 import javax.swing.JOptionPane;
 
@@ -76,11 +77,21 @@ public class DangNhap extends javax.swing.JFrame {
         txt_DangNhap.setForeground(new java.awt.Color(187, 187, 187));
         txt_DangNhap.setToolTipText("");
         txt_DangNhap.setCaretColor(new java.awt.Color(255, 255, 255));
+        txt_DangNhap.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txt_DangNhapKeyPressed(evt);
+            }
+        });
 
         txt_MatKhau.setBackground(new java.awt.Color(186, 79, 84));
         txt_MatKhau.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txt_MatKhau.setForeground(new java.awt.Color(187, 187, 187));
         txt_MatKhau.setCaretColor(new java.awt.Color(255, 255, 255));
+        txt_MatKhau.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txt_MatKhauKeyPressed(evt);
+            }
+        });
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/Name.png"))); // NOI18N
 
@@ -216,15 +227,12 @@ public class DangNhap extends javax.swing.JFrame {
 
         }
         if (check == true) {
-            if (accdll.getLogin(user1, pass1).equals("NHÂN VIÊN"))
-            {
+            if (accdll.getLogin(user1, pass1).equals("NHÂN VIÊN")) {
                 close();
                 Main m = new Main();
                 m.setVisible(true);
-            }
-            else if (accdll.getLogin(user1, pass1).equals("QUẢN LÝ")
-                    || accdll.getLogin(user1, pass1).equals("CHỦ SHOP"))
-            {
+            } else if (accdll.getLogin(user1, pass1).equals("QUẢN LÝ")
+                    || accdll.getLogin(user1, pass1).equals("CHỦ SHOP")) {
                 close();
                 Main m = new Main();
                 m.jButton2.setEnabled(true);
@@ -243,6 +251,76 @@ public class DangNhap extends javax.swing.JFrame {
     private void btn_ThoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ThoatActionPerformed
         close();
     }//GEN-LAST:event_btn_ThoatActionPerformed
+
+    private void txt_DangNhapKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_DangNhapKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            String user1 = txt_DangNhap.getText();
+            String pass1 = String.valueOf(this.txt_MatKhau.getPassword());
+            boolean check = true;
+            if (check & user1.isEmpty()) {
+                check = false;
+                JOptionPane.showMessageDialog(this, "Không được để trống!Mời nhập username");
+            }
+            if (check & pass1.isEmpty()) {
+                check = false;
+                JOptionPane.showMessageDialog(this, "Không được để trống!Mời nhập password");
+
+            }
+            if (check == true) {
+                if (accdll.getLogin(user1, pass1).equals("NHÂN VIÊN")) {
+                    close();
+                    Main m = new Main();
+                    m.setVisible(true);
+                } else if (accdll.getLogin(user1, pass1).equals("QUẢN LÝ")
+                        || accdll.getLogin(user1, pass1).equals("CHỦ SHOP")) {
+                    close();
+                    Main m = new Main();
+                    m.jButton2.setEnabled(true);
+                    m.jButton4.setEnabled(true);
+                    m.jbtn_SuaSP.setEnabled(true);
+                    m.btn_NhanVien.setEnabled(true);
+                    m.setVisible(true);
+                } else {
+                    JOptionPane.showMessageDialog(this, "Không thể đăng nhập! Kiểm tra lại user và pass");
+                }
+            }
+        }
+    }//GEN-LAST:event_txt_DangNhapKeyPressed
+
+    private void txt_MatKhauKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_MatKhauKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            String user1 = txt_DangNhap.getText();
+            String pass1 = String.valueOf(this.txt_MatKhau.getPassword());
+            boolean check = true;
+            if (check & user1.isEmpty()) {
+                check = false;
+                JOptionPane.showMessageDialog(this, "Không được để trống!Mời nhập username");
+            }
+            if (check & pass1.isEmpty()) {
+                check = false;
+                JOptionPane.showMessageDialog(this, "Không được để trống!Mời nhập password");
+
+            }
+            if (check == true) {
+                if (accdll.getLogin(user1, pass1).equals("NHÂN VIÊN")) {
+                    close();
+                    Main m = new Main();
+                    m.setVisible(true);
+                } else if (accdll.getLogin(user1, pass1).equals("QUẢN LÝ")
+                        || accdll.getLogin(user1, pass1).equals("CHỦ SHOP")) {
+                    close();
+                    Main m = new Main();
+                    m.jButton2.setEnabled(true);
+                    m.jButton4.setEnabled(true);
+                    m.jbtn_SuaSP.setEnabled(true);
+                    m.btn_NhanVien.setEnabled(true);
+                    m.setVisible(true);
+                } else {
+                    JOptionPane.showMessageDialog(this, "Không thể đăng nhập! Kiểm tra lại user và pass");
+                }
+            }
+        }
+    }//GEN-LAST:event_txt_MatKhauKeyPressed
 
     /**
      * @param args the command line arguments

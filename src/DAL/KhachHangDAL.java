@@ -20,7 +20,8 @@ public class KhachHangDAL extends DataAcessHelper {
 
     private final String GET_ALLKHACHHANG = "select * from khachhang";
     private final String GET_UPDATEKHACHHANG = "UPDATE khachhang SET tenkhach = ?, gioitinh = ?, diachi = ?, sdt = ? WHERE makh= ?";
-    private final String GET_SEARCHKHACHHANG = "SELECT * FROM KhachHang where tenkhach = ?";
+    private final String GET_SEARCHKHACHHANG = "SELECT * FROM KhachHang where tenkhach like ?";
+    private final String GET_SEARCHSDT = "SELECT * FROM KhachHang where sdt like ?";   
     private final String GET_DELETEKHACHHANG = "DELETE from KhachHang WHERE makh = ? ";
     private final String GET_ADDKH = "INSERT INTO Khachhang VALUES (?, ?, ?, ?)";
     private final String GET_CheckKNKH ="select makh from hoadon where makh = ?";
@@ -59,13 +60,33 @@ public class KhachHangDAL extends DataAcessHelper {
         }
 
     }
+    
+     public List<KhachHang> GetALLSDT(String SDT) {
+        getConnect();
+        try {
+            List<KhachHang> list = new ArrayList<>();
+            PreparedStatement ps = con.prepareStatement(GET_SEARCHSDT);
+            ps.setString(1,"%" + SDT + "%");
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                list.add(new KhachHang(rs.getInt(1), rs.getString(2),
+                        rs.getString(3), rs.getString(4), rs.getString(5)));
+            }
+            getClose();
+            return list;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 
     public List<KhachHang> GetALLTenKhachHang(String TenKH) {
         getConnect();
         try {
             List<KhachHang> list = new ArrayList<>();
             PreparedStatement ps = con.prepareStatement(GET_SEARCHKHACHHANG);
-            ps.setString(1, TenKH);
+            ps.setString(1,"%" + TenKH + "%");
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {

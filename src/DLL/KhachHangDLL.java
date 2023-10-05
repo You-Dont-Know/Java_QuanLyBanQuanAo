@@ -31,4 +31,8 @@ public class KhachHangDLL {
     public void AddKH(String tenKH, String diaChi, String gioiTinh, String sdt){
         khdal.AddKH(tenKH, diaChi, gioiTinh, sdt);
     }
+    
+    public List<KhachHang> GetALLSDT(String SDT){
+        return khdal.GetALLSDT(SDT);
+    }
 }
