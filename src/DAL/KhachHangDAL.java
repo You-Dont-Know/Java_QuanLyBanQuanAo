@@ -11,21 +11,17 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
+import Interface.Interface_KhachHang;
 
 /**
  *
  * @author hieun
  */
-public class KhachHangDAL extends DataAcessHelper {
+public class KhachHangDAL extends DataAcessHelper implements Interface_KhachHang{
 
-    private final String GET_ALLKHACHHANG = "select * from khachhang";
-    private final String GET_UPDATEKHACHHANG = "UPDATE khachhang SET tenkhach = ?, gioitinh = ?, diachi = ?, sdt = ? WHERE makh= ?";
-    private final String GET_SEARCHKHACHHANG = "SELECT * FROM KhachHang where tenkhach like ?";
-    private final String GET_SEARCHSDT = "SELECT * FROM KhachHang where sdt like ?";   
-    private final String GET_DELETEKHACHHANG = "DELETE from KhachHang WHERE makh = ? ";
-    private final String GET_ADDKH = "INSERT INTO Khachhang VALUES (?, ?, ?, ?)";
-    private final String GET_CheckKNKH ="select makh from hoadon where makh = ?";
     
+    
+    @Override
     public List<KhachHang> getALLKhachHang() {
         getConnect();
         try {
@@ -43,6 +39,7 @@ public class KhachHangDAL extends DataAcessHelper {
         return null;
     }
     
+    @Override
     public void UpdateKH(int maKH, String tenKH, String diaChi, String gioiTinh, String sdt) {
         getConnect();
         try {
@@ -61,7 +58,8 @@ public class KhachHangDAL extends DataAcessHelper {
 
     }
     
-     public List<KhachHang> GetALLSDT(String SDT) {
+    @Override
+    public List<KhachHang> GetALLSDT(String SDT) {
         getConnect();
         try {
             List<KhachHang> list = new ArrayList<>();
@@ -81,6 +79,7 @@ public class KhachHangDAL extends DataAcessHelper {
         return null;
     }
 
+    @Override
     public List<KhachHang> GetALLTenKhachHang(String TenKH) {
         getConnect();
         try {
@@ -101,6 +100,7 @@ public class KhachHangDAL extends DataAcessHelper {
         return null;
     }
     
+    @Override
     public void AddKH(String tenKH, String diaChi, String gioiTinh, String sdt) {                  
         try{
                 PreparedStatement ps = con.prepareStatement(GET_ADDKH);
@@ -115,6 +115,7 @@ public class KhachHangDAL extends DataAcessHelper {
         }
     }
     
+    @Override
     public int deleteKH(int maKH) {
         getConnect();
         int row = 0;

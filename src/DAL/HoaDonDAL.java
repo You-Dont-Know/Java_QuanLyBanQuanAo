@@ -11,21 +11,15 @@ import Entity.HoaDon;
 import GUI.Main;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import Interface.Interface_HoaDon;
+
 /**
  *
  * @author hieun
  */
-public class HoaDonDAL extends DataAcessHelper {
-    private final String GET_ALLHOADON = "select * from hoadon";
-    private final String GET_CHECKHD ="select sohd from hoadon where sohd = ?";
-    private final String GET_UPDATEHD = "UPDATE HoaDon SET ngaylap = ?, nhanvienlap = ?, makh = ?, manhanvien = ? WHERE sohd = ?";
-    private final String GET_DELETEHOADON = "DELETE FROM HoaDon WHERE sohd = ?";
-    private final String GET_ADDHD = "INSERT INTO HoaDon VALUES (?, ?, ?, ?, ?)";
-    private final String GET_NGAYLAP = "SELECT ngaylap from hoadon where sohd = ?";
-    private final String GET_NHANVIENLAP = "select nhanvienlap from hoadon where sohd = ?";
-    private final String GET_MANHANVIEN = "select manhanvien from hoadon where sohd = ?";
-    private final String GET_MAKHACHHANG = "select makh from hoadon where sohd = ?";
+public class HoaDonDAL extends DataAcessHelper implements Interface_HoaDon{
     
+    @Override
     public List<HoaDon> getALLHoaDon(){
         getConnect();
         try{
@@ -43,7 +37,7 @@ public class HoaDonDAL extends DataAcessHelper {
         return null;
     }
     
-    
+    @Override
     public void UpdateHD(String sohd, String ngaylap, String nhanvienlap, String makh, String manhanvien){
         getConnect();
         try {
@@ -61,7 +55,7 @@ public class HoaDonDAL extends DataAcessHelper {
         }
     }
     
-    
+    @Override
     public int deleteHD(String maHD) {
         getConnect();
         int row;
@@ -78,6 +72,7 @@ public class HoaDonDAL extends DataAcessHelper {
         return 0;
     }
     
+    @Override
     public void AddHD(String sohd, String ngaylap, String nhanvienlap, String makh, String manhanvien) {
         try {
             getConnect();
@@ -107,6 +102,7 @@ public class HoaDonDAL extends DataAcessHelper {
         }
     }
     
+    @Override
     public String getNgayLap(String s) {
         String check ="";
         try {
@@ -128,6 +124,7 @@ public class HoaDonDAL extends DataAcessHelper {
         return check;
     }
     
+    @Override
     public String getNhanVienLap(String s) {
         String check ="";
         try {
@@ -148,7 +145,7 @@ public class HoaDonDAL extends DataAcessHelper {
         }
         return check;
     }
-    
+    @Override
     public String getMaNhanVien(String s) {
         String check ="";
         try {
@@ -169,7 +166,7 @@ public class HoaDonDAL extends DataAcessHelper {
         }
         return check;
     }
-    
+    @Override
     public String getMaKhachHang(String s) {
         String check ="";
         try {

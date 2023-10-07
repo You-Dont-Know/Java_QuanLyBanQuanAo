@@ -12,19 +12,16 @@ import Entity.ChiTietHoaDon;
 import GUI.Main;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import Interface.Interface_ChiTietHoaDon;
 
 /**
  *
  * @author hieun
  */
-public class ChiTietHoaDonDAL extends DataAcessHelper {
+public class ChiTietHoaDonDAL extends DataAcessHelper implements Interface_ChiTietHoaDon{
 
-    private final String GET_ALLCHITIETHOADON = "select * from cthoadon";
-    private final String GET_SEARCHCTHD = "select masanpham,sanpham,dongia,soluong,tongtien from CTHoaDon where sohd=?";
-    private final String GET_UPDATECTHD = "UPDATE CTHoaDon SET sanpham = ?, dongia = ?, soluong = ?, tongtien = ?  WHERE sohd = ? and masanpham= ?";
-    private final String GET_DELETECTHOADON = "DELETE FROM CTHoaDon WHERE sohd = ? and masanpham = ?";
-    private final String GET_ADDCTHD = "INSERT INTO CTHoaDon VALUES (?, ?, ?, ?, ?, ?)";
-
+    
+    @Override
     public List<ChiTietHoaDon> getALLChiTietHoaDon() {
         getConnect();
         try {
@@ -41,7 +38,7 @@ public class ChiTietHoaDonDAL extends DataAcessHelper {
         }
         return null;
     }
-
+    @Override
     public List<ChiTietHoaDon> GetALLChiTietHoaDon(String soHD) {
         getConnect();
         try {
@@ -61,7 +58,7 @@ public class ChiTietHoaDonDAL extends DataAcessHelper {
         }
         return null;
     }
-
+    @Override
     public void UpdateCTHD(String sohd, String masanpham, String sanpham, float dongia, int soluong, float tongtien) {
         getConnect();
         try {
@@ -79,7 +76,7 @@ public class ChiTietHoaDonDAL extends DataAcessHelper {
             e.printStackTrace();
         }
     }
-
+    @Override
     public int deleteCTHD(String maCTHD, String maSP) {
         getConnect();
         int row;
@@ -96,7 +93,7 @@ public class ChiTietHoaDonDAL extends DataAcessHelper {
         }
         return 0;
     }
-    
+    @Override
     public void AddCTHD(String sohd, String masanpham, String sanpham, float dongia, int soluong, float tongtien) {
         getConnect();
         try{

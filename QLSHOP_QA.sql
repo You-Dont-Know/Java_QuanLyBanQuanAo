@@ -25,7 +25,6 @@ create table sanpham
   size nvarchar(10),
   ngaysanxuat DateTime,
   soluong int,
-  loaisanpham nvarchar(50),
   constraint pk_sanpham primary key (masanpham)
 )
 

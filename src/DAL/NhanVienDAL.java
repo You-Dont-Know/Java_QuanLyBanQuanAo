@@ -12,20 +12,17 @@ import Entity.NhanVien;
 import GUI.Main;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
-
+import Interface.Interface_NhanVien;
 /**
  *
  * @author hieun
  */
-public class NhanVienDAL extends DataAcessHelper {
+public class NhanVienDAL extends DataAcessHelper implements Interface_NhanVien{
 
-    private final String GET_ALLNHANVIEN = "select * from nhanvien";
-    private final String GET_UPDATENHANVIEN = " UPDATE NhanVien SET tennhanvien = ?, gioitinh = ?, ngaysinh =  ?, diachi = ?, sdt = ?, tendangnhap = ?, matkhau = ?, chucvu = ?  WHERE manhanvien= ?";
-    private final String GET_DELETENHANVIEN = "DELETE FROM NhanVien WHERE manhanvien = ?";
-    private final String GET_ADDNV = "INSERT INTO NhanVien VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
-    private final String GET_CHECKNV = "select manhanvien from nhanvien where manhanvien = ?";
     
     
+    
+    @Override
     public List<NhanVien> getALLNhanvien() {
         getConnect();
         try {
@@ -44,6 +41,7 @@ public class NhanVienDAL extends DataAcessHelper {
         return null;
     }
 
+    @Override
     public void UpdateNV(String manv, String tennv, String gioitinh, String ngaysinh, String diachi, String sdt, String tendn, String matkhau, String chucvu) {
         getConnect();
         try {
@@ -65,6 +63,7 @@ public class NhanVienDAL extends DataAcessHelper {
         }
     }
 
+    @Override
     public int deleteNV(String maNV) {
         getConnect();
         int row;
@@ -81,6 +80,7 @@ public class NhanVienDAL extends DataAcessHelper {
         return 0;
     }
 
+    @Override
     public void Them(String manv, String tennv, String gioitinh, String ngaysinh, String diachi, String sdt, String tendn, String matkhau, String chucvu) {
         try {
             getConnect();
