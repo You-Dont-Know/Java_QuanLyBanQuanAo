@@ -15,6 +15,7 @@ import Interface.Interface_TaiKhoan;
  */
 public class TaiKhoanDAL extends DataAcessHelper implements Interface_TaiKhoan{
 
+    @Override
     public String getLogin(String u, String p) {
         String check ="";
         try {

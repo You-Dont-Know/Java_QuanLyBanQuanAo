@@ -18,7 +18,7 @@ import Interface.Interface_KhachHang;
  * @author hieun
  */
 public class KhachHangDAL extends DataAcessHelper implements Interface_KhachHang{
-
+    
     
     
     @Override
@@ -30,7 +30,7 @@ public class KhachHangDAL extends DataAcessHelper implements Interface_KhachHang
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 list.add(new KhachHang(rs.getInt(1), rs.getString(2),
-                        rs.getString(3), rs.getString(4), rs.getString(5)));
+                        rs.getString(3), rs.getString(4), rs.getString(5), rs.getInt(6)));
             }
             return list;
         } catch (Exception e) {
@@ -40,7 +40,7 @@ public class KhachHangDAL extends DataAcessHelper implements Interface_KhachHang
     }
     
     @Override
-    public void UpdateKH(int maKH, String tenKH, String diaChi, String gioiTinh, String sdt) {
+    public void UpdateKH(int maKH, String tenKH, String diaChi, String gioiTinh, String sdt, int maloaikhachhang) {
         getConnect();
         try {
             PreparedStatement ps = con.prepareStatement(GET_UPDATEKHACHHANG);
@@ -48,7 +48,8 @@ public class KhachHangDAL extends DataAcessHelper implements Interface_KhachHang
             ps.setString(2, gioiTinh);
             ps.setString(3, diaChi);
             ps.setString(4, sdt);
-            ps.setInt(5, maKH);
+            ps.setInt(5, maloaikhachhang);
+            ps.setInt(6, maKH);
             ps.executeUpdate();
 
             getClose();
@@ -69,7 +70,7 @@ public class KhachHangDAL extends DataAcessHelper implements Interface_KhachHang
 
             while (rs.next()) {
                 list.add(new KhachHang(rs.getInt(1), rs.getString(2),
-                        rs.getString(3), rs.getString(4), rs.getString(5)));
+                        rs.getString(3), rs.getString(4), rs.getString(5), rs.getInt(6)));
             }
             getClose();
             return list;
@@ -90,7 +91,7 @@ public class KhachHangDAL extends DataAcessHelper implements Interface_KhachHang
 
             while (rs.next()) {
                 list.add(new KhachHang(rs.getInt(1), rs.getString(2),
-                        rs.getString(3), rs.getString(4), rs.getString(5)));
+                        rs.getString(3), rs.getString(4), rs.getString(5), rs.getInt(6)));
             }
             getClose();
             return list;
@@ -101,13 +102,14 @@ public class KhachHangDAL extends DataAcessHelper implements Interface_KhachHang
     }
     
     @Override
-    public void AddKH(String tenKH, String diaChi, String gioiTinh, String sdt) {                  
+    public void AddKH(String tenKH, String diaChi, String gioiTinh, String sdt, int maloaikhachhang) {                  
         try{
                 PreparedStatement ps = con.prepareStatement(GET_ADDKH);
                 ps.setString(1, tenKH);
                 ps.setString(2, diaChi);
                 ps.setString(3, gioiTinh);
                 ps.setString(4, sdt);
+                ps.setInt(5, maloaikhachhang);
                 ps.executeUpdate();               
             getClose();
         } catch (Exception e) {

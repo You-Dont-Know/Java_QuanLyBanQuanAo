@@ -31,13 +31,15 @@ public class SanPhamDAL extends DataAcessHelper implements Interface_SanPham{
             while (rs.next()) {
                 list.add(new SanPham(rs.getString(1),
                         rs.getString(2),
-                        rs.getFloat(3),
-                        rs.getString(4),
-                        rs.getString(5),
-                        rs.getDate(6),
-                        rs.getInt(7)));
+                        rs.getInt(3),
+                        rs.getFloat(4),
+                        rs.getFloat(5),
+                        rs.getString(6),
+                        rs.getString(7),
+                        rs.getDate(8),
+                        rs.getInt(9)));
             }
-
+            getClose();
             return list;
         } catch (Exception e) {
             e.printStackTrace();
@@ -46,17 +48,19 @@ public class SanPhamDAL extends DataAcessHelper implements Interface_SanPham{
     }
 
     @Override
-    public void UpdateSP(String maSP, String tenSP, float giaSP, String motaSP, String size, String date, int soLuong) {
+    public void UpdateSP(String maSP, String tenSP, int maLoaiSP, float giaNhap, float giaBan, String motaSP, String size, String date, int soLuong) {
         getConnect();
         try {
             PreparedStatement ps = con.prepareStatement(GET_UPDATESP);
             ps.setString(1, tenSP);
-            ps.setFloat(2, giaSP);
-            ps.setString(3, motaSP);
-            ps.setString(4, size);
-            ps.setString(5, date);
-            ps.setInt(6, soLuong);
-            ps.setString(7, maSP);
+            ps.setInt(2, maLoaiSP);
+            ps.setFloat(3, giaNhap);
+            ps.setFloat(4, giaBan);           
+            ps.setString(5, motaSP);
+            ps.setString(6, size);
+            ps.setString(7, date);
+            ps.setInt(8, soLuong);
+            ps.setString(9, maSP);
             ps.executeUpdate();
 
             getClose();
@@ -78,11 +82,13 @@ public class SanPhamDAL extends DataAcessHelper implements Interface_SanPham{
             while (rs.next()) {
                 list.add(new SanPham(rs.getString(1),
                         rs.getString(2),
-                        rs.getFloat(3),
-                        rs.getString(4),
-                        rs.getString(5),
-                        rs.getDate(6),
-                        rs.getInt(7)));
+                        rs.getInt(3),
+                        rs.getFloat(4),
+                        rs.getFloat(5),
+                        rs.getString(6),
+                        rs.getString(7),
+                        rs.getDate(8),
+                        rs.getInt(9)));
             }
             getClose();
             return list;
@@ -104,11 +110,13 @@ public class SanPhamDAL extends DataAcessHelper implements Interface_SanPham{
             while (rs.next()) {
                 list.add(new SanPham(rs.getString(1),
                         rs.getString(2),
-                        rs.getFloat(3),
-                        rs.getString(4),
-                        rs.getString(5),
-                        rs.getDate(6),
-                        rs.getInt(7)));
+                        rs.getInt(3),
+                        rs.getFloat(4),
+                        rs.getFloat(5),
+                        rs.getString(6),
+                        rs.getString(7),
+                        rs.getDate(8),
+                        rs.getInt(9)));
             }
             getClose();
             return list;
@@ -136,7 +144,7 @@ public class SanPhamDAL extends DataAcessHelper implements Interface_SanPham{
     }
 
     @Override
-    public void AddSP(String maSP, String tenSP, float giaSP, String motaSP, String size, String date, int soLuong) {
+    public void AddSP(String maSP, String tenSP, int maloaiSP, float giaNhap, float giaBan, String motaSP, String size, String date, int soLuong) {
         try {
             getConnect();
             PreparedStatement ps_Check = con.prepareStatement(GET_CheckSP);
@@ -153,11 +161,13 @@ public class SanPhamDAL extends DataAcessHelper implements Interface_SanPham{
                 PreparedStatement ps = con.prepareStatement(GET_ADDSP);
                 ps.setString(1, maSP);
                 ps.setString(2, tenSP);
-                ps.setFloat(3, giaSP);
-                ps.setString(4, motaSP);
-                ps.setString(5, size);
-                ps.setString(6, date);
-                ps.setInt(7, soLuong);
+                ps.setInt(3, maloaiSP);
+                ps.setFloat(4, giaNhap);
+                ps.setFloat(5, giaBan);
+                ps.setString(6, motaSP);
+                ps.setString(7, size);
+                ps.setString(8, date);
+                ps.setInt(9, soLuong);
                 ps.executeUpdate();
             }
             getClose();

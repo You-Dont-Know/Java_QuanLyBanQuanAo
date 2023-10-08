@@ -17,7 +17,7 @@ public class DataAcessHelper {
         try
         {
            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");         
-            String connectionurl= "jdbc:sqlserver://DESKTOP-PKGEMFS\\HIEUNE:1433; databaseName=SHOPQUANAO; encrypt=false" ;
+            String connectionurl= "jdbc:sqlserver://DESKTOP-PKGEMFS\\HIEUNE:1433; databaseName=QUANLYSHOPQUANAO; encrypt=false" ;
             con=DriverManager.getConnection(connectionurl,"sa","123456");
         }
            catch(Exception ex)

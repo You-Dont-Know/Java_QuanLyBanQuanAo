@@ -15,7 +15,9 @@ import java.util.Date;
 public class SanPham {
     private String maSanPham;
     private String tenSanPham;
-    private float giaSanPham;
+    private int maLoaiSanPham;
+    private float giaNhap; 
+    private float giaBan;
     private String moTaSanPham;
     private String size;
     private Date ngaySanXuat;
@@ -23,18 +25,19 @@ public class SanPham {
     public SanPham(){
         
     }
-    public SanPham(String maSanPham, String tenSanPham, float giaSanPham, String moTaSanPham, String size, Date ngaySanXuat, int soLuong) {
+
+    public SanPham(String maSanPham, String tenSanPham, int maLoaiSanPham, float giaNhap, float giaBan, String moTaSanPham, String size, Date ngaySanXuat, int soLuong) {
         this.maSanPham = maSanPham;
         this.tenSanPham = tenSanPham;
-        this.giaSanPham = giaSanPham;
+        this.maLoaiSanPham = maLoaiSanPham;
+        this.giaNhap = giaNhap;
+        this.giaBan = giaBan;
         this.moTaSanPham = moTaSanPham;
         this.size = size;
         this.ngaySanXuat = ngaySanXuat;
         this.soLuong = soLuong;
     }
 
-    
-    
     public String getMaSanPham() {
         return maSanPham;
     }
@@ -51,12 +54,28 @@ public class SanPham {
         this.tenSanPham = tenSanPham;
     }
 
-    public float getGiaSanPham() {
-        return giaSanPham;
+    public int getMaLoaiSanPham() {
+        return maLoaiSanPham;
     }
 
-    public void setGiaSanPham(float giaSanPham) {
-        this.giaSanPham = giaSanPham;
+    public void setMaLoaiSanPham(int maLoaiSanPham) {
+        this.maLoaiSanPham = maLoaiSanPham;
+    }
+
+    public float getGiaNhap() {
+        return giaNhap;
+    }
+
+    public void setGiaNhap(float giaNhap) {
+        this.giaNhap = giaNhap;
+    }
+
+    public float getGiaBan() {
+        return giaBan;
+    }
+
+    public void setGiaBan(float giaBan) {
+        this.giaBan = giaBan;
     }
 
     public String getMoTaSanPham() {
@@ -74,7 +93,15 @@ public class SanPham {
     public void setSize(String size) {
         this.size = size;
     }
-    
+
+    public int getSoLuong() {
+        return soLuong;
+    }
+
+    public void setSoLuong(int soLuong) {
+        this.soLuong = soLuong;
+    }
+  
     public String getNgaySanXuat() {
         SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy");
         return df.format(ngaySanXuat);
@@ -84,13 +111,5 @@ public class SanPham {
         this.ngaySanXuat = ngaySanXuat;
     }
 
-    public int getSoLuong() {
-        return soLuong;
-    }
-
-    public void setSoLuong(int soLuong) {
-        this.soLuong = soLuong;
-    }
-    
-    
+  
 }

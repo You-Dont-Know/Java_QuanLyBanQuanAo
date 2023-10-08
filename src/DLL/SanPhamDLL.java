@@ -17,11 +17,11 @@ public class SanPhamDLL {
     public List<SanPham> getALLSanPham(){
         return spdal.getALLSanPham();
     }
-    public void UpdateSP(String maSP, String tenSP, float giaSP, String motaSP, String size, String Date, int soLuong){
-        spdal.UpdateSP(maSP, tenSP, giaSP, motaSP, size, Date, soLuong);
+    public void UpdateSP(String maSP, String tenSP, int maloaiSP, float giaNhap, float giaBan, String motaSP, String size, String date, int soLuong){
+        spdal.UpdateSP(maSP, tenSP, maloaiSP, giaNhap, giaBan, motaSP, size, date, soLuong);
     }
-    public void AddSP(String maSP, String tenSP, float giaSP, String motaSP, String size, String date, int soLuong){
-        spdal.AddSP(maSP, tenSP, giaSP, motaSP, size, date, soLuong);
+    public void AddSP(String maSP, String tenSP, int maloaiSP, float giaNhap, float giaBan, String motaSP, String size, String date, int soLuong){
+        spdal.AddSP(maSP, tenSP, maloaiSP, giaNhap, giaBan, motaSP, size, date, soLuong);
     }
     
     public List<SanPham> GetALLTenSanPham(String Tensp){

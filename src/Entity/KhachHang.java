@@ -14,16 +14,17 @@ public class KhachHang {
     private String diaChi;
     private String gioiTinh;
     private String sdt;
+    private int maloaikhachhang;
 
-    public KhachHang(int maKH, String tenKhach, String diaChi, String gioiTinh, String sdt) {
+    public KhachHang(int maKH, String tenKhach, String diaChi, String gioiTinh, String sdt, int maloaikhachhang) {
         this.maKH = maKH;
         this.tenKhach = tenKhach;
         this.diaChi = diaChi;
         this.gioiTinh = gioiTinh;
         this.sdt = sdt;
+        this.maloaikhachhang = maloaikhachhang;
     }
 
-    
     public int getMaKH() {
         return maKH;
     }
@@ -63,6 +64,16 @@ public class KhachHang {
     public void setSdt(String sdt) {
         this.sdt = sdt;
     }
+
+    public int getMaloaikhachhang() {
+        return maloaikhachhang;
+    }
+
+    public void setMaloaikhachhang(int maloaikhachhang) {
+        this.maloaikhachhang = maloaikhachhang;
+    }
+
+    
     
     
 }

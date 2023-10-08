@@ -20,16 +20,16 @@ public class KhachHangDLL {
         return khdal.GetALLTenKhachHang(TenKH);
     }
     
-    public void UpdateKH(int maKH, String tenKH, String diaChi, String gioiTinh, String sdt){
-        khdal.UpdateKH(maKH, tenKH, diaChi, gioiTinh, sdt);
+    public void UpdateKH(int maKH, String tenKH, String diaChi, String gioiTinh, String sdt, int maloaikhachhang){
+        khdal.UpdateKH(maKH, tenKH, diaChi, gioiTinh, sdt, maloaikhachhang);
     }
     
     public int deleteKH(int maKH){
         return khdal.deleteKH(maKH);
     }
     
-    public void AddKH(String tenKH, String diaChi, String gioiTinh, String sdt){
-        khdal.AddKH(tenKH, diaChi, gioiTinh, sdt);
+    public void AddKH(String tenKH, String diaChi, String gioiTinh, String sdt, int maloaikhachhang){
+        khdal.AddKH(tenKH, diaChi, gioiTinh, sdt, maloaikhachhang);
     }
     
     public List<KhachHang> GetALLSDT(String SDT){
