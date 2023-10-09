@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+<Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="2"/>
   </Properties>
@@ -1416,11 +1416,13 @@
                                   </Group>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="txt_NV_MNV" pref="175" max="32767" attributes="0"/>
-                                      <Component id="txt_NV_TDN" pref="175" max="32767" attributes="0"/>
-                                      <Component id="txt_NV_DATE" alignment="0" max="32767" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Component id="txt_NV_MNV" pref="175" max="32767" attributes="0"/>
+                                          <Component id="txt_NV_TDN" pref="175" max="32767" attributes="0"/>
+                                      </Group>
+                                      <Component id="jDateChooser6" pref="187" max="32767" attributes="0"/>
                                   </Group>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="jLabel29" min="-2" max="-2" attributes="0"/>
                                       <Component id="jLabel28" min="-2" pref="96" max="-2" attributes="0"/>
@@ -1481,9 +1483,9 @@
                                               <Component id="jLabel28" alignment="3" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="jLabel36" min="-2" pref="28" max="-2" attributes="0"/>
-                                              <Component id="txt_NV_DATE" min="-2" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                              <Component id="jLabel36" pref="28" max="32767" attributes="0"/>
+                                              <Component id="jDateChooser6" max="32767" attributes="0"/>
                                           </Group>
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="3" attributes="0">
@@ -1721,11 +1723,9 @@
                             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton12ActionPerformed"/>
                           </Events>
                         </Component>
-                        <Component class="javax.swing.JFormattedTextField" name="txt_NV_DATE">
+                        <Component class="com.toedter.calendar.JDateChooser" name="jDateChooser6">
                           <Properties>
-                            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                              <Font name="Segoe UI" size="16" style="0"/>
-                            </Property>
+                            <Property name="dateFormatString" type="java.lang.String" value="dd-MM-yyyy"/>
                           </Properties>
                         </Component>
                       </SubComponents>
@@ -2469,14 +2469,12 @@
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                       <Component id="btn_print" max="32767" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Group type="103" groupAlignment="3" attributes="0">
-                                              <Component id="jLabel47" alignment="3" min="-2" max="-2" attributes="0"/>
-                                              <Component id="jTextField26" alignment="3" min="-2" max="-2" attributes="0"/>
-                                              <Component id="jLabel50" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                          <Component id="jDateChooser3" max="32767" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="jLabel47" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jTextField26" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jLabel50" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
+                                      <Component id="jDateChooser3" max="32767" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">

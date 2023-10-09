@@ -199,7 +199,7 @@ public class Main extends javax.swing.JFrame {
         jButton10 = new javax.swing.JButton();
         jButton11 = new javax.swing.JButton();
         jButton12 = new javax.swing.JButton();
-        txt_NV_DATE = new javax.swing.JFormattedTextField();
+        jDateChooser6 = new com.toedter.calendar.JDateChooser();
         jPanel20 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTableNhanVien = new javax.swing.JTable();
@@ -1140,7 +1140,7 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
-        txt_NV_DATE.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        jDateChooser6.setDateFormatString("dd-MM-yyyy");
 
         javax.swing.GroupLayout jPanel19Layout = new javax.swing.GroupLayout(jPanel19);
         jPanel19.setLayout(jPanel19Layout);
@@ -1153,10 +1153,11 @@ public class Main extends javax.swing.JFrame {
                     .addComponent(jLabel36, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txt_NV_MNV, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE)
-                    .addComponent(txt_NV_TDN, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE)
-                    .addComponent(txt_NV_DATE))
-                .addGap(18, 18, 18)
+                    .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(txt_NV_MNV, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE)
+                        .addComponent(txt_NV_TDN, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE))
+                    .addComponent(jDateChooser6, javax.swing.GroupLayout.DEFAULT_SIZE, 187, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel29)
                     .addComponent(jLabel28, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1205,9 +1206,9 @@ public class Main extends javax.swing.JFrame {
                             .addComponent(txt_NV_MNV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel28))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel36, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txt_NV_DATE, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel36, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
+                            .addComponent(jDateChooser6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel32)
@@ -1743,12 +1744,11 @@ public class Main extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btn_print, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel47)
-                            .addComponent(jTextField26, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel50))
-                        .addComponent(jDateChooser3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel47)
+                        .addComponent(jTextField26, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel50))
+                    .addComponent(jDateChooser3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -2393,7 +2393,7 @@ public class Main extends javax.swing.JFrame {
             }
             i++;
         }
-        txt_NV_DATE.setText(s3);
+        ((JTextField) jDateChooser6.getDateEditor().getUiComponent()).setText(s3);
         txt_NV_DC.setText(s4);
         txt_NV_SDT.setText(s5);
         txt_NV_TDN.setText(s6);
@@ -2554,6 +2554,7 @@ public class Main extends javax.swing.JFrame {
         jTextField4.setText("");
         jTextField6.setText("");
         jTextArea1.setText("");
+        jTextField5.setText("");
         ((JTextField) jDateChooser1.getDateEditor().getUiComponent()).setText("");
 
     }
@@ -2770,7 +2771,7 @@ public class Main extends javax.swing.JFrame {
             String manv = txt_NV_MNV.getText();
             String tennv = txt_NV_TNV.getText();
             String gioitinh = jComboBox2.getSelectedItem().toString();
-            String ngaysinh = doiDate(txt_NV_DATE.getText());
+            String ngaysinh = doiDate(((JTextField) jDateChooser6.getDateEditor().getUiComponent()).getText());
             String diachi = txt_NV_DC.getText();
             String sdt = txt_NV_SDT.getText();
             String tendn = txt_NV_TDN.getText();
@@ -2827,7 +2828,7 @@ public class Main extends javax.swing.JFrame {
     private void xoatextnhanvien() {
         txt_NV_MNV.setText("");
         txt_NV_TNV.setText("");
-        txt_NV_DATE.setText("");
+        ((JTextField) jDateChooser1.getDateEditor().getUiComponent()).setText("");
         txt_NV_DC.setText("");
         txt_NV_SDT.setText("");
         txt_NV_TDN.setText("");
@@ -2846,7 +2847,7 @@ public class Main extends javax.swing.JFrame {
             String manv = txt_NV_MNV.getText();
             String tennv = txt_NV_TNV.getText();
             String gioitinh = jComboBox2.getSelectedItem().toString();
-            String ngaysinh = doiDate(txt_NV_DATE.getText());
+            String ngaysinh = doiDate(((JTextField) jDateChooser6.getDateEditor().getUiComponent()).getText());
             String diachi = txt_NV_DC.getText();
             String sdt = txt_NV_SDT.getText();
             String tendn = txt_NV_TDN.getText();
@@ -3333,7 +3334,7 @@ public class Main extends javax.swing.JFrame {
             
             
             
-            File f = new File("D://Java//Source//QuanLyShopBanQuanAo//File//dsChiTietHoaDon.xlsx");
+            File f = new File(".///File//dsChiTietHoaDon.xlsx");
             
             try {
                 FileOutputStream fis = new FileOutputStream(f);
@@ -3438,6 +3439,7 @@ public class Main extends javax.swing.JFrame {
     private com.toedter.calendar.JDateChooser jDateChooser3;
     private com.toedter.calendar.JDateChooser jDateChooser4;
     private com.toedter.calendar.JDateChooser jDateChooser5;
+    private com.toedter.calendar.JDateChooser jDateChooser6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -3566,7 +3568,6 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField8;
     private javax.swing.JTextField jTextField9;
     public javax.swing.JButton jbtn_SuaSP;
-    private javax.swing.JFormattedTextField txt_NV_DATE;
     private javax.swing.JTextField txt_NV_DC;
     private javax.swing.JTextField txt_NV_MK;
     private javax.swing.JTextField txt_NV_MNV;
