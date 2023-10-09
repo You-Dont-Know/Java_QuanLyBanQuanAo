@@ -44,8 +44,8 @@ create table sanpham
   masanpham varchar(10) not null,
   tensanpham nvarchar(50),
   maloaisanpham int,
-  gianhap money NOT NULL,
-  giaban money NOT NULL,
+  gianhap float NOT NULL,
+  giaban float NOT NULL,
   motasanpham nvarchar(50),
   size nvarchar(10),
   ngaysanxuat date,
@@ -239,7 +239,20 @@ INSERT INTO cthoadon
 VALUES
 ('HD05','SP10',N'QUẦN SORT KAKI TRƠN',90000,1,90000);
 
-
+SELECT 
+    hd.NgayLap, 
+    COUNT(hd.SoHD) AS TongSoHoaDon,
+    SUM(ct.TongTien) AS TongTien
+FROM 
+    hoadon hd
+JOIN 
+    cthoadon ct ON hd.SoHD = ct.SoHD
+where hd.NgayLap >= '2020-05-04'
+GROUP BY 
+    hd.NgayLap
+ORDER BY 
+    hd.NgayLap
+	
 
 
 
