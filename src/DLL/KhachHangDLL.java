@@ -35,4 +35,8 @@ public class KhachHangDLL {
     public List<KhachHang> GetALLSDT(String SDT){
         return khdal.GetALLSDT(SDT);
     }
+    
+    public String getTenKhachHang(String s){
+        return khdal.getTenKhachHang(s);
+    }
 }

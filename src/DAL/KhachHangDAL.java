@@ -151,6 +151,25 @@ public class KhachHangDAL extends DataAcessHelper implements Interface_KhachHang
         return 0;
     }
     
-    
-    
+    @Override
+    public String getTenKhachHang(String s) {
+        String check ="";
+        try {
+            getConnect();
+
+            PreparedStatement ps = con.prepareStatement(GET_CheckTENKH);
+            ps.setString(1, s);
+            ResultSet rs = ps.executeQuery();
+            
+            if (rs != null && rs.next()) { 
+                
+                check = rs.getString(1);
+                
+            }
+            getClose();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return check;
+    }
 }

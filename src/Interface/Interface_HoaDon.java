@@ -21,6 +21,7 @@ public interface Interface_HoaDon {
     public final String GET_NHANVIENLAP = "select nhanvienlap from hoadon where sohd = ?";
     public final String GET_MANHANVIEN = "select manhanvien from hoadon where sohd = ?";
     public final String GET_MAKHACHHANG = "select makh from hoadon where sohd = ?";
+    public final String GET_TENKHACHHANG = "select tenkhachhang from hoadon where sohd = ?";
     
     public List<HoaDon> getALLHoaDon();
     public void UpdateHD(String sohd, String ngaylap, String nhanvienlap, String makh, String manhanvien);

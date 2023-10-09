@@ -20,6 +20,8 @@ public interface Interface_KhachHang {
     public final String GET_DELETEKHACHHANG = "DELETE from KhachHang WHERE makh = ? ";
     public final String GET_ADDKH = "INSERT INTO Khachhang VALUES (?,?, ?, ?, ?, ?)";
     public final String GET_CheckKNKH ="select makh from hoadon where makh = ?";
+    public final String GET_CheckTENKH ="select tenkhach from khachhang where makh = ?";
+    
     
     public List<KhachHang> getALLKhachHang();
     public void UpdateKH(int maKH, String tenKH, String diaChi, String gioiTinh, String sdt, int maloaikhachhang);
@@ -27,4 +29,5 @@ public interface Interface_KhachHang {
     public List<KhachHang> GetALLTenKhachHang(String TenKH);
     public void AddKH(String tenKH, String diaChi, String gioiTinh, String sdt, int maloaikhachhang);
     public int deleteKH(int maKH);
+    public String getTenKhachHang(String s);
 }

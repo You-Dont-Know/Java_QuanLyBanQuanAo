@@ -3,15 +3,32 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/D:/Java/Source/QuanLyShopBanQuanAo/src/Interface/Interface_TaiKhoan.java</file>
+            <file>file:/D:/Java/Source/QuanLyShopBanQuanAo/src/Interface/Interface_ThongKe.java</file>
+            <file>file:/D:/Java/Source/QuanLyShopBanQuanAo/src/Interface/Interface_SanPham.java</file>
+            <file>file:/D:/Java/Source/QuanLyShopBanQuanAo/src/DAL/LoaiKhachHangDAL.java</file>
+            <file>file:/D:/Java/Source/QuanLyShopBanQuanAo/src/DAL/ThongKeDAL.java</file>
             <file>file:/D:/Java/Source/QuanLyShopBanQuanAo/src/DAL/LoaiSanPhamDAL.java</file>
             <file>file:/D:/Java/Source/QuanLyShopBanQuanAo/src/DAL/SanPhamDAL.java</file>
-            <file>file:/D:/Java/Source/QuanLyShopBanQuanAo/src/GUI/DangNhap.java</file>
-            <file>file:/D:/Java/Source/QuanLyShopBanQuanAo/src/Interface/Interface_NhanVien.java</file>
-            <file>file:/D:/Java/Source/QuanLyShopBanQuanAo/src/DLL/HoaDonDLL.java</file>
+            <file>file:/D:/Java/Source/QuanLyShopBanQuanAo/src/DLL/KhachHangDLL.java</file>
+            <file>file:/D:/Java/Source/QuanLyShopBanQuanAo/src/Entity/HoaDon.java</file>
+            <file>file:/D:/Java/Source/QuanLyShopBanQuanAo/src/DAL/DataAcessHelper.java</file>
+            <file>file:/D:/Java/Source/QuanLyShopBanQuanAo/src/Entity/SanPham.java</file>
+            <file>file:/D:/Java/Source/QuanLyShopBanQuanAo/src/DLL/ThongKeDLL.java</file>
+            <file>file:/D:/Java/Source/QuanLyShopBanQuanAo/src/Interface/Interface_HoaDon.java</file>
+            <file>file:/D:/Java/Source/QuanLyShopBanQuanAo/src/DAL/NhanVienDAL.java</file>
+            <file>file:/D:/Java/Source/QuanLyShopBanQuanAo/src/DAL/ChiTietHoaDonDAL.java</file>
+            <file>file:/D:/Java/Source/QuanLyShopBanQuanAo/src/DAL/TaiKhoanDAL.java</file>
             <file>file:/D:/Java/Source/QuanLyShopBanQuanAo/src/DAL/KhachHangDAL.java</file>
             <file>file:/D:/Java/Source/QuanLyShopBanQuanAo/src/GUI/Main.java</file>
-            <file>file:/D:/Java/Source/QuanLyShopBanQuanAo/src/Interface/Interface_SanPham.java</file>
             <file>file:/D:/Java/Source/QuanLyShopBanQuanAo/src/Interface/Interface_KhachHang.java</file>
+            <file>file:/D:/Java/Source/QuanLyShopBanQuanAo/src/DLL/NhanVienDLL.java</file>
+            <file>file:/D:/Java/Source/QuanLyShopBanQuanAo/src/DAL/HoaDonDAL.java</file>
+            <file>file:/D:/Java/Source/QuanLyShopBanQuanAo/src/GUI/DangNhap.java</file>
+            <file>file:/D:/Java/Source/QuanLyShopBanQuanAo/src/Interface/Interface_NhanVien.java</file>
+            <file>file:/D:/Java/Source/QuanLyShopBanQuanAo/src/Entity/NhanVien.java</file>
+            <file>file:/D:/Java/Source/QuanLyShopBanQuanAo/src/DLL/HoaDonDLL.java</file>
+            <file>file:/D:/Java/Source/QuanLyShopBanQuanAo/src/Entity/ThongKe.java</file>
         </group>
     </open-files>
 </project-private>
