@@ -17,7 +17,8 @@ public interface Interface_NhanVien {
     public final String GET_DELETENHANVIEN = "DELETE FROM NhanVien WHERE manhanvien = ?";
     public final String GET_ADDNV = "INSERT INTO NhanVien VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
     public final String GET_CHECKNV = "select manhanvien from nhanvien where manhanvien = ?";
-    
+    public final String GET_MnsTnv = "select manhanvien,tennhanvien from nhanvien where tendangnhap = ?";
+    public List<NhanVien> getMnsTnv(String tenDangNhap);
     public List<NhanVien> getALLNhanvien();
     public void UpdateNV(String manv, String tennv, String gioitinh, String ngaysinh, String diachi, String sdt, String tendn, String matkhau, String chucvu);
     public int deleteNV(String maNV);

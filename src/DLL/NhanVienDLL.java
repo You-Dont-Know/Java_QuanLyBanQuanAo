@@ -29,4 +29,8 @@ public class NhanVienDLL {
     public void Them(String manv, String tennv, String gioitinh, String ngaysinh, String diachi, String sdt, String tendn, String matkhau, String chucvu){
         nvdal.Them(manv, tennv, gioitinh, ngaysinh, diachi, sdt, tendn, matkhau, chucvu);
     }
+    
+    public List<NhanVien> getMnsTnv(String tenDangNhap){
+        return nvdal.getMnsTnv(tenDangNhap);
+    }
 }

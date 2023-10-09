@@ -19,8 +19,24 @@ import Interface.Interface_NhanVien;
  */
 public class NhanVienDAL extends DataAcessHelper implements Interface_NhanVien{
 
-    
-    
+    @Override
+    public List<NhanVien> getMnsTnv(String tenDangNhap){
+        getConnect();
+        try {
+            List<NhanVien> list = new ArrayList<>();
+            PreparedStatement ps = con.prepareStatement(GET_MnsTnv);
+            ps.setString(1, tenDangNhap);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                list.add(new NhanVien(rs.getString(1), rs.getString(2)));               
+            }
+            getClose();
+            return list;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }    
+        return null;
+    }
     
     @Override
     public List<NhanVien> getALLNhanvien() {
@@ -34,6 +50,7 @@ public class NhanVienDAL extends DataAcessHelper implements Interface_NhanVien{
                         rs.getDate(4), rs.getString(5), rs.getString(6), rs.getString(7),
                         rs.getString(8), rs.getString(9)));
             }
+            getClose();
             return list;
         } catch (Exception e) {
             e.printStackTrace();

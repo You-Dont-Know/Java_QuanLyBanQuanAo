@@ -5,6 +5,7 @@
 package GUI;
 
 import DLL.AccountDLL;
+import Entity.NhanVien;
 import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowEvent;
@@ -228,17 +229,29 @@ public class DangNhap extends javax.swing.JFrame {
         }
         if (check == true) {
             if (accdll.getLogin(user1, pass1).equals("NHÂN VIÊN")) {
-                close();
-                Main m = new Main();
+                close();               
+                
+                NhanVien nv = new NhanVien();
+                        nv.setTenDangNhap(user1);
+                        nv.setMatKhau(pass1);
+                Main m = new Main(nv);
+               
+                
                 m.setVisible(true);
             } else if (accdll.getLogin(user1, pass1).equals("QUẢN LÝ")
                     || accdll.getLogin(user1, pass1).equals("CHỦ SHOP")) {
                 close();
-                Main m = new Main();
+                NhanVien nv = new NhanVien();
+                        nv.setTenDangNhap(user1);
+                        nv.setMatKhau(pass1);
+                Main m = new Main(nv);
+               
+      
                 m.jButton2.setEnabled(true);
                 m.jButton4.setEnabled(true);
                 m.jbtn_SuaSP.setEnabled(true);
                 m.btn_NhanVien.setEnabled(true);
+                m.btn_ThongKe.setEnabled(true);
                 m.setVisible(true);
             } else {
                 JOptionPane.showMessageDialog(this, "Không thể đăng nhập! Kiểm tra lại user và pass");
@@ -269,12 +282,20 @@ public class DangNhap extends javax.swing.JFrame {
             if (check == true) {
                 if (accdll.getLogin(user1, pass1).equals("NHÂN VIÊN")) {
                     close();
-                    Main m = new Main();
+                    NhanVien nv = new NhanVien();
+                        nv.setTenDangNhap(user1);
+                        nv.setMatKhau(pass1);
+                Main m = new Main(nv);
+               
                     m.setVisible(true);
                 } else if (accdll.getLogin(user1, pass1).equals("QUẢN LÝ")
                         || accdll.getLogin(user1, pass1).equals("CHỦ SHOP")) {
                     close();
-                    Main m = new Main();
+                    NhanVien nv = new NhanVien();
+                        nv.setTenDangNhap(user1);
+                        nv.setMatKhau(pass1);
+                Main m = new Main(nv);
+               
                     m.jButton2.setEnabled(true);
                     m.jButton4.setEnabled(true);
                     m.jbtn_SuaSP.setEnabled(true);
@@ -304,12 +325,20 @@ public class DangNhap extends javax.swing.JFrame {
             if (check == true) {
                 if (accdll.getLogin(user1, pass1).equals("NHÂN VIÊN")) {
                     close();
-                    Main m = new Main();
+                    NhanVien nv = new NhanVien();
+                        nv.setTenDangNhap(user1);
+                        nv.setMatKhau(pass1);
+                Main m = new Main(nv);
+               
                     m.setVisible(true);
                 } else if (accdll.getLogin(user1, pass1).equals("QUẢN LÝ")
                         || accdll.getLogin(user1, pass1).equals("CHỦ SHOP")) {
                     close();
-                    Main m = new Main();
+                    NhanVien nv = new NhanVien();
+                        nv.setTenDangNhap(user1);
+                        nv.setMatKhau(pass1);
+                Main m = new Main(nv);
+               
                     m.jButton2.setEnabled(true);
                     m.jButton4.setEnabled(true);
                     m.jbtn_SuaSP.setEnabled(true);

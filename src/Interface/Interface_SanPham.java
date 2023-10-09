@@ -17,7 +17,7 @@ public interface Interface_SanPham {
     public final String GET_ALLSANPHAM = "select * from sanpham";
     public final String GET_UPDATESP = "UPDATE SanPham SET tensanpham = ?, maloaisanpham = ?, gianhap = ?, giaban = ?, motasanpham = ?, size = ?,ngaysanxuat = ?, soluong = ? WHERE masanpham = ?";
     public final String GET_SEARCHSP = "SELECT * FROM SanPham where tensanpham like ? ";
-    public final String GET_SEARCHMSP = "SELECT * FROM SanPham where masanpham = ?";    
+    public final String GET_SEARCHMSP = "SELECT * FROM SanPham where masanpham like ?";    
     public final String GET_DELETESP = "DELETE from SanPham WHERE masanpham = ? ";
     public final String GET_ADDSP = "insert into sanpham(masanpham,tensanpham,maloaisanpham,gianhap, giaban, motasanpham,size,ngaysanxuat,soluong ) values(?, ?, ?, ?, ?, ?, ?, ?, ?)";
     public final String GET_CheckSP = "select masanpham from sanpham where masanpham = ?";

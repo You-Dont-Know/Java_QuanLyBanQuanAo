@@ -104,7 +104,7 @@ public class SanPhamDAL extends DataAcessHelper implements Interface_SanPham{
         try {
             List<SanPham> list = new ArrayList<>();
             PreparedStatement ps = con.prepareStatement(GET_SEARCHMSP);
-            ps.setString(1, maSP);
+            ps.setString(1,"%"+ maSP +"%");
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {

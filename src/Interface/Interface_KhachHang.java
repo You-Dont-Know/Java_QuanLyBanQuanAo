@@ -18,7 +18,7 @@ public interface Interface_KhachHang {
     public final String GET_SEARCHKHACHHANG = "SELECT * FROM KhachHang where tenkhach like ?";
     public final String GET_SEARCHSDT = "SELECT * FROM KhachHang where sdt like ?";   
     public final String GET_DELETEKHACHHANG = "DELETE from KhachHang WHERE makh = ? ";
-    public final String GET_ADDKH = "INSERT INTO Khachhang VALUES (?, ?, ?, ?, ?)";
+    public final String GET_ADDKH = "INSERT INTO Khachhang VALUES (?,?, ?, ?, ?, ?)";
     public final String GET_CheckKNKH ="select makh from hoadon where makh = ?";
     
     public List<KhachHang> getALLKhachHang();

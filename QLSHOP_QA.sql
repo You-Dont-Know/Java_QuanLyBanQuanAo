@@ -15,7 +15,7 @@ create table loaikhachhang(
 
 create table khachhang
 (
-  makh int identity not null,
+  makh int not null,
   tenkhach nvarchar(50),
   diachi nvarchar(50),
   gioitinh nvarchar(3),
@@ -149,21 +149,21 @@ VALUES
 
 INSERT INTO khachhang
 VALUES
-(N'TRẦN XUÂN PHÚC',N'TÂN PHÚ',N'NAM','0123456781',2),
-(N'NGUYỄN QUANG HẢI',N'QUẬN 12',N'NAM','0123456782',2),
-(N'TRẦN THỊ THU BÍCH',N'GÒ VẤP',N'NỮ','0123456783',3),
-(N'TRẦN ĐÌNH BẢO',N'TÂN BÌNH',N'NAM','0123456784',3),
-(N'LÊ THỊ BẢO TRÂN',N'QUẬN 1',N'NỮ','0123456784',1),
-(N'LÊ ĐÌNH TIẾN',N'BÌNH TÂN',N'NAM','0123456785',1),
-(N'NGUYỄN TIẾN GIA',N'QUẬN 5',N'NAM','0123456786',2),
-(N'NGUYỄN THỊ LAN',N'QUẬN 4',N'NỮ','0123456787',3),
-(N'VÕ XUÂN PHÚC',N'QUẬN 8',N'NAM','0123456788',2),
-(N'NGÔ HUY TRUNG',N'QUẬN 5',N'NAM','0123456789',1),
-(N'VÕ PHẠM NHƯ NGỌC',N'TÂN PHÚ',N'NỮ','0123456785',3);
+(1,N'TRẦN XUÂN PHÚC',N'TÂN PHÚ',N'NAM','0123456781',2),
+(2,N'NGUYỄN QUANG HẢI',N'QUẬN 12',N'NAM','0123456782',2),
+(3,N'TRẦN THỊ THU BÍCH',N'GÒ VẤP',N'NỮ','0123456783',3),
+(4,N'TRẦN ĐÌNH BẢO',N'TÂN BÌNH',N'NAM','0123456784',3),
+(5,N'LÊ THỊ BẢO TRÂN',N'QUẬN 1',N'NỮ','0123456784',1),
+(6,N'LÊ ĐÌNH TIẾN',N'BÌNH TÂN',N'NAM','0123456785',1),
+(7,N'NGUYỄN TIẾN GIA',N'QUẬN 5',N'NAM','0123456786',2),
+(8,N'NGUYỄN THỊ LAN',N'QUẬN 4',N'NỮ','0123456787',3),
+(9,N'VÕ XUÂN PHÚC',N'QUẬN 8',N'NAM','0123456788',2),
+(10,N'NGÔ HUY TRUNG',N'QUẬN 5',N'NAM','0123456789',1),
+(11,N'VÕ PHẠM NHƯ NGỌC',N'TÂN PHÚ',N'NỮ','0123456785',3);
 
 INSERT INTO nhanvien
 VALUES
-('NV01',N'Trần Thái Chân',N'NAM','07/06/2000',N'Tân Phú',N'0988.438.442','chan','123',N'CHỦ SHOP'),
+('NV01',N'Nguyễn Trung Hiếu',N'NAM','07/06/2000',N'Tân Phú',N'0988.438.442','admin','123',N'CHỦ SHOP'),
 ('NV02',N'Bùi Thị Như Hảo',N'NỮ','26/05/2000',N'Tân Bình',N'028.736.3764','hao','124',N'QUẢN LÝ'),
 ('NV03',N'Lê Minh Nhựt','NAM','01/10/2000',N'Bình Thạnh',N'038.343.8643','nhut','125',N'NHÂN VIÊN'),
 ('NV04',N'Trần Minh Nhân','NAM','29/11/2000',N'Gò Vấp',N'0961042098','nhan','125',N'NHÂN VIÊN');
@@ -239,20 +239,7 @@ INSERT INTO cthoadon
 VALUES
 ('HD05','SP10',N'QUẦN SORT KAKI TRƠN',90000,1,90000);
 
-SELECT 
-    hd.NgayLap, 
-    COUNT(hd.SoHD) AS TongSoHoaDon,
-    SUM(ct.TongTien) AS TongTien
-FROM 
-    hoadon hd
-JOIN 
-    cthoadon ct ON hd.SoHD = ct.SoHD
-where hd.NgayLap >= '2020-05-04'
-GROUP BY 
-    hd.NgayLap
-ORDER BY 
-    hd.NgayLap
-	
+
 
 
 
