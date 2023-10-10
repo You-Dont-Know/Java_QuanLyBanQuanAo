@@ -299,6 +299,7 @@ public class DangNhap extends javax.swing.JFrame {
                     m.jButton2.setEnabled(true);
                     m.jButton4.setEnabled(true);
                     m.jbtn_SuaSP.setEnabled(true);
+                    m.btn_ThongKe.setEnabled(true);
                     m.btn_NhanVien.setEnabled(true);
                     m.setVisible(true);
                 } else {
@@ -341,6 +342,7 @@ public class DangNhap extends javax.swing.JFrame {
                
                     m.jButton2.setEnabled(true);
                     m.jButton4.setEnabled(true);
+                    m.btn_ThongKe.setEnabled(true);
                     m.jbtn_SuaSP.setEnabled(true);
                     m.btn_NhanVien.setEnabled(true);
                     m.setVisible(true);

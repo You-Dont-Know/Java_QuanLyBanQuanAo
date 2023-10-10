@@ -1830,7 +1830,7 @@ public class Main extends javax.swing.JFrame {
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Object.class, java.lang.Object.class, java.lang.Float.class, java.lang.Object.class, java.lang.Object.class
+                java.lang.Object.class, java.lang.Integer.class, java.lang.Float.class, java.lang.Object.class, java.lang.Object.class
             };
             boolean[] canEdit = new boolean [] {
                 false, false, false, false, false
@@ -1926,7 +1926,7 @@ public class Main extends javax.swing.JFrame {
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Object.class, java.lang.Object.class, java.lang.Integer.class, java.lang.Float.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Float.class, java.lang.Integer.class
+                java.lang.Object.class, java.lang.Object.class, java.lang.Integer.class, java.lang.Float.class, java.lang.Float.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Float.class, java.lang.Float.class, java.lang.Integer.class
             };
             boolean[] canEdit = new boolean [] {
                 false, false, false, false, false, false, false, false, false, false, false
@@ -2189,9 +2189,10 @@ public class Main extends javax.swing.JFrame {
         jTabbedPane1.setSelectedIndex(4);
     }//GEN-LAST:event_Btn_HoaDonActionPerformed
 
+    ArrayList<String> ngaylaphoadon = new ArrayList<>();
+
     //load database Hóa Đơn
     private void LoadDatabaseHoaDon() {
-
         jButton13.setMnemonic(KeyEvent.VK_Z);
         jButton14.setMnemonic(KeyEvent.VK_A);
         jButton15.setMnemonic(KeyEvent.VK_S);
@@ -2203,13 +2204,13 @@ public class Main extends javax.swing.JFrame {
         for (HoaDon o : listHD) {
             model.addRow(new Object[]{o.getSoHD(), o.getMaNhanVien(), o.getNhanVienLap(), o.getNgayLap(), o.getMaKH()});
         }
-
         System.out.println();
         jComboBox5.removeAllItems();
         jComboBox6.removeAllItems();
         List<NhanVien> listNV = nvdll.getALLNhanvien();
         for (NhanVien o : listNV) {
             jComboBox5.addItem(o.getMaNhanVien());
+
         }
         for (NhanVien o : listNV) {
             jComboBox6.addItem(o.getTenNhanVien());
@@ -2227,7 +2228,7 @@ public class Main extends javax.swing.JFrame {
         jTabbedPane1.setSelectedIndex(5);
 
     }//GEN-LAST:event_btn_ChiTietHoaDonActionPerformed
-   
+
     private void LoadDatabaseChiTietHoaDon() {
 
         jComboBox7.removeAllItems();
@@ -2242,7 +2243,7 @@ public class Main extends javax.swing.JFrame {
         model.setRowCount(0);
         for (ChiTietHoaDon o : listCTHD) {
             model.addRow(new Object[]{o.getMaSanPham(), o.getSanPham(),
-                o.getDonGia(), o.getSoLuong(),o.getSize(), o.getTongTien()});
+                o.getDonGia(), o.getSoLuong(), o.getSize(), o.getTongTien()});
         }
         List<HoaDon> listHD = hddll.getALLHoaDon();
         for (HoaDon o : listHD) {
@@ -2267,7 +2268,7 @@ public class Main extends javax.swing.JFrame {
         model.setRowCount(0);
         for (ChiTietHoaDon o : listCTHD) {
             model.addRow(new Object[]{o.getMaSanPham(), o.getSanPham(),
-                o.getDonGia(), o.getSoLuong(),o.getSize(), o.getTongTien()});
+                o.getDonGia(), o.getSoLuong(), o.getSize(), o.getTongTien()});
         }
 
         List<HoaDon> listHD = hddll.getALLHoaDon();
@@ -2311,7 +2312,7 @@ public class Main extends javax.swing.JFrame {
             }
             i++;
         }
-        
+
         while (true) {
             String nameFromeCbbox = jComboBox11.getItemAt(j).toString();
             if (nameFromeCbbox.equalsIgnoreCase(s4)) {
@@ -3077,7 +3078,7 @@ public class Main extends javax.swing.JFrame {
             } else if (soluong < 0) {
                 JOptionPane.showMessageDialog(this, "Vui lòng điền 'mã khách hàng'");
             } else {
-                cthddll.UpdateCTHD(sohd, masanpham, tensanpham, dongia, soluong,size, tongtien);
+                cthddll.UpdateCTHD(sohd, masanpham, tensanpham, dongia, soluong, size, tongtien);
                 SetComboBox(sohd);
                 jButton18.setEnabled(true);
                 jButton17.setEnabled(false);
@@ -3117,7 +3118,7 @@ public class Main extends javax.swing.JFrame {
             String masanpham = jTextField22.getText();
             String tensanpham = jComboBox4.getSelectedItem().toString();
             float dongia = Float.parseFloat(jTextField23.getText());
-            int soluong = Integer.parseInt(jTextField24.getText());            
+            int soluong = Integer.parseInt(jTextField24.getText());
             float tongtien = dongia * (float) soluong;
             String size = jComboBox11.getSelectedItem().toString();
             if (sohd.equals("")) {
@@ -3131,7 +3132,7 @@ public class Main extends javax.swing.JFrame {
             } else if (soluong < 0) {
                 JOptionPane.showMessageDialog(this, "Vui lòng điền 'số lượng'");
             } else {
-                cthddll.AddCTHD(sohd, masanpham, tensanpham, dongia, soluong,size, tongtien);
+                cthddll.AddCTHD(sohd, masanpham, tensanpham, dongia, soluong, size, tongtien);
                 SetComboBox(sohd);
                 jButton19.setEnabled(true);
                 jButton17.setEnabled(false);
@@ -3212,16 +3213,18 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField28KeyReleased
 
     private void LoadDatabaseThongKe() {
+          //TongTien("Nguyễn Trung Hiếu", "16-05-2020");
         List<ThongKe> listtk = tkdll.getALLThongke();
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         model.setRowCount(0);
         ((JTextField) jDateChooser4.getDateEditor().getUiComponent()).setText("");
         ((JTextField) jDateChooser5.getDateEditor().getUiComponent()).setText("");
-        
+
         float tong = 0;
         for (ThongKe o : listtk) {
-            tong += TongTien(o.getNhanvienLapHoaDon());
-            model.addRow(new Object[]{o.getNgayLap(), o.getTongSoSanPham(), TongTien(o.getNhanvienLapHoaDon()),
+            String s = o.getNgayLap();
+            tong += TongTien(o.getNhanvienLapHoaDon(), o.getNgayLap());
+            model.addRow(new Object[]{o.getNgayLap(), o.getTongSoSanPham(), TongTien(o.getNhanvienLapHoaDon(), s),
                 o.getMaNhanVien(), o.getNhanvienLapHoaDon()});
         }
         jComboBox10.removeAllItems();
@@ -3252,8 +3255,8 @@ public class Main extends javax.swing.JFrame {
 
                 float tong = 0;
                 for (ThongKe o : listtk) {
-                    tong += TongTien(o.getNhanvienLapHoaDon());
-                    model.addRow(new Object[]{o.getNgayLap(), o.getTongSoSanPham(), TongTien(o.getNhanvienLapHoaDon()),
+                    tong += TongTien(o.getNhanvienLapHoaDon(), o.getNgayLap());
+                    model.addRow(new Object[]{o.getNgayLap(), o.getTongSoSanPham(), TongTien(o.getNhanvienLapHoaDon(), o.getNgayLap()),
                         o.getMaNhanVien(), o.getNhanvienLapHoaDon()});
                 }
                 DecimalFormat decimalFormat = new DecimalFormat("#,###");
@@ -3272,51 +3275,75 @@ public class Main extends javax.swing.JFrame {
         jTabbedPane2.setSelectedIndex(0);
     }//GEN-LAST:event_jButton23ActionPerformed
 
-    private float TongTien(String tenkhachhang){
+    private float TongTien(String tenkhachhang, String s) {
+        List<HoaDon> listHD = hddll.getALLHoaDon();
+        ngaylaphoadon.clear();
+        for (HoaDon o : listHD) {
+            ngaylaphoadon.add(o.getNgayLap());
+        }
+
+        float[] tongtien1 = new float[ngaylaphoadon.size()];
+        float[] tongtien2 = new float[ngaylaphoadon.size()];
         List<ThongKe> listtk = tkdll.getALLThongkeByName(tenkhachhang);
         DefaultTableModel model = new DefaultTableModel();
         model.setRowCount(0);
-        float tong = 0 ,tong2 = 0;
         for (ThongKe o : listtk) {
-            tong += o.getTongTien();
-            tong2 += o.getSoluong() * spdll.getGiaNhap(o.getSanPham());
-            model.addRow(new Object[]{o.getNgayLap(),
-                o.getSoHD(),
-                o.getTongSoHD(), 
-                o.getSoluong() * spdll.getGiaNhap(o.getSanPham()) ,
-                o.getTongTien(),
-                o.getMaNhanVien(),
-                o.getNhanvienLapHoaDon(),
-                o.getSanPham(),
-                spdll.getGiaNhap(o.getSanPham()) ,
-                o.getDongia(),
-                o.getSoluong()});
+            for (int i = 0; i < ngaylaphoadon.size(); i++) {
+                if (ngaylaphoadon.get(i).equals(o.getNgayLap())) {
+                    tongtien1[i] += o.getTongTien();
+                }
+            }
+
+            for (int i = 0; i < ngaylaphoadon.size(); i++) {
+                if (ngaylaphoadon.get(i).equals(o.getNgayLap())) {
+                    tongtien2[i] += o.getSoluong() * spdll.getGiaNhap(o.getSanPham());
+                }
+            }
         }
+        float sum = 0f;
         
-        return tong - tong2;
+        for (int i = 0; i < ngaylaphoadon.size(); i++){ 
+            if(s.equals(ngaylaphoadon.get(i)))
+                return tongtien1[i] - tongtien2[i];
+        }
+        return 1;
     }
-    
+
+
     private void jButton24ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton24ActionPerformed
-        
+
+        List<HoaDon> listHD = hddll.getALLHoaDon();
+        ngaylaphoadon.clear();
+        for (HoaDon o : listHD) {
+            ngaylaphoadon.add(o.getNgayLap());
+        }
+
+        float[] tongtien = new float[ngaylaphoadon.size()];
         List<ThongKe> listtk = tkdll.getALLThongkeByName(jComboBox10.getSelectedItem().toString());
         DefaultTableModel model = (DefaultTableModel) jTable2.getModel();
         model.setRowCount(0);
-        float tong = 0 ,tong2 = 0;
+        float tong = 0, tong2 = 0;
         for (ThongKe o : listtk) {
+            for (int i = 0; i < ngaylaphoadon.size(); i++) {
+                if (ngaylaphoadon.get(i).equals(o.getNgayLap())) {
+                    tongtien[i] += o.getTongTien();
+                }
+            }
             tong += o.getTongTien();
             tong2 += o.getSoluong() * spdll.getGiaNhap(o.getSanPham());
             model.addRow(new Object[]{o.getNgayLap(),
                 o.getSoHD(),
-                o.getTongSoHD(), 
-                o.getSoluong() * spdll.getGiaNhap(o.getSanPham()) ,
+                o.getTongSoHD(),
+                o.getSoluong() * spdll.getGiaNhap(o.getSanPham()),
                 o.getTongTien(),
                 o.getMaNhanVien(),
                 o.getNhanvienLapHoaDon(),
                 o.getSanPham(),
-                spdll.getGiaNhap(o.getSanPham()) ,
+                spdll.getGiaNhap(o.getSanPham()),
                 o.getDongia(),
                 o.getSoluong()});
         }
+
         DecimalFormat decimalFormat = new DecimalFormat("#,###");
         jTextField13.setText(decimalFormat.format(tong - tong2));
     }//GEN-LAST:event_jButton24ActionPerformed
@@ -3327,9 +3354,6 @@ public class Main extends javax.swing.JFrame {
 
     private void btn_printActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_printActionPerformed
         List<ChiTietHoaDon> arr = cthddll.GetALLChiTietHoaDon(jComboBox7.getSelectedItem().toString());
-        
-        
-        
         try {
             XSSFWorkbook wordkbook = new XSSFWorkbook();
             XSSFSheet sheet = wordkbook.createSheet("ChiTietHoaDon");
@@ -3338,9 +3362,9 @@ public class Main extends javax.swing.JFrame {
             row = sheet.createRow(1);
             cell = row.createCell(2, CellType.STRING);
             cell.setCellValue("CHI TIẾT HÓA ĐƠN");
-            
+
             row = sheet.createRow(3);
-                     
+
             cell = row.createCell(0, CellType.STRING);
             cell.setCellValue(jTextField26.getText());
             cell = row.createCell(1, CellType.STRING);
@@ -3349,9 +3373,9 @@ public class Main extends javax.swing.JFrame {
             cell.setCellValue(khdll.getTenKhachHang(jTextField27.getText()));
             cell = row.createCell(3, CellType.STRING);
             cell.setCellValue(((JTextField) jDateChooser3.getDateEditor().getUiComponent()).getText());
-            
+
             row = sheet.createRow(5);
-            
+
             cell = row.createCell(0, CellType.STRING);
             cell.setCellValue("Mã Sản Phẩm");
             cell = row.createCell(1, CellType.STRING);
@@ -3362,56 +3386,54 @@ public class Main extends javax.swing.JFrame {
             cell.setCellValue("Số Lượng");
             cell = row.createCell(4, CellType.STRING);
             cell.setCellValue("Tổng Tiền");
-            
+
             float tong = 0;
-            
-            for(int i = 0; i < arr.size(); i++){
+
+            for (int i = 0; i < arr.size(); i++) {
                 row = sheet.createRow(6 + i);
                 tong += arr.get(i).getTongTien();
-                
+
                 cell = row.createCell(0, CellType.STRING);
                 cell.setCellValue(arr.get(i).getMaSanPham());
-                
+
                 cell = row.createCell(1, CellType.STRING);
                 cell.setCellValue(arr.get(i).getSanPham());
-                
+
                 cell = row.createCell(2, CellType.STRING);
                 cell.setCellValue(arr.get(i).getDonGia());
-                
+
                 cell = row.createCell(3, CellType.STRING);
                 cell.setCellValue(String.valueOf(arr.get(i).getSoLuong()));
-                
+
                 cell = row.createCell(4, CellType.STRING);
                 cell.setCellValue(String.valueOf(arr.get(i).getTongTien()));
-              
+
             }
-            
-            row = sheet.createRow( 7 + arr.size());
+
+            row = sheet.createRow(7 + arr.size());
             cell = row.createCell(3, CellType.STRING);
             cell.setCellValue("Thành Tiền ");
             cell = row.createCell(4, CellType.STRING);
             cell.setCellValue(String.valueOf(tong));
-            
-            
-            
+
             File f = new File(".///File//dsChiTietHoaDon.xlsx");
-            
+
             try {
                 FileOutputStream fis = new FileOutputStream(f);
                 wordkbook.write(fis);
                 fis.close();
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
-            }catch (IOException e) {
+            } catch (IOException e) {
                 e.printStackTrace();
             }
-           
+
             JOptionPane.showMessageDialog(this, "in thành công");
         } catch (Exception e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(this, "loi file");
         }
-        
+
     }//GEN-LAST:event_btn_printActionPerformed
 
     /**

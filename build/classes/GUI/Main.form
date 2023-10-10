@@ -2799,7 +2799,7 @@
                                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                                       <Table columnCount="5" rowCount="0">
                                         <Column editable="false" title="Ng&#xe0;y L&#x1ead;p" type="java.lang.Object"/>
-                                        <Column editable="false" title="T&#x1ed5;ng S&#x1ed1; S&#x1ea3;n Ph&#x1ea9;m" type="java.lang.Object"/>
+                                        <Column editable="false" title="T&#x1ed5;ng S&#x1ed1; S&#x1ea3;n Ph&#x1ea9;m" type="java.lang.Integer"/>
                                         <Column editable="false" title="T&#x1ed5;ng ti&#x1ec1;n" type="java.lang.Float"/>
                                         <Column editable="false" title="M&#xe3; Nh&#xe2;n Vi&#xea;n" type="java.lang.Object"/>
                                         <Column editable="false" title="Nh&#xe2;n Vi&#xea;n L&#x1ead;p H&#xf3;a &#x110;&#x1a1;n" type="java.lang.Object"/>
@@ -2948,17 +2948,27 @@
                                         <Column editable="false" title="S&#x1ed1; H&#xf3;a &#x111;&#x1a1;n" type="java.lang.Object"/>
                                         <Column editable="false" title="T&#x1ed5;ng S&#x1ed1; H&#xf3;a &#x110;&#x1a1;n" type="java.lang.Integer"/>
                                         <Column editable="false" title="T&#x1ed5;ng ti&#x1ec1;n b&#xe1;n ra" type="java.lang.Float"/>
-                                        <Column editable="false" title="T&#x1ed5;ng ti&#x1ec1;n thu v&#x1ec1; " type="java.lang.Object"/>
+                                        <Column editable="false" title="T&#x1ed5;ng ti&#x1ec1;n thu v&#x1ec1; " type="java.lang.Float"/>
                                         <Column editable="false" title="M&#xe3; Nh&#xe2;n Vi&#xea;n" type="java.lang.Object"/>
                                         <Column editable="false" title="Nh&#xe2;n Vi&#xea;n L&#x1ead;p H&#xf3;a &#x110;&#x1a1;n" type="java.lang.Object"/>
                                         <Column editable="false" title="S&#x1ea3;n Ph&#x1ea9;m" type="java.lang.Object"/>
-                                        <Column editable="false" title="Gi&#xe1; Nh&#x1ead;p" type="java.lang.Object"/>
+                                        <Column editable="false" title="Gi&#xe1; Nh&#x1ead;p" type="java.lang.Float"/>
                                         <Column editable="false" title="gi&#xe1; b&#xe1;n" type="java.lang.Float"/>
                                         <Column editable="false" title="S&#x1ed1; L&#x1b0;&#x1ee3;ng" type="java.lang.Integer"/>
                                       </Table>
                                     </Property>
                                     <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                                       <TableColumnModel selectionModel="0">
+                                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                                          <Title/>
+                                          <Editor/>
+                                          <Renderer/>
+                                        </Column>
+                                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                                          <Title/>
+                                          <Editor/>
+                                          <Renderer/>
+                                        </Column>
                                         <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                                           <Title/>
                                           <Editor/>
