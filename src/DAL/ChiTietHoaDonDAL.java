@@ -30,7 +30,7 @@ public class ChiTietHoaDonDAL extends DataAcessHelper implements Interface_ChiTi
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 list.add(new ChiTietHoaDon(rs.getString(1), rs.getString(2), rs.getString(3),
-                        rs.getFloat(4), rs.getInt(5), rs.getFloat(6)));
+                        rs.getFloat(4), rs.getInt(5),rs.getString(6), rs.getFloat(7)));
             }
             return list;
         } catch (Exception e) {
@@ -49,7 +49,7 @@ public class ChiTietHoaDonDAL extends DataAcessHelper implements Interface_ChiTi
 
             while (rs.next()) {
                 list.add(new ChiTietHoaDon(rs.getString(1), rs.getString(2),
-                        rs.getFloat(3), rs.getInt(4), rs.getFloat(5)));
+                        rs.getFloat(3), rs.getInt(4),rs.getString(5), rs.getFloat(6)));
             }
             getClose();
             return list;
@@ -59,16 +59,17 @@ public class ChiTietHoaDonDAL extends DataAcessHelper implements Interface_ChiTi
         return null;
     }
     @Override
-    public void UpdateCTHD(String sohd, String masanpham, String sanpham, float dongia, int soluong, float tongtien) {
+    public void UpdateCTHD(String sohd, String masanpham, String sanpham, float dongia, int soluong,String size, float tongtien) {
         getConnect();
         try {
             PreparedStatement ps = con.prepareStatement(GET_UPDATECTHD);
             ps.setString(1, sanpham);
             ps.setFloat(2, dongia);
             ps.setInt(3, soluong);
-            ps.setFloat(4, tongtien);
-            ps.setString(5, sohd);
-            ps.setString(6, masanpham);
+            ps.setString(4, size);
+            ps.setFloat(5, tongtien);
+            ps.setString(6, sohd);
+            ps.setString(7, masanpham);
             ps.executeUpdate();
 
             getClose();
@@ -94,7 +95,7 @@ public class ChiTietHoaDonDAL extends DataAcessHelper implements Interface_ChiTi
         return 0;
     }
     @Override
-    public void AddCTHD(String sohd, String masanpham, String sanpham, float dongia, int soluong, float tongtien) {
+    public void AddCTHD(String sohd, String masanpham, String sanpham, float dongia, int soluong,String size, float tongtien) {
         getConnect();
         try{
                 PreparedStatement ps = con.prepareStatement(GET_ADDCTHD);
@@ -103,7 +104,8 @@ public class ChiTietHoaDonDAL extends DataAcessHelper implements Interface_ChiTi
                 ps.setString(3, sanpham);
                 ps.setFloat(4, dongia);
                 ps.setInt(5, soluong);
-                ps.setFloat(6, tongtien);
+                ps.setString(6, size);
+                ps.setFloat(7, tongtien);
                 ps.executeUpdate();           
             getClose();
         } catch (Exception e) {

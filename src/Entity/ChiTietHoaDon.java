@@ -14,24 +14,35 @@ public class ChiTietHoaDon {
     private String sanPham;
     private float donGia;
     private int soLuong;
+    private String size;
     private float tongTien;
 
-    public ChiTietHoaDon(String maSanPham, String sanPham, float donGia, int soLuong, float tongTien) {
-        this.maSanPham = maSanPham;
-        this.sanPham = sanPham;
-        this.donGia = donGia;
-        this.soLuong = soLuong;
-        this.tongTien = tongTien;
-    }
-
-    public ChiTietHoaDon(String soHD, String maSanPham, String sanPham, float donGia, int soLuong, float tongTien) {
+    public ChiTietHoaDon(String soHD, String maSanPham, String sanPham, float donGia, int soLuong, String size, float tongTien) {
         this.soHD = soHD;
         this.maSanPham = maSanPham;
         this.sanPham = sanPham;
         this.donGia = donGia;
         this.soLuong = soLuong;
+        this.size = size;
         this.tongTien = tongTien;
-    }    
+    }
+
+    public ChiTietHoaDon(String maSanPham, String sanPham, float donGia, int soLuong, String size, float tongTien) {
+        this.maSanPham = maSanPham;
+        this.sanPham = sanPham;
+        this.donGia = donGia;
+        this.soLuong = soLuong;
+        this.size = size;
+        this.tongTien = tongTien;
+    }
+
+    public String getSize() {
+        return size;
+    }
+
+    public void setSize(String size) {
+        this.size = size;
+    }  
     
     public String getSoHD() {
         return soHD;

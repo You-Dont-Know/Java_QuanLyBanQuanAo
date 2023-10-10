@@ -242,6 +242,8 @@ public class Main extends javax.swing.JFrame {
         jButton20 = new javax.swing.JButton();
         jComboBox4 = new javax.swing.JComboBox<>();
         jComboBox7 = new javax.swing.JComboBox<>();
+        jLabel59 = new javax.swing.JLabel();
+        jComboBox11 = new javax.swing.JComboBox<>();
         jPanel24 = new javax.swing.JPanel();
         jLabel47 = new javax.swing.JLabel();
         jLabel48 = new javax.swing.JLabel();
@@ -1582,6 +1584,12 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
+        jLabel59.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        jLabel59.setText("Size");
+
+        jComboBox11.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        jComboBox11.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "M", "L", "XL" }));
+
         javax.swing.GroupLayout jPanel23Layout = new javax.swing.GroupLayout(jPanel23);
         jPanel23.setLayout(jPanel23Layout);
         jPanel23Layout.setHorizontalGroup(
@@ -1615,7 +1623,11 @@ public class Main extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField24, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jTextField24, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel23Layout.createSequentialGroup()
+                        .addComponent(jLabel59, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jComboBox11, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(69, 69, 69))
         );
         jPanel23Layout.setVerticalGroup(
@@ -1640,14 +1652,16 @@ public class Main extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextField23, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel43))
-                .addGap(0, 0, 0)
+                    .addComponent(jLabel43)
+                    .addComponent(jLabel59)
+                    .addComponent(jComboBox11))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jButton20, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jButton17))
+                .addGap(0, 12, Short.MAX_VALUE))
         );
 
         jPanel24.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Danh sách các mặt hàng", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 18))); // NOI18N
@@ -1681,11 +1695,11 @@ public class Main extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Mã Sản Phẩm", "Tên Sản Phẩm", "Đơn Giá", "Số Lượng", "Tổng Tiền"
+                "Mã Sản Phẩm", "Tên Sản Phẩm", "Đơn Giá", "Số Lượng", "Size", "Tổng Tiền"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -1783,7 +1797,7 @@ public class Main extends javax.swing.JFrame {
                 .addGap(0, 0, 0)
                 .addComponent(jPanel23, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel24, javax.swing.GroupLayout.PREFERRED_SIZE, 431, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel24, javax.swing.GroupLayout.PREFERRED_SIZE, 419, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -2227,7 +2241,7 @@ public class Main extends javax.swing.JFrame {
         model.setRowCount(0);
         for (ChiTietHoaDon o : listCTHD) {
             model.addRow(new Object[]{o.getMaSanPham(), o.getSanPham(),
-                o.getDonGia(), o.getSoLuong(), o.getTongTien()});
+                o.getDonGia(), o.getSoLuong(),o.getSize(), o.getTongTien()});
         }
         List<HoaDon> listHD = hddll.getALLHoaDon();
         for (HoaDon o : listHD) {
@@ -2252,7 +2266,7 @@ public class Main extends javax.swing.JFrame {
         model.setRowCount(0);
         for (ChiTietHoaDon o : listCTHD) {
             model.addRow(new Object[]{o.getMaSanPham(), o.getSanPham(),
-                o.getDonGia(), o.getSoLuong(), o.getTongTien()});
+                o.getDonGia(), o.getSoLuong(),o.getSize(), o.getTongTien()});
         }
 
         List<HoaDon> listHD = hddll.getALLHoaDon();
@@ -2284,10 +2298,10 @@ public class Main extends javax.swing.JFrame {
         String s1 = jTableCTHoaDon.getValueAt(row, 1).toString();
         String s2 = jTableCTHoaDon.getValueAt(row, 2).toString();
         String s3 = jTableCTHoaDon.getValueAt(row, 3).toString();
-        //String s4 = jTableCTHoaDon.getValueAt(row, 4).toString();
+        String s4 = jTableCTHoaDon.getValueAt(row, 4).toString();
 
         jTextField22.setText(s0);
-        int i = 0;
+        int i = 0, j = 0;
         while (true) {
             String nameFromeCbbox = jComboBox4.getItemAt(i).toString();
             if (nameFromeCbbox.equalsIgnoreCase(s1)) {
@@ -2295,6 +2309,15 @@ public class Main extends javax.swing.JFrame {
                 break;
             }
             i++;
+        }
+        
+        while (true) {
+            String nameFromeCbbox = jComboBox11.getItemAt(j).toString();
+            if (nameFromeCbbox.equalsIgnoreCase(s4)) {
+                jComboBox11.setSelectedIndex(j);
+                break;
+            }
+            j++;
         }
 
         jTextField24.setText(s3);
@@ -3041,7 +3064,7 @@ public class Main extends javax.swing.JFrame {
             float dongia = Float.parseFloat(jTextField23.getText());
             int soluong = Integer.parseInt(jTextField24.getText());
             float tongtien = dongia * (float) soluong;
-
+            String size = jComboBox11.getSelectedItem().toString();
             if (sohd.equals("")) {
                 JOptionPane.showMessageDialog(this, "Vui lòng điền 'số hóa đơn'");
             } else if (masanpham.equals("")) {
@@ -3053,7 +3076,7 @@ public class Main extends javax.swing.JFrame {
             } else if (soluong < 0) {
                 JOptionPane.showMessageDialog(this, "Vui lòng điền 'mã khách hàng'");
             } else {
-                cthddll.UpdateCTHD(sohd, masanpham, tensanpham, dongia, soluong, tongtien);
+                cthddll.UpdateCTHD(sohd, masanpham, tensanpham, dongia, soluong,size, tongtien);
                 SetComboBox(sohd);
                 jButton18.setEnabled(true);
                 jButton17.setEnabled(false);
@@ -3095,7 +3118,7 @@ public class Main extends javax.swing.JFrame {
             float dongia = Float.parseFloat(jTextField23.getText());
             int soluong = Integer.parseInt(jTextField24.getText());            
             float tongtien = dongia * (float) soluong;
-
+            String size = jComboBox11.getSelectedItem().toString();
             if (sohd.equals("")) {
                 JOptionPane.showMessageDialog(this, "Vui lòng điền 'số hóa đơn'");
             } else if (masanpham.equals("")) {
@@ -3107,7 +3130,7 @@ public class Main extends javax.swing.JFrame {
             } else if (soluong < 0) {
                 JOptionPane.showMessageDialog(this, "Vui lòng điền 'số lượng'");
             } else {
-                cthddll.AddCTHD(sohd, masanpham, tensanpham, dongia, soluong, tongtien);
+                cthddll.AddCTHD(sohd, masanpham, tensanpham, dongia, soluong,size, tongtien);
                 SetComboBox(sohd);
                 jButton19.setEnabled(false);
                 jButton17.setEnabled(true);
@@ -3462,6 +3485,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton jButton9;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<Object> jComboBox10;
+    private javax.swing.JComboBox<String> jComboBox11;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JComboBox<String> jComboBox3;
     private javax.swing.JComboBox<Object> jComboBox4;
@@ -3530,6 +3554,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel56;
     private javax.swing.JLabel jLabel57;
     private javax.swing.JLabel jLabel58;
+    private javax.swing.JLabel jLabel59;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;

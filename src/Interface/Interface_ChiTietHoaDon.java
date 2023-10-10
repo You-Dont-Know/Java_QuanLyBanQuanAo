@@ -13,15 +13,15 @@ import java.util.List;
  */
 public interface Interface_ChiTietHoaDon {
     public final String GET_ALLCHITIETHOADON = "select * from cthoadon";
-    public final String GET_SEARCHCTHD = "select masanpham,sanpham,dongia,soluong,tongtien from CTHoaDon where sohd=?";
-    public final String GET_UPDATECTHD = "UPDATE CTHoaDon SET sanpham = ?, dongia = ?, soluong = ?, tongtien = ?  WHERE sohd = ? and masanpham= ?";
+    public final String GET_SEARCHCTHD = "select masanpham,sanpham,dongia,soluong,size,tongtien from CTHoaDon where sohd=?";
+    public final String GET_UPDATECTHD = "UPDATE CTHoaDon SET sanpham = ?, dongia = ?, soluong = ?,size = ?, tongtien = ?  WHERE sohd = ? and masanpham= ?";
     public final String GET_DELETECTHOADON = "DELETE FROM CTHoaDon WHERE sohd = ? and masanpham = ?";
-    public final String GET_ADDCTHD = "INSERT INTO CTHoaDon VALUES (?, ?, ?, ?, ?, ?)";
+    public final String GET_ADDCTHD = "INSERT INTO CTHoaDon VALUES (?, ?, ?, ?, ?,?, ?)";
     
     
     public List<ChiTietHoaDon> getALLChiTietHoaDon();
     public List<ChiTietHoaDon> GetALLChiTietHoaDon(String soHD);
-    public void UpdateCTHD(String sohd, String masanpham, String sanpham, float dongia, int soluong, float tongtien);
+    public void UpdateCTHD(String sohd, String masanpham, String sanpham, float dongia, int soluong,String size, float tongtien);
     public int deleteCTHD(String maCTHD, String maSP);
-    public void AddCTHD(String sohd, String masanpham, String sanpham, float dongia, int soluong, float tongtien);
+    public void AddCTHD(String sohd, String masanpham, String sanpham, float dongia, int soluong,String size, float tongtien);
 }
