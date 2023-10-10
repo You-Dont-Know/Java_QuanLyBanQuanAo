@@ -1153,9 +1153,8 @@ public class Main extends javax.swing.JFrame {
                     .addComponent(jLabel36, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(txt_NV_MNV, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE)
-                        .addComponent(txt_NV_TDN, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE))
+                    .addComponent(txt_NV_MNV, javax.swing.GroupLayout.DEFAULT_SIZE, 187, Short.MAX_VALUE)
+                    .addComponent(txt_NV_TDN, javax.swing.GroupLayout.DEFAULT_SIZE, 187, Short.MAX_VALUE)
                     .addComponent(jDateChooser6, javax.swing.GroupLayout.DEFAULT_SIZE, 187, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1908,14 +1907,14 @@ public class Main extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Ngày Lập", "Số Hóa đơn", "Tổng Số Hóa Đơn", "Tổng tiền", "Mã Nhân Viên", "Nhân Viên Lập Hóa Đơn", "Sản Phẩm", "Đơn Giá", "Số Lượng"
+                "Ngày Lập", "Số Hóa đơn", "Tổng Số Hóa Đơn", "Tổng tiền bán ra", "Tổng tiền thu về ", "Mã Nhân Viên", "Nhân Viên Lập Hóa Đơn", "Sản Phẩm", "Giá Nhập", "giá bán", "Số Lượng"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Object.class, java.lang.Object.class, java.lang.Integer.class, java.lang.Float.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Float.class, java.lang.Integer.class
+                java.lang.Object.class, java.lang.Object.class, java.lang.Integer.class, java.lang.Float.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Float.class, java.lang.Integer.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -1929,7 +1928,7 @@ public class Main extends javax.swing.JFrame {
         jScrollPane8.setViewportView(jTable2);
 
         jLabel58.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        jLabel58.setText("Tổng Tiền");
+        jLabel58.setText("Tổng Tiền Lời");
 
         jTextField13.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
 
@@ -1949,10 +1948,10 @@ public class Main extends javax.swing.JFrame {
                         .addComponent(jButton24))
                     .addGroup(jPanel27Layout.createSequentialGroup()
                         .addGap(97, 97, 97)
-                        .addComponent(jLabel58, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(31, 31, 31)
+                        .addComponent(jLabel58, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(59, 59, 59)
                         .addComponent(jTextField13, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(277, Short.MAX_VALUE))
         );
         jPanel27Layout.setVerticalGroup(
             jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1964,10 +1963,10 @@ public class Main extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 415, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(39, 39, 39)
-                .addGroup(jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel58, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextField13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
 
         jTabbedPane2.addTab("Nhân Viên", jPanel27);
@@ -3094,7 +3093,7 @@ public class Main extends javax.swing.JFrame {
             String masanpham = jTextField22.getText();
             String tensanpham = jComboBox4.getSelectedItem().toString();
             float dongia = Float.parseFloat(jTextField23.getText());
-            int soluong = Integer.parseInt(jTextField24.getText());
+            int soluong = Integer.parseInt(jTextField24.getText());            
             float tongtien = dongia * (float) soluong;
 
             if (sohd.equals("")) {
@@ -3192,13 +3191,16 @@ public class Main extends javax.swing.JFrame {
         List<ThongKe> listtk = tkdll.getALLThongke();
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         model.setRowCount(0);
-
+        ((JTextField) jDateChooser4.getDateEditor().getUiComponent()).setText("");
+        ((JTextField) jDateChooser5.getDateEditor().getUiComponent()).setText("");
+        
         float tong = 0;
         for (ThongKe o : listtk) {
-            tong += o.getTongTien();
-            model.addRow(new Object[]{o.getNgayLap(), o.getTongSoSanPham(), o.getTongTien(),
+            tong += TongTien(o.getNhanvienLapHoaDon());
+            model.addRow(new Object[]{o.getNgayLap(), o.getTongSoSanPham(), TongTien(o.getNhanvienLapHoaDon()),
                 o.getMaNhanVien(), o.getNhanvienLapHoaDon()});
         }
+        jComboBox10.removeAllItems();
 
         List<NhanVien> listNV = nvdll.getALLNhanvien();
         for (NhanVien o : listNV) {
@@ -3226,8 +3228,8 @@ public class Main extends javax.swing.JFrame {
 
                 float tong = 0;
                 for (ThongKe o : listtk) {
-                    tong += o.getTongTien();
-                    model.addRow(new Object[]{o.getNgayLap(), o.getTongSoSanPham(), o.getTongTien(),
+                    tong += TongTien(o.getNhanvienLapHoaDon());
+                    model.addRow(new Object[]{o.getNgayLap(), o.getTongSoSanPham(), TongTien(o.getNhanvienLapHoaDon()),
                         o.getMaNhanVien(), o.getNhanvienLapHoaDon()});
                 }
                 DecimalFormat decimalFormat = new DecimalFormat("#,###");
@@ -3246,19 +3248,53 @@ public class Main extends javax.swing.JFrame {
         jTabbedPane2.setSelectedIndex(0);
     }//GEN-LAST:event_jButton23ActionPerformed
 
+    private float TongTien(String tenkhachhang){
+        List<ThongKe> listtk = tkdll.getALLThongkeByName(tenkhachhang);
+        DefaultTableModel model = new DefaultTableModel();
+        model.setRowCount(0);
+        float tong = 0 ,tong2 = 0;
+        for (ThongKe o : listtk) {
+            tong += o.getTongTien();
+            tong2 += o.getSoluong() * spdll.getGiaNhap(o.getSanPham());
+            model.addRow(new Object[]{o.getNgayLap(),
+                o.getSoHD(),
+                o.getTongSoHD(), 
+                o.getSoluong() * spdll.getGiaNhap(o.getSanPham()) ,
+                o.getTongTien(),
+                o.getMaNhanVien(),
+                o.getNhanvienLapHoaDon(),
+                o.getSanPham(),
+                spdll.getGiaNhap(o.getSanPham()) ,
+                o.getDongia(),
+                o.getSoluong()});
+        }
+        
+        return tong - tong2;
+    }
+    
     private void jButton24ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton24ActionPerformed
-
+        
         List<ThongKe> listtk = tkdll.getALLThongkeByName(jComboBox10.getSelectedItem().toString());
         DefaultTableModel model = (DefaultTableModel) jTable2.getModel();
         model.setRowCount(0);
-        float tong = 0;
+        float tong = 0 ,tong2 = 0;
         for (ThongKe o : listtk) {
             tong += o.getTongTien();
-            model.addRow(new Object[]{o.getNgayLap(), o.getSoHD(), o.getTongSoHD(), o.getTongTien(), o.getMaNhanVien(),
-                o.getNhanvienLapHoaDon(), o.getSanPham(), o.getDongia(), o.getSoluong()});
+            tong2 += o.getSoluong() * spdll.getGiaNhap(o.getSanPham());
+            model.addRow(new Object[]{o.getNgayLap(),
+                o.getSoHD(),
+                o.getTongSoHD(), 
+                o.getSoluong() * spdll.getGiaNhap(o.getSanPham()) ,
+                o.getTongTien(),
+                o.getMaNhanVien(),
+                o.getNhanvienLapHoaDon(),
+                o.getSanPham(),
+                spdll.getGiaNhap(o.getSanPham()) ,
+                o.getDongia(),
+                o.getSoluong()});
         }
         DecimalFormat decimalFormat = new DecimalFormat("#,###");
-        jTextField13.setText(decimalFormat.format(tong));
+        jTextField13.setText(decimalFormat.format(tong - tong2));
     }//GEN-LAST:event_jButton24ActionPerformed
 
     private void jButton25ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton25ActionPerformed

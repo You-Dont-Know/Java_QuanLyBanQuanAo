@@ -219,4 +219,24 @@ public class SanPhamDAL extends DataAcessHelper implements Interface_SanPham{
         }
         return check;
     }
+    @Override
+    public float getGiaNhap(String s){
+        float check = 0;
+        try {
+            getConnect();
+
+            PreparedStatement ps = con.prepareStatement(GET_GIANHAP);
+            ps.setString(1, s);
+            ResultSet rs = ps.executeQuery();
+            
+            if (rs != null && rs.next()) { 
+                
+                check = rs.getFloat(1);
+            }
+            getClose();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return check;
+    }
 }

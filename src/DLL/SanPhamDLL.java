@@ -43,4 +43,8 @@ public class SanPhamDLL {
     public List<SanPham> GetALLMaSanPham(String maSP){
         return spdal.GetALLMaSanPham(maSP);
     }
+    
+    public float getGiaNhap(String s){
+        return spdal.getGiaNhap(s);
+    }
 }
