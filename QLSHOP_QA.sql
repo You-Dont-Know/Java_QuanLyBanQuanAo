@@ -97,6 +97,7 @@ create table cthoadon
   sanpham nvarchar(50),
   dongia float,
   soluong int,
+  size nvarchar(10),
   tongtien float,
   constraint pk_cthoadon primary key (sohd,masanpham),
   constraint fk_cthoadon_hoadon foreign key (sohd) references hoadon(sohd),
@@ -216,7 +217,7 @@ values
 
 INSERT INTO cthoadon
 VALUES
-('HD01','SP03',N'ÁO THUN TAY NGẮN CÓ CỔ',45000,5,90000);
+('HD01','SP03',N'ÁO THUN TAY NGẮN CÓ CỔ',45000,5,'XL',90000);
 INSERT INTO cthoadon
 VALUES
 ('HD02','SP02',N'ÁO THUN TAY NGẮN HỌA TIẾT',65000,3,195000);
