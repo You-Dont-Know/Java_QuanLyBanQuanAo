@@ -58,7 +58,7 @@ public class DangNhap extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(74, 31, 61));
 
-        jLabel4.setIcon(new javax.swing.ImageIcon("D:\\Java\\Source\\test\\Java_QuanLyBanQuanAo\\src\\Image\\LynhStore1.png")); // NOI18N
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/Thiết kế chưa có tên.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
