@@ -6,7 +6,7 @@ package Interface;
 
 /**
  *
- * @author hieun
+ * @author kien
  */
 public interface Interface_TaiKhoan {
     public final String GET_LOGIN = "select * from nhanvien where tendangnhap=? and matkhau=?";

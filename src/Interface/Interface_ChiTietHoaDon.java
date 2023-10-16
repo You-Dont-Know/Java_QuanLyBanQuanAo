@@ -9,14 +9,14 @@ import java.util.List;
 
 /**
  *
- * @author hieun
+ * @author kien
  */
 public interface Interface_ChiTietHoaDon {
     public final String GET_ALLCHITIETHOADON = "select * from cthoadon";
     public final String GET_SEARCHCTHD = "select masanpham,sanpham,dongia,soluong,size,tongtien from CTHoaDon where sohd=?";
     public final String GET_UPDATECTHD = "UPDATE CTHoaDon SET sanpham = ?, dongia = ?, soluong = ?,size = ?, tongtien = ?  WHERE sohd = ? and masanpham= ?";
     public final String GET_DELETECTHOADON = "DELETE FROM CTHoaDon WHERE sohd = ? and masanpham = ?";
-    public final String GET_ADDCTHD = "INSERT INTO CTHoaDon VALUES (?, ?, ?, ?, ?,?, ?)";
+    public final String GET_ADDCTHD = "INSERT INTO CTHoaDon VALUES (?, ?, ?, ?, ?,?, ?)";   
     
     
     public List<ChiTietHoaDon> getALLChiTietHoaDon();

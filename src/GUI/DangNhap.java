@@ -13,7 +13,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author hieun
+ * @author kien
  */
 public class DangNhap extends javax.swing.JFrame {
 

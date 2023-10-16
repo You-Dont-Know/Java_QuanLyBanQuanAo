@@ -9,7 +9,7 @@ import java.util.List;
 
 /**
  *
- * @author hieun
+ * @author kien
  */
 public interface Interface_HoaDon {
     public final String GET_ALLHOADON = "select * from hoadon";

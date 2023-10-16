@@ -9,7 +9,7 @@ import java.util.List;
 
 /**
  *
- * @author hieun
+ * @author kien
  */
 public interface Interface_LoaiKhachHang {
     public final String GET_LOAIKHACHHANG = "select * from loaikhachhang";

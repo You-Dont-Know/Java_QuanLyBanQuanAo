@@ -21,4 +21,19 @@ public class LoaiSanPhamDLL {
      public String getTenLoaiKhachHang(String maLoaiSanPham){
          return lspdal.getTenLoaiKhachHang(maLoaiSanPham);
      }
+     
+     public void AddLSP(String tenLoaiSanPHam){
+         lspdal.AddLSP(tenLoaiSanPHam);
+     }
+     public void UpdateLSP(int maLoaiSanPham, String tenLoaiSanPHam){
+         lspdal.UpdateLSP(maLoaiSanPham, tenLoaiSanPHam);
+     }
+     
+     public int deleteLSP(int maLoaiSanPham){
+         return lspdal.deleteLSP(maLoaiSanPham);
+     }
+     
+     public int getMaLoaiSanPham(String s){
+         return lspdal.getMaLoaiSanPham(s);
+     }
 }

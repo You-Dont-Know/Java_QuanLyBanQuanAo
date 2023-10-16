@@ -46,6 +46,34 @@ public class SanPhamDAL extends DataAcessHelper implements Interface_SanPham{
         }
         return null;
     }
+    
+    @Override
+    public List<SanPham> getALLSanPham(String s) {
+        getConnect();
+        try {
+            List<SanPham> list = new ArrayList<>();
+            PreparedStatement ps = con.prepareStatement(GET_SEARCHMTSP);
+            ps.setString(1,"%"+ s +"%");
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                list.add(new SanPham(rs.getString(1),
+                        rs.getString(2),
+                        rs.getInt(3),
+                        rs.getFloat(4),
+                        rs.getFloat(5),
+                        rs.getString(6),
+                        rs.getString(7),
+                        rs.getDate(8),
+                        rs.getInt(9)));
+            }
+            getClose();
+            return list;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 
     @Override
     public void UpdateSP(String maSP, String tenSP, int maLoaiSP, float giaNhap, float giaBan, String motaSP, String size, String date, int soLuong) {
@@ -68,6 +96,36 @@ public class SanPhamDAL extends DataAcessHelper implements Interface_SanPham{
             e.printStackTrace();
         }
 
+    }
+    
+    @Override
+    public List<SanPham> GetALLLoaiSanPham(String Tenlsp) {
+        getConnect();
+        try {
+            LoaiSanPhamDAL lspdal = new LoaiSanPhamDAL();
+            int s = lspdal.getMaLoaiSanPham(Tenlsp);
+            List<SanPham> list = new ArrayList<>();
+            PreparedStatement ps = con.prepareStatement(GET_SEARCHLSP);
+            ps.setInt(1,s);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                list.add(new SanPham(rs.getString(1),
+                        rs.getString(2),
+                        rs.getInt(3),
+                        rs.getFloat(4),
+                        rs.getFloat(5),
+                        rs.getString(6),
+                        rs.getString(7),
+                        rs.getDate(8),
+                        rs.getInt(9)));
+            }
+            getClose();
+            return list;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     @Override

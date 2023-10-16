@@ -49,4 +49,74 @@ public class LoaiSanPhamDAL extends DataAcessHelper implements Interface_LoaiSan
         }
         return check;
     }
+    
+    @Override
+    public void AddLSP(String tenLoaiSanPHam) {                  
+        
+        List<LoaiSanPham> addLSP = getALLLoaiSanPham();
+        try{
+                int makhachhang = addLSP.size() + 1;
+                PreparedStatement ps = con.prepareStatement(GET_ADDLOAISANPHAM);
+                ps.setInt(1, makhachhang);
+                ps.setString(2, tenLoaiSanPHam);
+                ps.executeUpdate();               
+            getClose();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
+    @Override
+    public void UpdateLSP(int maLoaiSanPham, String tenLoaiSanPHam) {
+        getConnect();
+        try {
+            PreparedStatement ps = con.prepareStatement(GET_UPDATELOAISANPHAM);
+            ps.setString(1, tenLoaiSanPHam);
+            ps.setInt(2, maLoaiSanPham);
+            ps.executeUpdate();
+
+            getClose();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
+    @Override
+    public int deleteLSP(int maLoaiSanPham) {
+        getConnect();
+        int row;
+        try {
+            PreparedStatement ps = con.prepareStatement(GET_DELETELOAISANPHAM);
+            ps.setInt(1, maLoaiSanPham);
+            row = ps.executeUpdate();
+            getClose();
+            return row;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+    
+    @Override
+    public int getMaLoaiSanPham(String s) {
+        int check = 0;
+        try {
+            getConnect();
+
+            PreparedStatement ps = con.prepareStatement(GET_MALSP);
+            ps.setString(1, s);
+            ResultSet rs = ps.executeQuery();
+            
+            if (rs != null && rs.next()) { 
+                
+                check = rs.getInt(1);
+                
+            }
+            getClose();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return check;
+    }
 }
