@@ -33,5 +33,7 @@ public class ChiTietHoaDonDLL {
         cchddal.AddCTHD(sohd, masanpham, sanpham, dongia, soluong, size, tongtien);
     }
     
-    
+    public int getSumSoLuong(String maSP){
+        return cchddal.getSumSoLuong(maSP);
+    }
 }

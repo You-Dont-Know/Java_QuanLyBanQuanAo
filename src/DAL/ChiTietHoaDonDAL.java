@@ -112,4 +112,27 @@ public class ChiTietHoaDonDAL extends DataAcessHelper implements Interface_ChiTi
             e.printStackTrace();
         }
     }
+    
+    public final String GET_SUMCTSPBYMSP = "SELECT SUM(soluong) as tong_soluong FROM cthoadon WHERE masanpham = ?";
+    
+    public int getSumSoLuong(String maSP){
+        int check = 0;
+        try {
+            getConnect();
+
+            PreparedStatement ps = con.prepareStatement(GET_SUMCTSPBYMSP);
+            ps.setString(1, maSP);
+            ResultSet rs = ps.executeQuery();
+            
+            if (rs != null && rs.next()) { 
+                
+                check = rs.getInt(1);
+                
+            }
+            getClose();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return check;
+    }
 }
