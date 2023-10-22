@@ -3,11 +3,33 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/D:/Java/Source/test/Java_QuanLyBanQuanAo/src/GUI/DangNhap.java</file>
+            <file>file:/D:/Java/Source/test/Java_QuanLyBanQuanAo/src/Entity/LoaiKhachHang.java</file>
+            <file>file:/D:/Java/Source/test/Java_QuanLyBanQuanAo/src/Interface/Interface_ChiTietHoaDon.java</file>
+            <file>file:/D:/Java/Source/test/Java_QuanLyBanQuanAo/src/DLL/ChiTietHoaDonDLL.java</file>
             <file>file:/D:/Java/Source/test/Java_QuanLyBanQuanAo/src/DAL/LoaiSanPhamDAL.java</file>
-            <file>file:/D:/Java/Source/test/Java_QuanLyBanQuanAo/src/DAL/ThongKeDAL.java</file>
+            <file>file:/D:/Java/Source/test/Java_QuanLyBanQuanAo/src/DAL/DataAcessHelper.java</file>
+            <file>file:/D:/Java/Source/test/Java_QuanLyBanQuanAo/src/Interface/Interface_SanPham.java</file>
+            <file>file:/D:/Java/Source/test/Java_QuanLyBanQuanAo/src/DLL/HoaDonDLL.java</file>
+            <file>file:/D:/Java/Source/test/Java_QuanLyBanQuanAo/src/Entity/ChiTietHoaDon.java</file>
             <file>file:/D:/Java/Source/test/Java_QuanLyBanQuanAo/src/Interface/Interface_LoaiSanPham.java</file>
+            <file>file:/D:/Java/Source/test/Java_QuanLyBanQuanAo/src/DAL/SanPhamDAL.java</file>
+            <file>file:/D:/Java/Source/test/Java_QuanLyBanQuanAo/src/Entity/LoaiSanPham.java</file>
             <file>file:/D:/Java/Source/test/Java_QuanLyBanQuanAo/src/DAL/TaiKhoanDAL.java</file>
+            <file>file:/D:/Java/Source/test/Java_QuanLyBanQuanAo/src/DAL/HoaDonDAL.java</file>
+            <file>file:/D:/Java/Source/test/Java_QuanLyBanQuanAo/src/Interface/Interface_TaiKhoan.java</file>
+            <file>file:/D:/Java/Source/test/Java_QuanLyBanQuanAo/src/Entity/SanPham.java</file>
+            <file>file:/D:/Java/Source/test/Java_QuanLyBanQuanAo/src/Entity/HoaDon.java</file>
+            <file>file:/D:/Java/Source/test/Java_QuanLyBanQuanAo/src/Entity/KhachHang.java</file>
+            <file>file:/D:/Java/Source/test/Java_QuanLyBanQuanAo/src/DAL/ThongKeDAL.java</file>
+            <file>file:/D:/Java/Source/test/Java_QuanLyBanQuanAo/src/Entity/NhanVien.java</file>
+            <file>file:/D:/Java/Source/test/Java_QuanLyBanQuanAo/src/DAL/ChiTietHoaDonDAL.java</file>
             <file>file:/D:/Java/Source/test/Java_QuanLyBanQuanAo/src/GUI/Main.java</file>
+            <file>file:/D:/Java/Source/test/Java_QuanLyBanQuanAo/src/Interface/Interface_NhanVien.java</file>
+            <file>file:/D:/Java/Source/test/Java_QuanLyBanQuanAo/src/Interface/Interface_ThongKe.java</file>
+            <file>file:/D:/Java/Source/test/Java_QuanLyBanQuanAo/src/Interface/Interface_HoaDon.java</file>
+            <file>file:/D:/Java/Source/test/Java_QuanLyBanQuanAo/src/Entity/ThongKe.java</file>
+            <file>file:/D:/Java/Source/test/Java_QuanLyBanQuanAo/src/DAL/NhanVienDAL.java</file>
         </group>
     </open-files>
 </project-private>

@@ -101,13 +101,29 @@ public class KhachHangDAL extends DataAcessHelper implements Interface_KhachHang
         return null;
     }
     
+    public int generateNewCustomerId() {
+        List<KhachHang> addkh = getALLKhachHang();
+        List<Integer> saveMKH = new ArrayList<Integer>();
+        for(KhachHang kh : addkh){
+            saveMKH.add(kh.getMaKH());
+        }
+        
+        for (int i = 1; i < saveMKH.size() - 1; i++) {
+            if (saveMKH.get(i + 1) - saveMKH.get(i) != 1 ) {
+                return saveMKH.get(i) + 1;               
+            }
+        }  
+        
+        return saveMKH.size();
+    }
     
     @Override
     public void AddKH(String tenKH, String diaChi, String gioiTinh, String sdt, int maloaikhachhang) {                  
         
         List<KhachHang> addkh = getALLKhachHang();
+        
         try{
-                int makhachhang = addkh.size() + 1;
+                int makhachhang = generateNewCustomerId();
                 PreparedStatement ps = con.prepareStatement(GET_ADDKH);
                 ps.setInt(1, makhachhang);
                 ps.setString(2, tenKH);

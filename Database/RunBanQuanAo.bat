@@ -1,0 +1,1 @@
+sqlcmd -E -S .\SQLEXpress -i BanQuanAo.sql

@@ -50,12 +50,28 @@ public class LoaiSanPhamDAL extends DataAcessHelper implements Interface_LoaiSan
         return check;
     }
     
+    public int generateNewCustomerId() {
+        List<LoaiSanPham> addkh = getALLLoaiSanPham();
+        List<Integer> saveMLSP = new ArrayList<Integer>();
+        for(LoaiSanPham kh : addkh){
+            saveMLSP.add(kh.getMaLoaiSanPham());
+        }
+        
+        for (int i = 1; i < saveMLSP.size() - 1; i++) {
+            if (saveMLSP.get(i + 1) - saveMLSP.get(i) != 1 ) {
+                return saveMLSP.get(i) + 1;               
+            }
+        }  
+        return saveMLSP.size() + 1;
+    }
+    
     @Override
     public void AddLSP(String tenLoaiSanPHam) {                  
         
         List<LoaiSanPham> addLSP = getALLLoaiSanPham();
+        
         try{
-                int makhachhang = addLSP.size() + 1;
+                int makhachhang = generateNewCustomerId();
                 PreparedStatement ps = con.prepareStatement(GET_ADDLOAISANPHAM);
                 ps.setInt(1, makhachhang);
                 ps.setString(2, tenLoaiSanPHam);
