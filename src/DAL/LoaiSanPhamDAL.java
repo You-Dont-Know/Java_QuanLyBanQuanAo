@@ -57,7 +57,7 @@ public class LoaiSanPhamDAL extends DataAcessHelper implements Interface_LoaiSan
             saveMLSP.add(kh.getMaLoaiSanPham());
         }
         
-        for (int i = 1; i < saveMLSP.size() - 1; i++) {
+        for (int i = 0; i < saveMLSP.size() - 1; i++) {
             if (saveMLSP.get(i + 1) - saveMLSP.get(i) != 1 ) {
                 return saveMLSP.get(i) + 1;               
             }

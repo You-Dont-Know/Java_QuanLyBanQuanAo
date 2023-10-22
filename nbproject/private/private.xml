@@ -8,6 +8,7 @@
             <file>file:/D:/Java/Source/test/Java_QuanLyBanQuanAo/src/Interface/Interface_ChiTietHoaDon.java</file>
             <file>file:/D:/Java/Source/test/Java_QuanLyBanQuanAo/src/DLL/ChiTietHoaDonDLL.java</file>
             <file>file:/D:/Java/Source/test/Java_QuanLyBanQuanAo/src/DAL/LoaiSanPhamDAL.java</file>
+            <file>file:/D:/Java/Source/test/Java_QuanLyBanQuanAo/src/DLL/KhachHangDLL.java</file>
             <file>file:/D:/Java/Source/test/Java_QuanLyBanQuanAo/src/DAL/DataAcessHelper.java</file>
             <file>file:/D:/Java/Source/test/Java_QuanLyBanQuanAo/src/Interface/Interface_SanPham.java</file>
             <file>file:/D:/Java/Source/test/Java_QuanLyBanQuanAo/src/DLL/HoaDonDLL.java</file>
@@ -17,6 +18,7 @@
             <file>file:/D:/Java/Source/test/Java_QuanLyBanQuanAo/src/Entity/LoaiSanPham.java</file>
             <file>file:/D:/Java/Source/test/Java_QuanLyBanQuanAo/src/DAL/TaiKhoanDAL.java</file>
             <file>file:/D:/Java/Source/test/Java_QuanLyBanQuanAo/src/DAL/HoaDonDAL.java</file>
+            <file>file:/D:/Java/Source/test/Java_QuanLyBanQuanAo/src/DAL/KhachHangDAL.java</file>
             <file>file:/D:/Java/Source/test/Java_QuanLyBanQuanAo/src/Interface/Interface_TaiKhoan.java</file>
             <file>file:/D:/Java/Source/test/Java_QuanLyBanQuanAo/src/Entity/SanPham.java</file>
             <file>file:/D:/Java/Source/test/Java_QuanLyBanQuanAo/src/Entity/HoaDon.java</file>
@@ -28,7 +30,9 @@
             <file>file:/D:/Java/Source/test/Java_QuanLyBanQuanAo/src/Interface/Interface_NhanVien.java</file>
             <file>file:/D:/Java/Source/test/Java_QuanLyBanQuanAo/src/Interface/Interface_ThongKe.java</file>
             <file>file:/D:/Java/Source/test/Java_QuanLyBanQuanAo/src/Interface/Interface_HoaDon.java</file>
+            <file>file:/D:/Java/Source/test/Java_QuanLyBanQuanAo/src/Interface/Interface_KhachHang.java</file>
             <file>file:/D:/Java/Source/test/Java_QuanLyBanQuanAo/src/Entity/ThongKe.java</file>
+            <file>file:/D:/Java/Source/test/Java_QuanLyBanQuanAo/src/DAL/LoaiKhachHangDAL.java</file>
             <file>file:/D:/Java/Source/test/Java_QuanLyBanQuanAo/src/DAL/NhanVienDAL.java</file>
         </group>
     </open-files>
