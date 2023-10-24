@@ -13,23 +13,23 @@ import java.util.List;
  */
 public class KhachHangDLL {
     KhachHangDAL khdal = new KhachHangDAL();
-    public List<KhachHang> getALLKhachHang(){
-        return khdal.getALLKhachHang();
+    public List<KhachHang> getALL(){
+        return khdal.getALL();
     }
     public List<KhachHang> GetALLTenKhachHang(String TenKH){
         return khdal.GetALLTenKhachHang(TenKH);
     }
     
-    public void UpdateKH(int maKH, String tenKH, String diaChi, String gioiTinh, String sdt, int maloaikhachhang){
-        khdal.UpdateKH(maKH, tenKH, diaChi, gioiTinh, sdt, maloaikhachhang);
+    public void Update(KhachHang kh){
+        khdal.Update(kh);
     }
     
-    public int deleteKH(int maKH){
-        return khdal.deleteKH(maKH);
+    public int Delete(KhachHang kh){
+        return khdal.Delete(kh);
     }
     
-    public void AddKH(String tenKH, String diaChi, String gioiTinh, String sdt, int maloaikhachhang){
-        khdal.AddKH(tenKH, diaChi, gioiTinh, sdt, maloaikhachhang);
+    public void Add(KhachHang kh){
+        khdal.Add(kh);
     }
     
     public List<KhachHang> GetALLSDT(String SDT){

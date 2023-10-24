@@ -52,7 +52,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
  *
  * @author kien
  */
-public class Main extends javax.swing.JFrame {
+public final class Main extends javax.swing.JFrame {
 
     /**
      * Creates new form Main
@@ -89,6 +89,14 @@ public class Main extends javax.swing.JFrame {
     LoaiKhachHangDLL lkhdll = new LoaiKhachHangDLL();
     LoaiSanPhamDLL lspdll = new LoaiSanPhamDLL();
     ThongKeDLL tkdll = new ThongKeDLL();
+
+    // Entity
+    NhanVien nv = new NhanVien();
+    SanPham sp = new SanPham();
+    LoaiSanPham lsp = new LoaiSanPham();
+    KhachHang kh = new KhachHang();
+    HoaDon hd = new HoaDon();
+    ChiTietHoaDon cthd = new ChiTietHoaDon();
 
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -262,13 +270,13 @@ public class Main extends javax.swing.JFrame {
         jPanel26 = new javax.swing.JPanel();
         jDateChooser5 = new com.toedter.calendar.JDateChooser();
         jDateChooser4 = new com.toedter.calendar.JDateChooser();
-        jButton3 = new javax.swing.JButton();
         jLabel55 = new javax.swing.JLabel();
         jLabel56 = new javax.swing.JLabel();
         jScrollPane7 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jLabel57 = new javax.swing.JLabel();
         jTextField12 = new javax.swing.JTextField();
+        jButton3 = new javax.swing.JButton();
         jPanel27 = new javax.swing.JPanel();
         jComboBox10 = new javax.swing.JComboBox<>();
         jButton24 = new javax.swing.JButton();
@@ -289,9 +297,6 @@ public class Main extends javax.swing.JFrame {
         jLabel64 = new javax.swing.JLabel();
         jPanel30 = new javax.swing.JPanel();
         jLabel54 = new javax.swing.JLabel();
-        jButton23 = new javax.swing.JButton();
-        jButton25 = new javax.swing.JButton();
-        jButton32 = new javax.swing.JButton();
         jPanel28 = new javax.swing.JPanel();
         jButton27 = new javax.swing.JButton();
         jTextField14 = new javax.swing.JTextField();
@@ -1872,13 +1877,6 @@ public class Main extends javax.swing.JFrame {
 
         jDateChooser4.setDateFormatString("dd-MM-yyyy");
 
-        jButton3.setText("Thống Kê");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
-            }
-        });
-
         jLabel55.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel55.setText("Từ ngày");
 
@@ -1916,6 +1914,18 @@ public class Main extends javax.swing.JFrame {
         jLabel57.setText("Tổng Doanh Thu");
 
         jTextField12.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jTextField12.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField12ActionPerformed(evt);
+            }
+        });
+
+        jButton3.setText("Thống Kê");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel26Layout = new javax.swing.GroupLayout(jPanel26);
         jPanel26.setLayout(jPanel26Layout);
@@ -1923,6 +1933,7 @@ public class Main extends javax.swing.JFrame {
             jPanel26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel26Layout.createSequentialGroup()
                 .addGroup(jPanel26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane7, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel26Layout.createSequentialGroup()
                         .addGap(137, 137, 137)
                         .addComponent(jLabel57, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1934,13 +1945,12 @@ public class Main extends javax.swing.JFrame {
                         .addComponent(jLabel55)
                         .addGap(20, 20, 20)
                         .addComponent(jDateChooser4, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(36, 36, 36)
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(28, 28, 28)
+                        .addGap(33, 33, 33)
                         .addComponent(jLabel56, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jDateChooser5, javax.swing.GroupLayout.DEFAULT_SIZE, 292, Short.MAX_VALUE))
-                    .addComponent(jScrollPane7, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jDateChooser5, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 97, Short.MAX_VALUE)
+                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         jPanel26Layout.setVerticalGroup(
@@ -1949,19 +1959,18 @@ public class Main extends javax.swing.JFrame {
                 .addGap(15, 15, 15)
                 .addGroup(jPanel26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel26Layout.createSequentialGroup()
-                        .addGroup(jPanel26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jDateChooser5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jLabel56, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel26Layout.createSequentialGroup()
                         .addGroup(jPanel26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel55, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(jPanel26Layout.createSequentialGroup()
                                 .addComponent(jDateChooser4, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, Short.MAX_VALUE)))
-                        .addGap(18, 18, 18)))
+                        .addGap(18, 18, 18))
+                    .addGroup(jPanel26Layout.createSequentialGroup()
+                        .addGroup(jPanel26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jDateChooser5, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel56, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -2149,30 +2158,6 @@ public class Main extends javax.swing.JFrame {
         jLabel54.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel54.setText("Thống Kê");
 
-        jButton23.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jButton23.setText("Thông Kê Doanh Thu");
-        jButton23.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton23ActionPerformed(evt);
-            }
-        });
-
-        jButton25.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jButton25.setText("Thông Kê Nhân Viên");
-        jButton25.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton25ActionPerformed(evt);
-            }
-        });
-
-        jButton32.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jButton32.setText("Thông Kê Sản Phẩm");
-        jButton32.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton32ActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel30Layout = new javax.swing.GroupLayout(jPanel30);
         jPanel30.setLayout(jPanel30Layout);
         jPanel30Layout.setHorizontalGroup(
@@ -2180,24 +2165,14 @@ public class Main extends javax.swing.JFrame {
             .addGroup(jPanel30Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel54, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton23, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButton25, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButton32, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel30Layout.setVerticalGroup(
             jPanel30Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel30Layout.createSequentialGroup()
-                .addGap(29, 29, 29)
-                .addGroup(jPanel30Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel54, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton23, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton25, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton32, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(11, Short.MAX_VALUE))
+                .addGap(32, 32, 32)
+                .addComponent(jLabel54, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(25, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel25Layout = new javax.swing.GroupLayout(jPanel25);
@@ -2349,11 +2324,12 @@ public class Main extends javax.swing.JFrame {
                     .addComponent(jLabel60, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextField14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton27)
-                    .addComponent(jButton28)
-                    .addComponent(jButton29)
-                    .addComponent(jButton30))
+                .addGroup(jPanel28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton27, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jButton28)
+                        .addComponent(jButton29)
+                        .addComponent(jButton30)))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(179, Short.MAX_VALUE))
@@ -2416,7 +2392,7 @@ public class Main extends javax.swing.JFrame {
         jbtn_SuaSP.setMnemonic(KeyEvent.VK_S);
         jButton4.setMnemonic(KeyEvent.VK_D);
 
-        List<SanPham> listSP = spdll.getALLSanPham();
+        List<SanPham> listSP = spdll.getALL();
         DefaultTableModel model = (DefaultTableModel) jTableSanPham.getModel();
         model.setRowCount(0);
         for (SanPham o : listSP) {
@@ -2424,7 +2400,7 @@ public class Main extends javax.swing.JFrame {
                 o.getGiaBan(), o.getMoTaSanPham(), o.getSize(), o.getNgaySanXuat(), o.getSoLuong()});
         }
 
-        List<LoaiSanPham> listlsp = lspdll.getALLLoaiSanPham();
+        List<LoaiSanPham> listlsp = lspdll.getALL();
         jComboBox9.removeAllItems();
 
         for (LoaiSanPham o : listlsp) {
@@ -2452,7 +2428,7 @@ public class Main extends javax.swing.JFrame {
         DefaultTableModel model = (DefaultTableModel) jTableKhachHang.getModel();
         model.setRowCount(0);
 
-        List<KhachHang> listKH = khdll.getALLKhachHang();
+        List<KhachHang> listKH = khdll.getALL();
 
         for (KhachHang o : listKH) {
             model.addRow(new Object[]{o.getMaKH(), o.getTenKhach(), o.getDiaChi(), o.getGioiTinh(), o.getSdt(), o.getMaloaikhachhang()});
@@ -2480,7 +2456,7 @@ public class Main extends javax.swing.JFrame {
         jButton11.setMnemonic(KeyEvent.VK_S);
         jButton12.setMnemonic(KeyEvent.VK_D);
 
-        List<NhanVien> listNV = nvdll.getALLNhanvien();
+        List<NhanVien> listNV = nvdll.getALL();
 
         DefaultTableModel model = (DefaultTableModel) jTableNhanVien.getModel();
 
@@ -2509,17 +2485,16 @@ public class Main extends javax.swing.JFrame {
         jButton15.setMnemonic(KeyEvent.VK_S);
         jButton16.setMnemonic(KeyEvent.VK_D);
 
-        List<HoaDon> listHD = hddll.getALLHoaDon();
+        List<HoaDon> listHD = hddll.getALL();
         DefaultTableModel model = (DefaultTableModel) jTableHD.getModel();
         model.setRowCount(0);
         for (HoaDon o : listHD) {
             model.addRow(new Object[]{o.getSoHD(), o.getMaNhanVien(), o.getNhanVienLap(), o.getNgayLap(), o.getMaKH()});
         }
-        System.out.println();
         jComboBox5.removeAllItems();
         jComboBox6.removeAllItems();
-        List<NhanVien> listNV = nvdll.getALLNhanvien();
-        
+        List<NhanVien> listNV = nvdll.getALL();
+
         for (NhanVien o : listNV) {
             jComboBox5.addItem(o.getMaNhanVien());
 
@@ -2550,23 +2525,23 @@ public class Main extends javax.swing.JFrame {
         jButton19.setMnemonic(KeyEvent.VK_S);
         jButton20.setMnemonic(KeyEvent.VK_D);
 
-        List<ChiTietHoaDon> listCTHD = cthddll.getALLChiTietHoaDon();
+        List<ChiTietHoaDon> listCTHD = cthddll.getALL();
         DefaultTableModel model = (DefaultTableModel) jTableCTHoaDon.getModel();
         model.setRowCount(0);
         for (ChiTietHoaDon o : listCTHD) {
             model.addRow(new Object[]{o.getMaSanPham(), o.getSanPham(),
                 o.getDonGia(), o.getSoLuong(), o.getSize(), o.getTongTien()});
         }
-        List<HoaDon> listHD = hddll.getALLHoaDon();
+        List<HoaDon> listHD = hddll.getALL();
         for (HoaDon o : listHD) {
             jComboBox7.addItem(o.getSoHD());
         }
 
-        List<SanPham> listSP = spdll.getALLSanPham();
+        List<SanPham> listSP = spdll.getALL();
         for (SanPham o : listSP) {
             jComboBox12.addItem(o.getMaSanPham());
         }
-        
+
         for (SanPham o : listSP) {
             jComboBox4.addItem(o.getMoTaSanPham());
         }
@@ -2587,11 +2562,11 @@ public class Main extends javax.swing.JFrame {
                 o.getDonGia(), o.getSoLuong(), o.getSize(), o.getTongTien()});
         }
 
-        List<HoaDon> listHD = hddll.getALLHoaDon();
+        List<HoaDon> listHD = hddll.getALL();
         for (HoaDon o : listHD) {
             jComboBox7.addItem(o.getSoHD());
         }
-        List<SanPham> listSP = spdll.getALLSanPham();
+        List<SanPham> listSP = spdll.getALL();
         for (SanPham o : listSP) {
             jComboBox12.addItem(o.getMaSanPham());
         }
@@ -2801,34 +2776,41 @@ public class Main extends javax.swing.JFrame {
             jButton2.setEnabled(false);
             jbtn_SuaSP.setText("LƯU");
         } else if (jbtn_SuaSP.getText().equals("LƯU")) {
-            String masp = jTextField1.getText();
-            String tensp = jTextField2.getText();
-            int loaisanpham = lspdll.getMaLoaiSanPham(jComboBox9.getSelectedItem().toString());
-            float gianhap = Float.parseFloat(jTextField3.getText());
-            float giaban = Float.parseFloat(jTextField5.getText());
-            String motasp = jTextArea1.getText();
-            String size = jTextField4.getText();
-            String ngaysx = doiDate(((JTextField) jDateChooser1.getDateEditor().getUiComponent()).getText());
+            sp.setMaSanPham(jTextField1.getText());
+            sp.setTenSanPham(jTextField2.getText());
+            sp.setMaLoaiSanPham(lspdll.getMaLoaiSanPham(jComboBox9.getSelectedItem().toString()));
+            sp.setGiaNhap(Float.parseFloat(jTextField3.getText()));
+            sp.setGiaBan(Float.parseFloat(jTextField5.getText()));
+            sp.setMoTaSanPham(jTextArea1.getText());
+            sp.setSize(jTextField4.getText());
+            sp.setSoLuong(Integer.parseInt(jTextField6.getText()));
+            Date date;
+            try {
+                date = sdf.parse(doiDate(((JTextField) jDateChooser1.getDateEditor().getUiComponent()).getText()));
+                sp.setNgaySanXuat(date);
+            } catch (ParseException ex) {
+            }
+            
             int soluong = Integer.parseInt(jTextField6.getText());
-            if (masp.equals("")) {
+            if (jTextField1.getText().equals("")) {
                 JOptionPane.showMessageDialog(this, "Vui lòng điền 'mã sản phẩm'");
-            } else if (tensp.equals("")) {
+            } else if (jTextField2.getText().equals("")) {
                 JOptionPane.showMessageDialog(this, "Vui lòng điền 'tên sản phẩm'");
-            } else if (gianhap <= 0) {
+            } else if (Float.parseFloat(jTextField3.getText()) <= 0) {
                 JOptionPane.showMessageDialog(this, "Vui lòng điền 'giá nhập'");
-            } else if (giaban <= 0) {
+            } else if (Float.parseFloat(jTextField5.getText()) <= 0) {
                 JOptionPane.showMessageDialog(this, "Vui lòng điền 'giá bán'");
-            } else if (motasp.equals("")) {
+            } else if (jTextArea1.getText().equals("")) {
                 JOptionPane.showMessageDialog(this, "Vui lòng điền 'mô tả sản phẩm'");
-            } else if (size.equals("")) {
+            } else if (jTextField4.getText().equals("")) {
                 JOptionPane.showMessageDialog(this, "Vui lòng điền 'size sản phẩm'");
-            } else if (ngaysx.equals("")) {
+            } else if (doiDate(((JTextField) jDateChooser1.getDateEditor().getUiComponent()).getText()).equals("")) {
                 JOptionPane.showMessageDialog(this, "Vui lòng điền 'ngày sản xuất sản phẩm'");
             } else if (soluong <= 0) {
                 JOptionPane.showMessageDialog(this, "Vui lòng điền 'số lượng sản phẩm'");
             } else {
-                
-                spdll.UpdateSP(masp, tensp, loaisanpham, gianhap, giaban, motasp, size, ngaysx, soluong);
+
+                spdll.Update(sp);
                 LoadDatabaseSanPham();
                 jbtn_SuaSP.setText("Sửa");
                 jButton4.setEnabled(true);
@@ -2868,12 +2850,13 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton21ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        sp.setMaSanPham(jTextField1.getText());
         try {
             if (jTextField1.getText().equals("")) {
                 JOptionPane.showMessageDialog(this, "Nhập mã Sản Phẩm");
                 jTextField1.requestFocus();
-            } else if (spdll.deleteSP(jTextField1.getText()) > 0) {
-                spdll.deleteSP(jTextField1.getText());
+            } else if (spdll.Delete(sp)> 0) {
+                spdll.Delete(sp);
                 JOptionPane.showMessageDialog(this, "Delete Thành Công");
             } else {
                 JOptionPane.showMessageDialog(this, "Delete không Thành Công");
@@ -2907,35 +2890,41 @@ public class Main extends javax.swing.JFrame {
             jButton1.setEnabled(true);
             jButton2.setText("LƯU");
         } else if (jButton2.getText().equals("LƯU")) {
-            String masp = jTextField1.getText();
-            String tensp = jTextField2.getText();
-            int loaisanpham =lspdll.getMaLoaiSanPham(jComboBox9.getSelectedItem().toString());
-            float gianhap = Float.parseFloat(jTextField3.getText());
-            float giaban = Float.parseFloat(jTextField5.getText());
-            String motasp = jTextArea1.getText();
-            String size = jTextField4.getText();
-            String ngaysx = doiDate(((JTextField) jDateChooser1.getDateEditor().getUiComponent()).getText());
+            sp.setMaSanPham(jTextField1.getText());
+            sp.setTenSanPham(jTextField2.getText());
+            sp.setMaLoaiSanPham(lspdll.getMaLoaiSanPham(jComboBox9.getSelectedItem().toString()));
+            sp.setGiaNhap(Float.parseFloat(jTextField3.getText()));
+            sp.setGiaBan(Float.parseFloat(jTextField5.getText()));
+            sp.setMoTaSanPham(jTextArea1.getText());
+            sp.setSize(jTextField4.getText());
+            sp.setSoLuong(Integer.parseInt(jTextField6.getText()));
+            Date date;
+            try {
+                date = sdf.parse(doiDate(((JTextField) jDateChooser1.getDateEditor().getUiComponent()).getText()));
+                sp.setNgaySanXuat(date);
+            } catch (ParseException ex) {
+            }
+            
             int soluong = Integer.parseInt(jTextField6.getText());
-            if (masp.equals("")) {
+            if (jTextField1.getText().equals("")) {
                 JOptionPane.showMessageDialog(this, "Vui lòng điền 'mã sản phẩm'");
-            } else if (tensp.equals("")) {
+            } else if (jTextField2.getText().equals("")) {
                 JOptionPane.showMessageDialog(this, "Vui lòng điền 'tên sản phẩm'");
-            } else if (gianhap <= 0) {
+            } else if (Float.parseFloat(jTextField3.getText()) <= 0) {
                 JOptionPane.showMessageDialog(this, "Vui lòng điền 'giá nhập'");
-            } else if (giaban <= 0) {
+            } else if (Float.parseFloat(jTextField5.getText()) <= 0) {
                 JOptionPane.showMessageDialog(this, "Vui lòng điền 'giá bán'");
-            } else if (motasp.equals("")) {
+            } else if (jTextArea1.getText().equals("")) {
                 JOptionPane.showMessageDialog(this, "Vui lòng điền 'mô tả sản phẩm'");
-            } else if (size.equals("")) {
+            } else if (jTextField4.getText().equals("")) {
                 JOptionPane.showMessageDialog(this, "Vui lòng điền 'size sản phẩm'");
-            } else if (ngaysx.equals("")) {
+            } else if (doiDate(((JTextField) jDateChooser1.getDateEditor().getUiComponent()).getText()).equals("")) {
                 JOptionPane.showMessageDialog(this, "Vui lòng điền 'ngày sản xuất sản phẩm'");
             } else if (soluong <= 0) {
                 JOptionPane.showMessageDialog(this, "Vui lòng điền 'số lượng sản phẩm'");
             } else {
-                
 
-                spdll.AddSP(masp, tensp, loaisanpham, gianhap, giaban, motasp, size, ngaysx, soluong);
+                spdll.Add(sp);
                 LoadDatabaseSanPham();
                 jButton2.setText("Thêm");
                 jbtn_SuaSP.setEnabled(true);
@@ -2967,33 +2956,35 @@ public class Main extends javax.swing.JFrame {
             jButton7.setText("LƯU");
         } else if (jButton7.getText().equals("LƯU")) {
 
-            int makh = Integer.parseInt(jTextField8.getText());
-            String tenkh = jTextField9.getText();
-            String diachi = jTextField10.getText();
-            String sdt = jTextField11.getText();
-            String gioitinh = jComboBox1.getSelectedItem().toString();
+            kh.setMaKH(Integer.parseInt(jTextField8.getText()));
+            kh.setTenKhach(jTextField9.getText());
+            kh.setDiaChi(jTextField10.getText());
+            kh.setSdt(jTextField11.getText());
+            kh.setGioiTinh(jComboBox1.getSelectedItem().toString());
+
             String loaikhachhang = jComboBox8.getSelectedItem().toString();
 
             int lkh = 0;
-            if (makh < 0) {
+            if (Integer.parseInt(jTextField8.getText()) < 0) {
                 JOptionPane.showMessageDialog(this, "Vui lòng điền 'mã Khách Hàng'");
-            } else if (tenkh.equals("")) {
+            } else if (jTextField9.getText().equals("")) {
                 JOptionPane.showMessageDialog(this, "Vui lòng điền 'tên Khách hàng'");
-            } else if (diachi.equals("")) {
+            } else if (jTextField10.getText().equals("")) {
                 JOptionPane.showMessageDialog(this, "Vui lòng điền'Địa chỉ");
-            } else if (sdt.equals("")) {
+            } else if (jTextField11.getText().equals("")) {
                 JOptionPane.showMessageDialog(this, "Vui lòng điền 'SĐT'");
-            } else if (gioitinh.equals("")) {
+            } else if (jComboBox1.getSelectedItem().toString().equals("")) {
                 JOptionPane.showMessageDialog(this, "Vui lòng Chọn'Giới tính'");
             } else {
-                if (loaikhachhang.equals("vip")) {
+                if (jComboBox8.getSelectedItem().toString().equals("vip")) {
                     lkh = 1;
-                } else if (loaikhachhang.equals("thường")) {
+                } else if (jComboBox8.getSelectedItem().toString().equals("thường")) {
                     lkh = 2;
-                } else if (loaikhachhang.equals("sinh viên")) {
+                } else if (jComboBox8.getSelectedItem().toString().equals("sinh viên")) {
                     lkh = 3;
                 }
-                khdll.UpdateKH(makh, tenkh, diachi, gioitinh, sdt, lkh);
+                kh.setMaloaikhachhang(lkh);
+                khdll.Update(kh);
 
                 LoadDatabaseKhachHang();
                 jButton7.setText("Sửa");
@@ -3016,12 +3007,13 @@ public class Main extends javax.swing.JFrame {
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
         try {
-            int makh = Integer.parseInt(jTextField8.getText());
+            kh.setMaKH(Integer.parseInt(jTextField8.getText()));
+
             if (jTextField8.getText().equals("")) {
                 JOptionPane.showMessageDialog(this, "Nhập mã Khách Hàng");
                 jTextField8.requestFocus();
-            } else if (khdll.deleteKH(makh) > 0) {
-                khdll.deleteKH(makh);
+            } else if (khdll.Delete(kh) > 0) {
+                khdll.Delete(kh);
                 JOptionPane.showMessageDialog(this, "Delete Thành Công");
             } else {
                 JOptionPane.showMessageDialog(this, "Delete không Thành Công");
@@ -3049,32 +3041,35 @@ public class Main extends javax.swing.JFrame {
             jButton7.setEnabled(false);
             jButton6.setText("LƯU");
         } else if (jButton6.getText().equals("LƯU")) {
-            String tenkh = jTextField9.getText();
-            String diachi = jTextField10.getText();
-            String sdt = jTextField11.getText();
-            String gioitinh = jComboBox1.getSelectedItem().toString();
+            kh.setMaKH(Integer.parseInt(jTextField8.getText()));
+            kh.setTenKhach(jTextField9.getText());
+            kh.setDiaChi(jTextField10.getText());
+            kh.setSdt(jTextField11.getText());
+            kh.setGioiTinh(jComboBox1.getSelectedItem().toString());
+
             String loaikhachhang = jComboBox8.getSelectedItem().toString();
 
             int lkh = 0;
-
-            if (tenkh.equals("")) {
+            if (Integer.parseInt(jTextField8.getText()) < 0) {
+                JOptionPane.showMessageDialog(this, "Vui lòng điền 'mã Khách Hàng'");
+            } else if (jTextField9.getText().equals("")) {
                 JOptionPane.showMessageDialog(this, "Vui lòng điền 'tên Khách hàng'");
-            } else if (diachi.equals("")) {
+            } else if (jTextField10.getText().equals("")) {
                 JOptionPane.showMessageDialog(this, "Vui lòng điền'Địa chỉ");
-            } else if (sdt.equals("")) {
+            } else if (jTextField11.getText().equals("")) {
                 JOptionPane.showMessageDialog(this, "Vui lòng điền 'SĐT'");
-            } else if (gioitinh.equals("")) {
+            } else if (jComboBox1.getSelectedItem().toString().equals("")) {
                 JOptionPane.showMessageDialog(this, "Vui lòng Chọn'Giới tính'");
             } else {
-
-                if (loaikhachhang.equals("vip")) {
+                if (jComboBox8.getSelectedItem().toString().equals("vip")) {
                     lkh = 1;
-                } else if (loaikhachhang.equals("thường")) {
+                } else if (jComboBox8.getSelectedItem().toString().equals("thường")) {
                     lkh = 2;
-                } else if (loaikhachhang.equals("sinh viên")) {
+                } else if (jComboBox8.getSelectedItem().toString().equals("sinh viên")) {
                     lkh = 3;
                 }
-                khdll.AddKH(tenkh, diachi, gioitinh, sdt, lkh);
+                kh.setMaloaikhachhang(lkh);
+                khdll.Add(kh);
 
                 LoadDatabaseKhachHang();
                 jButton6.setText("Thêm");
@@ -3092,53 +3087,58 @@ public class Main extends javax.swing.JFrame {
             jButton10.setEnabled(false);
             jButton11.setText("LƯU");
         } else if (jButton11.getText().equals("LƯU")) {
+            try {
+                nv.setMaNhanVien(txt_NV_MNV.getText());
+                nv.setTenNhanVien(txt_NV_TNV.getText());
+                Date date = sdf.parse(doiDate(((JTextField) jDateChooser6.getDateEditor().getUiComponent()).getText()));
+                nv.setNgaySinh(date);
+                nv.setDiaChi(txt_NV_DC.getText());
+                nv.setSdt(txt_NV_SDT.getText());
+                nv.setTenDangNhap(txt_NV_TDN.getText());
+                nv.setMatKhau(txt_NV_MK.getText());
+                nv.setChucVu(jComboBox3.getSelectedItem().toString());
+                nv.setGioiTinh(jComboBox2.getSelectedItem().toString());
 
-            String manv = txt_NV_MNV.getText();
-            String tennv = txt_NV_TNV.getText();
-            String gioitinh = jComboBox2.getSelectedItem().toString();
-            String ngaysinh = doiDate(((JTextField) jDateChooser6.getDateEditor().getUiComponent()).getText());
-            String diachi = txt_NV_DC.getText();
-            String sdt = txt_NV_SDT.getText();
-            String tendn = txt_NV_TDN.getText();
-            String matkhau = txt_NV_MK.getText();
-            String chucvu = jComboBox3.getSelectedItem().toString();
+                if (txt_NV_MNV.getText().equals("")) {
+                    JOptionPane.showMessageDialog(this, "Vui lòng điền 'mã Nhân viên'");
+                } else if (txt_NV_TNV.getText().equals("")) {
+                    JOptionPane.showMessageDialog(this, "Vui lòng điền 'tên Nhân viên'");
+                } else if (doiDate(((JTextField) jDateChooser6.getDateEditor().getUiComponent()).getText()).equals("")) {
+                    JOptionPane.showMessageDialog(this, "Vui lòng chọn Ngày Sinh");
+                } else if (txt_NV_TDN.getText().equals("")) {
+                    JOptionPane.showMessageDialog(this, "Vui lòng điền tên đăng nhập");
+                } else if (txt_NV_MK.getText().equals("")) {
+                    JOptionPane.showMessageDialog(this, "Vui lòng điền mật khẩu");
+                } else if (jComboBox3.getSelectedItem().toString().equals("")) {
+                    JOptionPane.showMessageDialog(this, "Vui lòng chọn Chức Vụ");
+                } else if (txt_NV_DC.getText().equals("")) {
+                    JOptionPane.showMessageDialog(this, "Vui lòng điền'Địa chỉ");
+                } else if (txt_NV_SDT.getText().equals("")) {
+                    JOptionPane.showMessageDialog(this, "Vui lòng điền 'SĐT'");
+                } else if (jComboBox2.getSelectedItem().toString().equals("")) {
+                    JOptionPane.showMessageDialog(this, "Vui lòng Chọn'Giới tính'");
+                } else {
 
-            if (manv.equals("")) {
-                JOptionPane.showMessageDialog(this, "Vui lòng điền 'mã Nhân viên'");
-            } else if (tennv.equals("")) {
-                JOptionPane.showMessageDialog(this, "Vui lòng điền 'tên Nhân viên'");
-            } else if (ngaysinh.equals("")) {
-                JOptionPane.showMessageDialog(this, "Vui lòng chọn Ngày Sinh");
-            } else if (tendn.equals("")) {
-                JOptionPane.showMessageDialog(this, "Vui lòng điền tên đăng nhập");
-            } else if (matkhau.equals("")) {
-                JOptionPane.showMessageDialog(this, "Vui lòng điền mật khẩu");
-            } else if (chucvu.equals("")) {
-                JOptionPane.showMessageDialog(this, "Vui lòng chọn Chức Vụ");
-            } else if (diachi.equals("")) {
-                JOptionPane.showMessageDialog(this, "Vui lòng điền'Địa chỉ");
-            } else if (sdt.equals("")) {
-                JOptionPane.showMessageDialog(this, "Vui lòng điền 'SĐT'");
-            } else if (gioitinh.equals("")) {
-                JOptionPane.showMessageDialog(this, "Vui lòng Chọn'Giới tính'");
-            } else {
-                nvdll.UpdateNV(manv, tennv, gioitinh, ngaysinh, diachi, sdt, tendn, matkhau, chucvu);
-                LoadDatabaseNhanVien();
-                jButton12.setEnabled(true);
-                jButton9.setEnabled(false);
-                jButton10.setEnabled(true);
-                jButton11.setText("Sửa");
+                    nvdll.Update(nv);
+                    LoadDatabaseNhanVien();
+                    jButton12.setEnabled(true);
+                    jButton9.setEnabled(false);
+                    jButton10.setEnabled(true);
+                    jButton11.setText("Sửa");
+                }
+            } catch (ParseException ex) {
             }
         }
     }//GEN-LAST:event_jButton11ActionPerformed
 
     private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
+        sv.setMaNhanVien(txt_NV_MNV.getText());
         try {
             if (txt_NV_MNV.getText().equals("")) {
                 JOptionPane.showMessageDialog(this, "Nhập mã Nhân viên");
                 txt_NV_MNV.requestFocus();
-            } else if (nvdll.deleteNV(txt_NV_MNV.getText()) > 0) {
-                nvdll.deleteNV(txt_NV_MNV.getText());
+            } else if (nvdll.Delete(sv) > 0) {
+                nvdll.Delete(sv);
                 JOptionPane.showMessageDialog(this, "Delete Thành Công");
             } else {
                 JOptionPane.showMessageDialog(this, "Delete không Thành Công");
@@ -3160,6 +3160,7 @@ public class Main extends javax.swing.JFrame {
         txt_NV_MK.setText("");
     }
 
+    SimpleDateFormat sdf = new SimpleDateFormat("MM-dd-yyyy");
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
         if (jButton10.getText().equals("Thêm")) {
             xoatextnhanvien();
@@ -3169,42 +3170,50 @@ public class Main extends javax.swing.JFrame {
             jButton10.setText("LƯU");
         } else if (jButton10.getText().equals("LƯU")) {
 
-            String manv = txt_NV_MNV.getText();
-            String tennv = txt_NV_TNV.getText();
-            String gioitinh = jComboBox2.getSelectedItem().toString();
-            String ngaysinh = doiDate(((JTextField) jDateChooser6.getDateEditor().getUiComponent()).getText());
-            String diachi = txt_NV_DC.getText();
-            String sdt = txt_NV_SDT.getText();
-            String tendn = txt_NV_TDN.getText();
-            String matkhau = txt_NV_MK.getText();
-            String chucvu = jComboBox3.getSelectedItem().toString();
+            try {
+                nv.setMaNhanVien(txt_NV_MNV.getText());
+                nv.setTenNhanVien(txt_NV_TNV.getText());
 
-            if (manv.equals("")) {
-                JOptionPane.showMessageDialog(this, "Vui lòng điền 'mã Nhân viên'");
-            } else if (tennv.equals("")) {
-                JOptionPane.showMessageDialog(this, "Vui lòng điền 'tên Nhân viên'");
-            } else if (ngaysinh.equals("")) {
-                JOptionPane.showMessageDialog(this, "Vui lòng chọn Ngày Sinh");
-            } else if (tendn.equals("")) {
-                JOptionPane.showMessageDialog(this, "Vui lòng điền tên đăng nhập");
-            } else if (matkhau.equals("")) {
-                JOptionPane.showMessageDialog(this, "Vui lòng điền mật khẩu");
-            } else if (chucvu.equals("")) {
-                JOptionPane.showMessageDialog(this, "Vui lòng chọn Chức Vụ");
-            } else if (diachi.equals("")) {
-                JOptionPane.showMessageDialog(this, "Vui lòng điền'Địa chỉ");
-            } else if (sdt.equals("")) {
-                JOptionPane.showMessageDialog(this, "Vui lòng điền 'SĐT'");
-            } else if (gioitinh.equals("")) {
-                JOptionPane.showMessageDialog(this, "Vui lòng Chọn'Giới tính'");
-            } else {
-                nvdll.Them(manv, tennv, gioitinh, ngaysinh, diachi, sdt, tendn, matkhau, chucvu);
-                LoadDatabaseNhanVien();
-                jButton12.setEnabled(true);
-                jButton9.setEnabled(false);
-                jButton11.setEnabled(true);
-                jButton10.setText("Thêm");
+                Date date = sdf.parse(doiDate(((JTextField) jDateChooser6.getDateEditor().getUiComponent()).getText()));
+                nv.setNgaySinh(date);
+                nv.setDiaChi(txt_NV_DC.getText());
+                nv.setSdt(txt_NV_SDT.getText());
+                nv.setTenDangNhap(txt_NV_TDN.getText());
+                nv.setMatKhau(txt_NV_MK.getText());
+                nv.setChucVu(jComboBox3.getSelectedItem().toString());
+                nv.setGioiTinh(jComboBox2.getSelectedItem().toString());
+
+                if (txt_NV_MNV.getText().equals("")) {
+                    JOptionPane.showMessageDialog(this, "Vui lòng điền 'mã Nhân viên'");
+                } else if (txt_NV_TNV.getText().equals("")) {
+                    JOptionPane.showMessageDialog(this, "Vui lòng điền 'tên Nhân viên'");
+                } else if (doiDate(((JTextField) jDateChooser6.getDateEditor().getUiComponent()).getText()).equals("")) {
+                    JOptionPane.showMessageDialog(this, "Vui lòng chọn Ngày Sinh");
+                } else if (txt_NV_TDN.getText().equals("")) {
+                    JOptionPane.showMessageDialog(this, "Vui lòng điền tên đăng nhập");
+                } else if (txt_NV_MK.getText().equals("")) {
+                    JOptionPane.showMessageDialog(this, "Vui lòng điền mật khẩu");
+                } else if (jComboBox3.getSelectedItem().toString().equals("")) {
+                    JOptionPane.showMessageDialog(this, "Vui lòng chọn Chức Vụ");
+                } else if (txt_NV_DC.getText().equals("")) {
+                    JOptionPane.showMessageDialog(this, "Vui lòng điền'Địa chỉ");
+                } else if (txt_NV_SDT.getText().equals("")) {
+                    JOptionPane.showMessageDialog(this, "Vui lòng điền 'SĐT'");
+                } else if (jComboBox2.getSelectedItem().toString().equals("")) {
+                    JOptionPane.showMessageDialog(this, "Vui lòng Chọn'Giới tính'");
+                } else {
+
+                    nvdll.Add(nv);
+                    LoadDatabaseNhanVien();
+                    jButton12.setEnabled(true);
+                    jButton9.setEnabled(false);
+                    jButton11.setEnabled(true);
+                    jButton10.setText("Thêm");
+                }
+            } catch (ParseException ex) {
+                ex.getStackTrace();
             }
+
         }
     }//GEN-LAST:event_jButton10ActionPerformed
 
@@ -3224,24 +3233,31 @@ public class Main extends javax.swing.JFrame {
             jButton16.setEnabled(false);
             jButton15.setText("LƯU");
         } else if (jButton15.getText().equals("LƯU")) {
-            String sohd = jTextField18.getText();
-            String ngaylap = doiDate(((JTextField) jDateChooser2.getDateEditor().getUiComponent()).getText());
-            String manv = jComboBox5.getSelectedItem().toString();
-            String nhanvien = jComboBox6.getSelectedItem().toString();
-            String makhach = jTextField21.getText();
+            hd.setSoHD(jTextField18.getText());
+            Date date;
+            try {
+                date = sdf.parse(doiDate(((JTextField) jDateChooser2.getDateEditor().getUiComponent()).getText()));
+                hd.setNgayLap(date);
+            } catch (ParseException ex) {
+                Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+            }
 
-            if (sohd.equals("")) {
+            hd.setMaNhanVien(jComboBox5.getSelectedItem().toString());
+            hd.setNhanVienLap(jComboBox6.getSelectedItem().toString());
+            hd.setMaKH(Integer.parseInt(jTextField21.getText()));
+
+            if (jTextField18.getText().equals("")) {
                 JOptionPane.showMessageDialog(this, "Vui lòng điền 'số hóa đơn'");
-            } else if (ngaylap.equals("")) {
+            } else if (doiDate(((JTextField) jDateChooser2.getDateEditor().getUiComponent()).getText()).equals("")) {
                 JOptionPane.showMessageDialog(this, "Vui lòng điền 'ngày lập'");
-            } else if (manv.equals("")) {
+            } else if (jComboBox5.getSelectedItem().toString().equals("")) {
                 JOptionPane.showMessageDialog(this, "Vui lòng điền 'mã nhân viên'");
-            } else if (nhanvien.equals("")) {
+            } else if (jComboBox6.getSelectedItem().toString().equals("")) {
                 JOptionPane.showMessageDialog(this, "Vui lòng điền 'nhân viên'");
-            } else if (makhach.equals("")) {
+            } else if (jTextField21.getText().equals("")) {
                 JOptionPane.showMessageDialog(this, "Vui lòng điền 'mã khách hàng'");
             } else {
-                hddll.UpdateHD(sohd, ngaylap, nhanvien, makhach, manv);
+                hddll.Update(hd);
                 LoadDatabaseHoaDon();
                 jButton14.setEnabled(true);
                 jButton13.setEnabled(false);
@@ -3252,12 +3268,13 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton15ActionPerformed
 
     private void jButton16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton16ActionPerformed
+        hd.setSoHD(jTextField18.getText());
         try {
             if (jTextField18.getText().equals("")) {
                 JOptionPane.showMessageDialog(this, "Nhập mã hóa đơn");
                 jTextField18.requestFocus();
-            } else if (hddll.deleteHD(jTextField18.getText()) > 0) {
-                hddll.deleteHD(jTextField18.getText());
+            } else if (hddll.Delete(hd) > 0) {
+                hddll.Delete(hd);
                 JOptionPane.showMessageDialog(this, "Delete Thành Công");
             } else {
                 JOptionPane.showMessageDialog(this, "Delete không Thành Công");
@@ -3289,25 +3306,31 @@ public class Main extends javax.swing.JFrame {
             jButton16.setEnabled(false);
             jButton14.setText("LƯU");
         } else if (jButton14.getText().equals("LƯU")) {
-            String sohd = jTextField18.getText();
-            String ngaylap = doiDate(((JTextField) jDateChooser2.getDateEditor().getUiComponent()).getText());
+            hd.setSoHD(jTextField18.getText());
+            Date date;
+            try {
+                date = sdf.parse(doiDate(((JTextField) jDateChooser2.getDateEditor().getUiComponent()).getText()));
+                hd.setNgayLap(date);
+            } catch (ParseException ex) {
+                Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+            }
 
-            String manv = jComboBox5.getSelectedItem().toString();
-            String nhanvien = jComboBox6.getSelectedItem().toString();
-            String makhach = jTextField21.getText();
+            hd.setMaNhanVien(jComboBox5.getSelectedItem().toString());
+            hd.setNhanVienLap(jComboBox6.getSelectedItem().toString());
+            hd.setMaKH(Integer.parseInt(jTextField21.getText()));
 
-            if (sohd.equals("")) {
+            if (jTextField18.getText().equals("")) {
                 JOptionPane.showMessageDialog(this, "Vui lòng điền 'số hóa đơn'");
-            } else if (ngaylap.equals("")) {
+            } else if (doiDate(((JTextField) jDateChooser2.getDateEditor().getUiComponent()).getText()).equals("")) {
                 JOptionPane.showMessageDialog(this, "Vui lòng điền 'ngày lập'");
-            } else if (manv.equals("")) {
+            } else if (jComboBox5.getSelectedItem().toString().equals("")) {
                 JOptionPane.showMessageDialog(this, "Vui lòng điền 'mã nhân viên'");
-            } else if (nhanvien.equals("")) {
+            } else if (jComboBox6.getSelectedItem().toString().equals("")) {
                 JOptionPane.showMessageDialog(this, "Vui lòng điền 'nhân viên'");
-            } else if (makhach.equals("")) {
+            } else if (jTextField21.getText().equals("")) {
                 JOptionPane.showMessageDialog(this, "Vui lòng điền 'mã khách hàng'");
             } else {
-                hddll.AddHD(sohd, ngaylap, nhanvien, makhach, manv);
+                hddll.Add(hd);
                 LoadDatabaseHoaDon();
                 jButton15.setEnabled(true);
                 jButton13.setEnabled(false);
@@ -3361,26 +3384,28 @@ public class Main extends javax.swing.JFrame {
             jButton19.setText("LƯU");
         } else if (jButton19.getText().equals("LƯU")) {
 
-            String sohd = jComboBox7.getSelectedItem().toString();
-            String masanpham = jComboBox12.getSelectedItem().toString();
-            String tensanpham = jComboBox4.getSelectedItem().toString();
-            float dongia = Float.parseFloat(jTextField23.getText());
-            int soluong = Integer.parseInt(jTextField24.getText());
-            float tongtien = dongia * (float) soluong;
-            String size = jComboBox11.getSelectedItem().toString();
-            if (sohd.equals("")) {
+            cthd.setSoHD(jComboBox7.getSelectedItem().toString());
+            cthd.setMaSanPham(jComboBox12.getSelectedItem().toString());
+            cthd.setSanPham(jComboBox4.getSelectedItem().toString());
+            cthd.setDonGia(Float.parseFloat(jTextField23.getText()));
+            cthd.setSoLuong(Integer.parseInt(jTextField24.getText()));
+            float tongtien = Float.parseFloat(jTextField23.getText()) * (float) Integer.parseInt(jTextField24.getText());
+            cthd.setTongTien(tongtien);
+            cthd.setSize(jComboBox11.getSelectedItem().toString());
+
+            if (jComboBox7.getSelectedItem().toString().equals("")) {
                 JOptionPane.showMessageDialog(this, "Vui lòng điền 'số hóa đơn'");
-            } else if (masanpham.equals("")) {
+            } else if (jComboBox12.getSelectedItem().toString().equals("")) {
                 JOptionPane.showMessageDialog(this, "Vui lòng điền 'ngày lập'");
-            } else if (tensanpham.equals("")) {
+            } else if (jComboBox4.getSelectedItem().toString().equals("")) {
                 JOptionPane.showMessageDialog(this, "Vui lòng điền 'mã nhân viên'");
-            } else if (dongia < 0) {
+            } else if (Float.parseFloat(jTextField23.getText()) < 0) {
                 JOptionPane.showMessageDialog(this, "Vui lòng điền 'nhân viên'");
-            } else if (soluong < 0) {
+            } else if (Integer.parseInt(jTextField24.getText()) < 0) {
                 JOptionPane.showMessageDialog(this, "Vui lòng điền 'mã khách hàng'");
             } else {
-                cthddll.UpdateCTHD(sohd, masanpham, tensanpham, dongia, soluong, size, tongtien);
-                SetComboBox(sohd);
+                cthddll.Update(cthd);
+                SetComboBox(jComboBox7.getSelectedItem().toString());
                 jButton18.setEnabled(true);
                 jButton17.setEnabled(false);
                 jButton20.setEnabled(true);
@@ -3390,11 +3415,13 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton19ActionPerformed
 
     private void jButton20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton20ActionPerformed
+        cthd.setSoHD(jComboBox7.getSelectedItem().toString());
+        cthd.setMaSanPham(jComboBox12.getSelectedItem().toString());
         try {
             if (jComboBox12.getSelectedItem().toString().equals("")) {
                 JOptionPane.showMessageDialog(this, "Nhập mã sản phẩm");
-            } else if (cthddll.deleteCTHD(jComboBox7.getSelectedItem().toString(), jComboBox12.getSelectedItem().toString()) > 0) {
-                cthddll.deleteCTHD(jComboBox7.getSelectedItem().toString(), jComboBox12.getSelectedItem().toString());
+            } else if (cthddll.Delete(cthd) > 0) {
+                cthddll.Delete(cthd);
                 JOptionPane.showMessageDialog(this, "Delete Thành Công");
             } else {
                 JOptionPane.showMessageDialog(this, "Delete không Thành Công");
@@ -3413,27 +3440,28 @@ public class Main extends javax.swing.JFrame {
             jButton20.setEnabled(false);
             jButton18.setText("LƯU");
         } else if (jButton18.getText().equals("LƯU")) {
+            cthd.setSoHD(jComboBox7.getSelectedItem().toString());
+            cthd.setMaSanPham(jComboBox12.getSelectedItem().toString());
+            cthd.setSanPham(jComboBox4.getSelectedItem().toString());
+            cthd.setDonGia(Float.parseFloat(jTextField23.getText()));
+            cthd.setSoLuong(Integer.parseInt(jTextField24.getText()));
+            float tongtien = Float.parseFloat(jTextField23.getText()) * (float) Integer.parseInt(jTextField24.getText());
+            cthd.setTongTien(tongtien);
+            cthd.setSize(jComboBox11.getSelectedItem().toString());
 
-            String sohd = jComboBox7.getSelectedItem().toString();
-            String masanpham = jComboBox12.getSelectedItem().toString();
-            String tensanpham = jComboBox4.getSelectedItem().toString();
-            float dongia = Float.parseFloat(jTextField23.getText());
-            int soluong = Integer.parseInt(jTextField24.getText());
-            float tongtien = dongia * (float) soluong;
-            String size = jComboBox11.getSelectedItem().toString();
-            if (sohd.equals("")) {
+            if (jComboBox7.getSelectedItem().toString().equals("")) {
                 JOptionPane.showMessageDialog(this, "Vui lòng điền 'số hóa đơn'");
-            } else if (masanpham.equals("")) {
+            } else if (jComboBox12.getSelectedItem().toString().equals("")) {
                 JOptionPane.showMessageDialog(this, "Vui lòng điền 'ngày lập'");
-            } else if (tensanpham.equals("")) {
+            } else if (jComboBox4.getSelectedItem().toString().equals("")) {
                 JOptionPane.showMessageDialog(this, "Vui lòng điền 'mã nhân viên'");
-            } else if (dongia < 0) {
-                JOptionPane.showMessageDialog(this, "Vui lòng điền 'đơn giá'");
-            } else if (soluong < 0) {
-                JOptionPane.showMessageDialog(this, "Vui lòng điền 'số lượng'");
+            } else if (Float.parseFloat(jTextField23.getText()) < 0) {
+                JOptionPane.showMessageDialog(this, "Vui lòng điền 'nhân viên'");
+            } else if (Integer.parseInt(jTextField24.getText()) < 0) {
+                JOptionPane.showMessageDialog(this, "Vui lòng điền 'mã khách hàng'");
             } else {
-                cthddll.AddCTHD(sohd, masanpham, tensanpham, dongia, soluong, size, tongtien);
-                SetComboBox(sohd);
+                cthddll.Add(cthd);
+                SetComboBox(jComboBox7.getSelectedItem().toString());
                 jButton19.setEnabled(true);
                 jButton17.setEnabled(false);
                 jButton20.setEnabled(true);
@@ -3531,17 +3559,16 @@ public class Main extends javax.swing.JFrame {
         jComboBox10.removeAllItems();
         jComboBox13.removeAllItems();
 
-        List<NhanVien> listNV = nvdll.getALLNhanvien();
+        List<NhanVien> listNV = nvdll.getALL();
         for (NhanVien o : listNV) {
             jComboBox10.addItem(o.getTenNhanVien());
         }
-        
-        List<LoaiSanPham> listLSP = lspdll.getALLLoaiSanPham();
+
+        List<LoaiSanPham> listLSP = lspdll.getALL();
         for (LoaiSanPham o : listLSP) {
             jComboBox13.addItem(o.getTenLoaiSanPham());
         }
-        
-        
+
         DecimalFormat decimalFormat = new DecimalFormat("#,###");
         jTextField12.setText(decimalFormat.format(tong));
     }
@@ -3580,12 +3607,8 @@ public class Main extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jButton3ActionPerformed
 
-    private void jButton23ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton23ActionPerformed
-        jTabbedPane2.setSelectedIndex(0);
-    }//GEN-LAST:event_jButton23ActionPerformed
-
     private float TongTien(String tenkhachhang, String s) {
-        List<HoaDon> listHD = hddll.getALLHoaDon();
+        List<HoaDon> listHD = hddll.getALL();
         ngaylaphoadon.clear();
         for (HoaDon o : listHD) {
             ngaylaphoadon.add(o.getNgayLap());
@@ -3622,7 +3645,7 @@ public class Main extends javax.swing.JFrame {
 
     private void jButton24ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton24ActionPerformed
 
-        List<HoaDon> listHD = hddll.getALLHoaDon();
+        List<HoaDon> listHD = hddll.getALL();
         ngaylaphoadon.clear();
         for (HoaDon o : listHD) {
             ngaylaphoadon.add(o.getNgayLap());
@@ -3657,10 +3680,6 @@ public class Main extends javax.swing.JFrame {
         DecimalFormat decimalFormat = new DecimalFormat("#,###");
         jTextField13.setText(decimalFormat.format(tong - tong2));
     }//GEN-LAST:event_jButton24ActionPerformed
-
-    private void jButton25ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton25ActionPerformed
-        jTabbedPane2.setSelectedIndex(1);
-    }//GEN-LAST:event_jButton25ActionPerformed
 
     private void btn_printActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_printActionPerformed
         List<ChiTietHoaDon> arr = cthddll.GetALLChiTietHoaDon(jComboBox7.getSelectedItem().toString());
@@ -3756,34 +3775,34 @@ public class Main extends javax.swing.JFrame {
 
     private void jComboBox12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox12ActionPerformed
         if (!check && jComboBox7.getItemCount() > 0) {
-        int i = 0;        
-        while (true) {
-            String nameFromeCbbox = jComboBox4.getItemAt(i).toString();
-            if (nameFromeCbbox.equalsIgnoreCase(spdll.getMaSanPham(jComboBox12.getSelectedItem().toString()))) {
-                jComboBox4.setSelectedIndex(i);
-                break;
+            int i = 0;
+            while (true) {
+                String nameFromeCbbox = jComboBox4.getItemAt(i).toString();
+                if (nameFromeCbbox.equalsIgnoreCase(spdll.getMaSanPham(jComboBox12.getSelectedItem().toString()))) {
+                    jComboBox4.setSelectedIndex(i);
+                    break;
+                }
+                i++;
             }
-            i++;
-        }
-        jTextField23.setText(spdll.getGiaSP(jComboBox12.getSelectedItem().toString()));
-        check = false;
+            jTextField23.setText(spdll.getGiaSP(jComboBox12.getSelectedItem().toString()));
+            check = false;
         }
     }//GEN-LAST:event_jComboBox12ActionPerformed
 
     private void jButton26ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton26ActionPerformed
         LoadDatabaseLoaiSanPham();
-        jTabbedPane1.setSelectedIndex(7);       
+        jTabbedPane1.setSelectedIndex(7);
     }//GEN-LAST:event_jButton26ActionPerformed
 
     private void TableLoaiSanPhamMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TableLoaiSanPhamMouseClicked
         int row = TableLoaiSanPham.getSelectedRow();
         String s0 = TableLoaiSanPham.getValueAt(row, 0).toString();
         String s1 = TableLoaiSanPham.getValueAt(row, 1).toString();
-        
+
         jTextField15.setText(s0);
         jTextField14.setText(s1);
-        
-        
+
+
     }//GEN-LAST:event_TableLoaiSanPhamMouseClicked
 
     private void jButton27ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton27ActionPerformed
@@ -3793,19 +3812,18 @@ public class Main extends javax.swing.JFrame {
             jButton29.setEnabled(false);
             jButton27.setText("LƯU");
         } else if (jButton27.getText().equals("LƯU")) {
-        String TenLoaiSanPham = jTextField14.getText();
-        if(TenLoaiSanPham.equals("")){
-            JOptionPane.showMessageDialog(this, "Vui lòng điền 'Tên Loại Sản Phẩm'");
-        }
-        else{
-            lspdll.AddLSP(TenLoaiSanPham);
-            LoadDatabaseLoaiSanPham();
-            jButton28.setEnabled(true);
-            jButton30.setEnabled(false);
-            jButton29.setEnabled(true);
-            jButton27.setText("Thêm");
-        }
-        
+            lsp.setTenLoaiSanPham(jTextField14.getText());
+            if (jTextField14.getText().equals("")) {
+                JOptionPane.showMessageDialog(this, "Vui lòng điền 'Tên Loại Sản Phẩm'");
+            } else {
+                lspdll.Add(lsp);
+                LoadDatabaseLoaiSanPham();
+                jButton28.setEnabled(true);
+                jButton30.setEnabled(false);
+                jButton29.setEnabled(true);
+                jButton27.setText("Thêm");
+            }
+
         }
     }//GEN-LAST:event_jButton27ActionPerformed
 
@@ -3816,20 +3834,21 @@ public class Main extends javax.swing.JFrame {
             jButton29.setEnabled(false);
             jButton28.setText("LƯU");
         } else if (jButton28.getText().equals("LƯU")) {
-        int maLoaiSanPham = Integer.parseInt(jTextField15.getText());
-        String menLoaiSanPham = jTextField14.getText();
-        if(menLoaiSanPham.equals("")){
-            JOptionPane.showMessageDialog(this, "Vui lòng điền 'Tên Loại Sản Phẩm'");
-        }else if(maLoaiSanPham <= 0){
-            JOptionPane.showMessageDialog(this, "Vui lòng điền 'Mã Loại Sản Phẩm'");
-        }else{
-            lspdll.UpdateLSP(maLoaiSanPham,menLoaiSanPham);
-            LoadDatabaseLoaiSanPham();
-            jButton27.setEnabled(true);
-            jButton30.setEnabled(false);
-            jButton29.setEnabled(true);
-            jButton28.setText("Sửa");
-        }
+
+            lsp.setMaLoaiSanPham(Integer.parseInt(jTextField15.getText()));
+            lsp.setTenLoaiSanPham(jTextField14.getText());
+            if (jTextField14.getText().equals("")) {
+                JOptionPane.showMessageDialog(this, "Vui lòng điền 'Tên Loại Sản Phẩm'");
+            } else if (Integer.parseInt(jTextField15.getText()) <= 0) {
+                JOptionPane.showMessageDialog(this, "Vui lòng điền 'Mã Loại Sản Phẩm'");
+            } else {
+                lspdll.Update(lsp);
+                LoadDatabaseLoaiSanPham();
+                jButton27.setEnabled(true);
+                jButton30.setEnabled(false);
+                jButton29.setEnabled(true);
+                jButton28.setText("Sửa");
+            }
         }
     }//GEN-LAST:event_jButton28ActionPerformed
 
@@ -3843,13 +3862,13 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton30ActionPerformed
 
     private void jButton29ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton29ActionPerformed
-       try {
-            int malsp = Integer.parseInt(jTextField15.getText());
+        try {
+            lsp.setMaLoaiSanPham(Integer.parseInt(jTextField15.getText()));
             if (jTextField15.getText().equals("")) {
                 JOptionPane.showMessageDialog(this, "Nhập mã Khách Hàng");
                 jTextField15.requestFocus();
-            } else if (lspdll.deleteLSP(malsp) > 0) {
-                khdll.deleteKH(malsp);
+            } else if (lspdll.Delete(lsp) > 0) {
+                lspdll.Delete(lsp);
                 JOptionPane.showMessageDialog(this, "Delete Thành Công");
             } else {
                 JOptionPane.showMessageDialog(this, "Delete không Thành Công");
@@ -3862,46 +3881,46 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton29ActionPerformed
 
     private void jButton31ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton31ActionPerformed
-       resetForm();
-       LoadDatabaseSanPham();
-       jTabbedPane1.setSelectedIndex(1);
+        resetForm();
+        LoadDatabaseSanPham();
+        jTabbedPane1.setSelectedIndex(1);
     }//GEN-LAST:event_jButton31ActionPerformed
-
-    private void jButton32ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton32ActionPerformed
-       jTabbedPane2.setSelectedIndex(2);
-    }//GEN-LAST:event_jButton32ActionPerformed
 
     private void jButton33ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton33ActionPerformed
         List<SanPham> listSP1 = spdll.GetALLLoaiSanPham(jComboBox13.getSelectedItem().toString());
         DefaultTableModel model = (DefaultTableModel) jTable3.getModel();
         model.setRowCount(0);
         int soLuongCon = 0, soLuongBan = 0, tongSoLuong = 0;
-        
+
         for (SanPham o : listSP1) {
             int sum = 0;
             soLuongCon += o.getSoLuong();
-            soLuongBan += cthddll.getSumSoLuong(o.getMaSanPham());            
+            soLuongBan += cthddll.getSumSoLuong(o.getMaSanPham());
             sum = o.getSoLuong() + cthddll.getSumSoLuong(o.getMaSanPham());
             model.addRow(new Object[]{o.getMaSanPham(), o.getTenSanPham(), o.getMoTaSanPham(), o.getSize(),
-                                 sum,cthddll.getSumSoLuong(o.getMaSanPham()),o.getSoLuong()});              
+                sum, cthddll.getSumSoLuong(o.getMaSanPham()), o.getSoLuong()});
         }
         jTextField16.setText(String.valueOf(soLuongCon + soLuongBan));
         jTextField17.setText(String.valueOf(soLuongCon));
         jTextField19.setText(String.valueOf(soLuongBan));
-        
+
     }//GEN-LAST:event_jButton33ActionPerformed
 
-    private void LoadDatabaseLoaiSanPham(){
+    private void jTextField12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField12ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField12ActionPerformed
+
+    private void LoadDatabaseLoaiSanPham() {
         DefaultTableModel model = (DefaultTableModel) TableLoaiSanPham.getModel();
         model.setRowCount(0);
 
-        List<LoaiSanPham> listKH = lspdll.getALLLoaiSanPham();
+        List<LoaiSanPham> listKH = lspdll.getALL();
 
         for (LoaiSanPham o : listKH) {
             model.addRow(new Object[]{o.getMaLoaiSanPham(), o.getTenLoaiSanPham()});
-        }   
+        }
     }
-    
+
     /**
      * @param args the command line arguments
      */
@@ -3963,9 +3982,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton jButton20;
     private javax.swing.JButton jButton21;
     private javax.swing.JButton jButton22;
-    private javax.swing.JButton jButton23;
     private javax.swing.JButton jButton24;
-    private javax.swing.JButton jButton25;
     private javax.swing.JButton jButton26;
     private javax.swing.JButton jButton27;
     private javax.swing.JButton jButton28;
@@ -3973,7 +3990,6 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton30;
     private javax.swing.JButton jButton31;
-    private javax.swing.JButton jButton32;
     private javax.swing.JButton jButton33;
     public javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;

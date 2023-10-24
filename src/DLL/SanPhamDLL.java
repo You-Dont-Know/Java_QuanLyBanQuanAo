@@ -14,23 +14,24 @@ import java.util.Date;
  */
 public class SanPhamDLL {
     SanPhamDAL spdal = new SanPhamDAL();
-    public List<SanPham> getALLSanPham(){
-        return spdal.getALLSanPham();
+    public List<SanPham> getALL(){
+        return spdal.getALL();
     }
-    public void UpdateSP(String maSP, String tenSP, int maloaiSP, float giaNhap, float giaBan, String motaSP, String size, String date, int soLuong){
-        spdal.UpdateSP(maSP, tenSP, maloaiSP, giaNhap, giaBan, motaSP, size, date, soLuong);
+    public void Update(SanPham sp){
+        spdal.Update(sp);
     }
-    public void AddSP(String maSP, String tenSP, int maloaiSP, float giaNhap, float giaBan, String motaSP, String size, String date, int soLuong){
-        spdal.AddSP(maSP, tenSP, maloaiSP, giaNhap, giaBan, motaSP, size, date, soLuong);
+    public void Add(SanPham sp){
+        spdal.Add(sp);
+    }
+    public int Delete(SanPham sp){
+        return spdal.Delete(sp);
     }
     
     public List<SanPham> GetALLTenSanPham(String Tensp){
         return spdal.GetALLTenSanPham(Tensp);
     }
     
-    public int deleteSP(String maSP){
-        return spdal.deleteSP(maSP);
-    }
+    
     
     public String getMaSanPham(String s){
         return spdal.getMaSanPham(s);

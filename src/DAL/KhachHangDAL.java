@@ -11,18 +11,25 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
-import Interface.Interface_KhachHang;
+import Interface.Interface_IQueryDatabase;
 
 /**
  *
  * @author hieun
  */
-public class KhachHangDAL extends DataAcessHelper implements Interface_KhachHang{
-    
-    
-    
+public class KhachHangDAL extends DataAcessHelper implements Interface_IQueryDatabase<KhachHang> {
+
+    public final String GET_ALLKHACHHANG = "select * from khachhang";
+    public final String GET_UPDATEKHACHHANG = "UPDATE khachhang SET tenkhach = ?, gioitinh = ?, diachi = ?, sdt = ?, maloaikhachhang = ? WHERE makh= ?";
+    public final String GET_SEARCHKHACHHANG = "SELECT * FROM KhachHang where tenkhach like ?";
+    public final String GET_SEARCHSDT = "SELECT * FROM KhachHang where sdt like ?";
+    public final String GET_DELETEKHACHHANG = "DELETE from KhachHang WHERE makh = ? ";
+    public final String GET_ADDKH = "INSERT INTO Khachhang VALUES (?,?, ?, ?, ?, ?)";
+    public final String GET_CheckKNKH = "select makh from hoadon where makh = ?";
+    public final String GET_CheckTENKH = "select tenkhach from khachhang where makh = ?";
+
     @Override
-    public List<KhachHang> getALLKhachHang() {
+    public List<KhachHang> getALL() {
         getConnect();
         try {
             List<KhachHang> list = new ArrayList<>();
@@ -38,18 +45,18 @@ public class KhachHangDAL extends DataAcessHelper implements Interface_KhachHang
         }
         return null;
     }
-    
+
     @Override
-    public void UpdateKH(int maKH, String tenKH, String diaChi, String gioiTinh, String sdt, int maloaikhachhang) {
+    public void Update(KhachHang kh) {
         getConnect();
         try {
             PreparedStatement ps = con.prepareStatement(GET_UPDATEKHACHHANG);
-            ps.setString(1, tenKH);
-            ps.setString(2, gioiTinh);
-            ps.setString(3, diaChi);
-            ps.setString(4, sdt);
-            ps.setInt(5, maloaikhachhang);
-            ps.setInt(6, maKH);
+            ps.setString(1, kh.getTenKhach());
+            ps.setString(2, kh.getGioiTinh());
+            ps.setString(3, kh.getDiaChi());
+            ps.setString(4, kh.getSdt());
+            ps.setInt(5, kh.getMaloaikhachhang());
+            ps.setInt(6, kh.getMaKH());
             ps.executeUpdate();
 
             getClose();
@@ -58,14 +65,13 @@ public class KhachHangDAL extends DataAcessHelper implements Interface_KhachHang
         }
 
     }
-    
-    @Override
+
     public List<KhachHang> GetALLSDT(String SDT) {
         getConnect();
         try {
             List<KhachHang> list = new ArrayList<>();
             PreparedStatement ps = con.prepareStatement(GET_SEARCHSDT);
-            ps.setString(1,"%" + SDT + "%");
+            ps.setString(1, "%" + SDT + "%");
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
@@ -80,13 +86,13 @@ public class KhachHangDAL extends DataAcessHelper implements Interface_KhachHang
         return null;
     }
 
-    @Override
+    
     public List<KhachHang> GetALLTenKhachHang(String TenKH) {
         getConnect();
         try {
             List<KhachHang> list = new ArrayList<>();
             PreparedStatement ps = con.prepareStatement(GET_SEARCHKHACHHANG);
-            ps.setString(1,"%" + TenKH + "%");
+            ps.setString(1, "%" + TenKH + "%");
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
@@ -100,48 +106,48 @@ public class KhachHangDAL extends DataAcessHelper implements Interface_KhachHang
         }
         return null;
     }
-    
+
     public int generateNewCustomerId() {
-        List<KhachHang> addkh = getALLKhachHang();
+        List<KhachHang> addkh = getALL();
         List<Integer> saveMKH = new ArrayList<Integer>();
-        for(KhachHang kh : addkh){
+        for (KhachHang kh : addkh) {
             saveMKH.add(kh.getMaKH());
         }
-        
+
         for (int i = 0; i < saveMKH.size() - 1; i++) {
-            if (saveMKH.get(i + 1) - saveMKH.get(i) != 1 ) {
-                return saveMKH.get(i) + 1;               
+            if (saveMKH.get(i + 1) - saveMKH.get(i) != 1) {
+                return saveMKH.get(i) + 1;
             }
-        }  
-        
+        }
+
         return saveMKH.size() + 1;
     }
-    
+
     @Override
-    public void AddKH(String tenKH, String diaChi, String gioiTinh, String sdt, int maloaikhachhang) {                         
-        try{
-                int makhachhang = generateNewCustomerId();
-                PreparedStatement ps = con.prepareStatement(GET_ADDKH);
-                ps.setInt(1, makhachhang);
-                ps.setString(2, tenKH);
-                ps.setString(3, diaChi);
-                ps.setString(4, gioiTinh);
-                ps.setString(5, sdt);
-                ps.setInt(6, maloaikhachhang);
-                ps.executeUpdate();               
+    public void Add(KhachHang kh) {
+        try {
+            int makhachhang = generateNewCustomerId();
+            PreparedStatement ps = con.prepareStatement(GET_ADDKH);
+            ps.setInt(1, makhachhang);
+            ps.setString(2, kh.getTenKhach());
+            ps.setString(3, kh.getDiaChi());
+            ps.setString(4, kh.getGioiTinh());
+            ps.setString(5, kh.getSdt());
+            ps.setInt(6, kh.getMaloaikhachhang());
+            ps.executeUpdate();
             getClose();
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-    
+
     @Override
-    public int deleteKH(int maKH) {
+    public int Delete(KhachHang kh) {
         getConnect();
         int row = 0;
-            try {
+        try {
             PreparedStatement ps_Check = con.prepareStatement(GET_CheckKNKH);
-            ps_Check.setInt(1, maKH);
+            ps_Check.setInt(1, kh.getMaKH());
             ResultSet rs = ps_Check.executeQuery();
             StringBuilder sb = new StringBuilder();
             if (rs.next()) {
@@ -149,11 +155,11 @@ public class KhachHangDAL extends DataAcessHelper implements Interface_KhachHang
             }
             if (sb.length() > 0) {
                 Main m = new Main();
-                JOptionPane.showMessageDialog( m, sb.toString());
-            }else{
-            PreparedStatement ps = con.prepareStatement(GET_DELETEKHACHHANG);
-            ps.setInt(1, maKH);
-            row = ps.executeUpdate();
+                JOptionPane.showMessageDialog(m, sb.toString());
+            } else {
+                PreparedStatement ps = con.prepareStatement(GET_DELETEKHACHHANG);
+                ps.setInt(1, kh.getMaKH());
+                row = ps.executeUpdate();
             }
             getClose();
             return row;
@@ -163,21 +169,20 @@ public class KhachHangDAL extends DataAcessHelper implements Interface_KhachHang
         }
         return 0;
     }
-    
-    @Override
+
     public String getTenKhachHang(String s) {
-        String check ="";
+        String check = "";
         try {
             getConnect();
 
             PreparedStatement ps = con.prepareStatement(GET_CheckTENKH);
             ps.setString(1, s);
             ResultSet rs = ps.executeQuery();
-            
-            if (rs != null && rs.next()) { 
-                
+
+            if (rs != null && rs.next()) {
+
                 check = rs.getString(1);
-                
+
             }
             getClose();
         } catch (Exception e) {

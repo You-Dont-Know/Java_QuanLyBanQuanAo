@@ -12,17 +12,22 @@ import Entity.ChiTietHoaDon;
 import GUI.Main;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
-import Interface.Interface_ChiTietHoaDon;
+import Interface.Interface_IQueryDatabase;
 
 /**
  *
  * @author hieun
  */
-public class ChiTietHoaDonDAL extends DataAcessHelper implements Interface_ChiTietHoaDon{
+public class ChiTietHoaDonDAL extends DataAcessHelper implements Interface_IQueryDatabase<ChiTietHoaDon>{
 
-    
+    public final String GET_ALLCHITIETHOADON = "select * from cthoadon";
+    public final String GET_SEARCHCTHD = "select masanpham,sanpham,dongia,soluong,size,tongtien from CTHoaDon where sohd=?";
+    public final String GET_UPDATECTHD = "UPDATE CTHoaDon SET sanpham = ?, dongia = ?, soluong = ?,size = ?, tongtien = ?  WHERE sohd = ? and masanpham= ?";
+    public final String GET_DELETECTHOADON = "DELETE FROM CTHoaDon WHERE sohd = ? and masanpham = ?";
+    public final String GET_ADDCTHD = "INSERT INTO CTHoaDon VALUES (?, ?, ?, ?, ?,?, ?)";
+
     @Override
-    public List<ChiTietHoaDon> getALLChiTietHoaDon() {
+    public List<ChiTietHoaDon> getALL() {
         getConnect();
         try {
             List<ChiTietHoaDon> list = new ArrayList<>();
@@ -30,7 +35,7 @@ public class ChiTietHoaDonDAL extends DataAcessHelper implements Interface_ChiTi
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 list.add(new ChiTietHoaDon(rs.getString(1), rs.getString(2), rs.getString(3),
-                        rs.getFloat(4), rs.getInt(5),rs.getString(6), rs.getFloat(7)));
+                        rs.getFloat(4), rs.getInt(5), rs.getString(6), rs.getFloat(7)));
             }
             return list;
         } catch (Exception e) {
@@ -38,7 +43,7 @@ public class ChiTietHoaDonDAL extends DataAcessHelper implements Interface_ChiTi
         }
         return null;
     }
-    @Override
+
     public List<ChiTietHoaDon> GetALLChiTietHoaDon(String soHD) {
         getConnect();
         try {
@@ -49,7 +54,7 @@ public class ChiTietHoaDonDAL extends DataAcessHelper implements Interface_ChiTi
 
             while (rs.next()) {
                 list.add(new ChiTietHoaDon(rs.getString(1), rs.getString(2),
-                        rs.getFloat(3), rs.getInt(4),rs.getString(5), rs.getFloat(6)));
+                        rs.getFloat(3), rs.getInt(4), rs.getString(5), rs.getFloat(6)));
             }
             getClose();
             return list;
@@ -58,33 +63,36 @@ public class ChiTietHoaDonDAL extends DataAcessHelper implements Interface_ChiTi
         }
         return null;
     }
+
     @Override
-    public void UpdateCTHD(String sohd, String masanpham, String sanpham, float dongia, int soluong,String size, float tongtien) {
+    public void Update(ChiTietHoaDon CTHD) {
         getConnect();
         try {
             PreparedStatement ps = con.prepareStatement(GET_UPDATECTHD);
-            ps.setString(1, sanpham);
-            ps.setFloat(2, dongia);
-            ps.setInt(3, soluong);
-            ps.setString(4, size);
-            ps.setFloat(5, tongtien);
-            ps.setString(6, sohd);
-            ps.setString(7, masanpham);
+            ps.setString(1, CTHD.getSanPham());
+            ps.setFloat(2, CTHD.getDonGia());
+            ps.setInt(3, CTHD.getSoLuong());
+            ps.setString(4, CTHD.getSize());
+            ps.setFloat(5, CTHD.getTongTien());
+            ps.setString(6, CTHD.getSoHD());
+            ps.setString(7, CTHD.getMaSanPham());
             ps.executeUpdate();
 
+            
             getClose();
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
+
     @Override
-    public int deleteCTHD(String maCTHD, String maSP) {
+    public int Delete(ChiTietHoaDon cthd) {
         getConnect();
         int row;
         try {
             PreparedStatement ps = con.prepareStatement(GET_DELETECTHOADON);
-            ps.setString(1, maCTHD);
-            ps.setString(2, maSP);
+            ps.setString(1, cthd.getSoHD());
+            ps.setString(2, cthd.getMaSanPham());
             row = ps.executeUpdate();
             getClose();
             return row;
@@ -94,28 +102,29 @@ public class ChiTietHoaDonDAL extends DataAcessHelper implements Interface_ChiTi
         }
         return 0;
     }
+
     @Override
-    public void AddCTHD(String sohd, String masanpham, String sanpham, float dongia, int soluong,String size, float tongtien) {
+    public void Add(ChiTietHoaDon cthd) {
         getConnect();
-        try{
-                PreparedStatement ps = con.prepareStatement(GET_ADDCTHD);
-                ps.setString(1, sohd);
-                ps.setString(2, masanpham);
-                ps.setString(3, sanpham);
-                ps.setFloat(4, dongia);
-                ps.setInt(5, soluong);
-                ps.setString(6, size);
-                ps.setFloat(7, tongtien);
-                ps.executeUpdate();           
+        try {
+            PreparedStatement ps = con.prepareStatement(GET_ADDCTHD);
+            ps.setString(1, cthd.getSoHD());
+            ps.setString(2, cthd.getMaSanPham());
+            ps.setString(3, cthd.getSanPham());
+            ps.setFloat(4, cthd.getDonGia());
+            ps.setInt(5, cthd.getSoLuong());
+            ps.setString(6, cthd.getSize());
+            ps.setFloat(7, cthd.getTongTien());
+            ps.executeUpdate();
             getClose();
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-    
+
     public final String GET_SUMCTSPBYMSP = "SELECT SUM(soluong) as tong_soluong FROM cthoadon WHERE masanpham = ?";
-    
-    public int getSumSoLuong(String maSP){
+
+    public int getSumSoLuong(String maSP) {
         int check = 0;
         try {
             getConnect();
@@ -123,11 +132,11 @@ public class ChiTietHoaDonDAL extends DataAcessHelper implements Interface_ChiTi
             PreparedStatement ps = con.prepareStatement(GET_SUMCTSPBYMSP);
             ps.setString(1, maSP);
             ResultSet rs = ps.executeQuery();
-            
-            if (rs != null && rs.next()) { 
-                
+
+            if (rs != null && rs.next()) {
+
                 check = rs.getInt(1);
-                
+
             }
             getClose();
         } catch (Exception e) {

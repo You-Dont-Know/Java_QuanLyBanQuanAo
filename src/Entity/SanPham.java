@@ -102,6 +102,11 @@ public class SanPham {
         this.soLuong = soLuong;
     }
   
+    public String getNSX() {
+        SimpleDateFormat df = new SimpleDateFormat("MM-dd-yyyy");
+        return df.format(ngaySanXuat);
+    }
+    
     public String getNgaySanXuat() {
         SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy");
         return df.format(ngaySanXuat);

@@ -14,23 +14,23 @@ import java.util.List;
  */
 public class LoaiSanPhamDLL {
     LoaiSanPhamDAL lspdal = new LoaiSanPhamDAL();
-     public List<LoaiSanPham> getALLLoaiSanPham(){
-         return lspdal.getALLLoaiSanPham();
+     public List<LoaiSanPham> getALL(){
+         return lspdal.getALL();
      }
      
      public String getTenLoaiKhachHang(String maLoaiSanPham){
          return lspdal.getTenLoaiKhachHang(maLoaiSanPham);
      }
      
-     public void AddLSP(String tenLoaiSanPHam){
-         lspdal.AddLSP(tenLoaiSanPHam);
+     public void Add(LoaiSanPham LSP){
+         lspdal.Add(LSP);
      }
-     public void UpdateLSP(int maLoaiSanPham, String tenLoaiSanPHam){
-         lspdal.UpdateLSP(maLoaiSanPham, tenLoaiSanPHam);
+     public void Update(LoaiSanPham LSP){
+         lspdal.Update(LSP);
      }
      
-     public int deleteLSP(int maLoaiSanPham){
-         return lspdal.deleteLSP(maLoaiSanPham);
+     public int Delete(LoaiSanPham LSP){
+         return lspdal.Delete(LSP);
      }
      
      public int getMaLoaiSanPham(String s){

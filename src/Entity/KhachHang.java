@@ -25,6 +25,10 @@ public class KhachHang {
         this.maloaikhachhang = maloaikhachhang;
     }
 
+    public KhachHang() {
+        
+    }
+
     public int getMaKH() {
         return maKH;
     }

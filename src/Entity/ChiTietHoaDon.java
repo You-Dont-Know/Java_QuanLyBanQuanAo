@@ -9,6 +9,7 @@ package Entity;
  * @author hieun
  */
 public class ChiTietHoaDon {
+
     private String soHD;
     private String maSanPham;
     private String sanPham;
@@ -27,6 +28,9 @@ public class ChiTietHoaDon {
         this.tongTien = tongTien;
     }
 
+    public ChiTietHoaDon() {
+    }
+
     public ChiTietHoaDon(String maSanPham, String sanPham, float donGia, int soLuong, String size, float tongTien) {
         this.maSanPham = maSanPham;
         this.sanPham = sanPham;
@@ -42,8 +46,8 @@ public class ChiTietHoaDon {
 
     public void setSize(String size) {
         this.size = size;
-    }  
-    
+    }
+
     public String getSoHD() {
         return soHD;
     }
@@ -91,6 +95,5 @@ public class ChiTietHoaDon {
     public void setTongTien(float tongTien) {
         this.tongTien = tongTien;
     }
-    
-    
+
 }

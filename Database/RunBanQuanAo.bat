@@ -1,1 +1,1 @@
-sqlcmd -E -S .\SQLEXpress -i BanQuanAo.sql
+sqlcmd -E -S .\Hieune -i BanQuanAo.sql

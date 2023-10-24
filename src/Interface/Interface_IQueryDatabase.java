@@ -4,11 +4,20 @@
  */
 package Interface;
 
+import java.util.List;
+
 /**
  *
- * @author kien
+ * @author hieun
  */
-public interface Interface_TaiKhoan {
-    public final String GET_LOGIN = "select * from nhanvien where tendangnhap=? and matkhau=?";
-    public String getLogin(String u, String p);
+public interface Interface_IQueryDatabase<T> {
+
+    public List<T> getALL();
+
+    public void Add(T item);
+
+    public void Update(T item);
+
+    public int Delete(T item);
+
 }

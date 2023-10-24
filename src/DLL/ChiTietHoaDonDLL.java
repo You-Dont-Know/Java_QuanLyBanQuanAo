@@ -14,23 +14,23 @@ import java.util.List;
  */
 public class ChiTietHoaDonDLL {
     ChiTietHoaDonDAL cchddal = new ChiTietHoaDonDAL();
-    public List<ChiTietHoaDon> getALLChiTietHoaDon(){
-        return cchddal.getALLChiTietHoaDon();
+    public List<ChiTietHoaDon> getALL(){
+        return cchddal.getALL();
     }
     public List<ChiTietHoaDon> GetALLChiTietHoaDon(String soHD){
         return cchddal.GetALLChiTietHoaDon(soHD);
     }
     
-    public void UpdateCTHD(String sohd, String masanpham, String sanpham, float dongia, int soluong,String size, float tongtien){
-        cchddal.UpdateCTHD(sohd, masanpham, sanpham, dongia, soluong, size, tongtien);
+    public void Update(ChiTietHoaDon cthd){
+        cchddal.Update(cthd);
     }
     
-    public int deleteCTHD(String maCTHD, String maSP){
-      return cchddal.deleteCTHD(maCTHD, maSP);
+    public int Delete(ChiTietHoaDon cthd){
+      return cchddal.Delete(cthd);
     }
     
-    public void AddCTHD(String sohd, String masanpham, String sanpham, float dongia, int soluong,String size, float tongtien){
-        cchddal.AddCTHD(sohd, masanpham, sanpham, dongia, soluong, size, tongtien);
+    public void Add(ChiTietHoaDon cthd){
+        cchddal.Add(cthd);
     }
     
     public int getSumSoLuong(String maSP){

@@ -215,30 +215,14 @@ values
 ('HD07','NV03',N'Lê Minh Nhựt','22/06/2020',3),
 ('HD08','NV03',N'Lê Minh Nhựt','15/11/2020',6);
 
-INSERT INTO cthoadon
-VALUES
-('HD01','SP03',N'ÁO THUN TAY NGẮN CÓ CỔ',45000,5,'XL',225000);
-INSERT INTO cthoadon
-VALUES
-('HD02','SP02',N'ÁO THUN TAY NGẮN HỌA TIẾT',65000,3,'XL',195000);
-INSERT INTO cthoadon
-VALUES
-('HD01','SP13',N'QUẦN SORT JEAN RÁCH',135000,8,'XL',1080000);
-INSERT INTO cthoadon
-VALUES
-('HD02','SP03',N'ÁO THUN TAY NGẮN CÓ CỔ',45000,2,'XL',90000);
-INSERT INTO cthoadon
-VALUES
-('HD04','SP14',N'QUẦN SORT THUN',120000,3,'XL',360000);
-INSERT INTO cthoadon
-VALUES
-('HD01','SP10',N'QUẦN SORT KAKI TRƠN',90000,3,'XL',270000);
-INSERT INTO cthoadon
-VALUES
-('HD08','SP06',N'ÁO THUN TAY DÀI SỌC',70000,4,'XL',280000);
-INSERT INTO cthoadon
-VALUES
-('HD05','SP10',N'QUẦN SORT KAKI TRƠN',90000,1,'XL',90000);
+INSERT [dbo].[cthoadon] ([sohd], [masanpham], [sanpham], [dongia], [soluong], [size], [tongtien]) VALUES (N'HD01', N'SP03', N'ÁO THUN TAY NGẮN CÓ CỔ', 60000, 5, N'M', 300000)
+INSERT [dbo].[cthoadon] ([sohd], [masanpham], [sanpham], [dongia], [soluong], [size], [tongtien]) VALUES (N'HD01', N'SP10', N'QUẦN SORT KAKI TRƠN', 95000, 3, N'XL', 285000)
+INSERT [dbo].[cthoadon] ([sohd], [masanpham], [sanpham], [dongia], [soluong], [size], [tongtien]) VALUES (N'HD01', N'SP13', N'QUẦN SORT JEAN RÁCH', 170000, 8, N'XL', 1360000)
+INSERT [dbo].[cthoadon] ([sohd], [masanpham], [sanpham], [dongia], [soluong], [size], [tongtien]) VALUES (N'HD02', N'SP02', N'ÁO THUN TAY NGẮN HỌA TIẾT', 70000, 3, N'XL', 210000)
+INSERT [dbo].[cthoadon] ([sohd], [masanpham], [sanpham], [dongia], [soluong], [size], [tongtien]) VALUES (N'HD02', N'SP03', N'ÁO THUN TAY NGẮN CÓ CỔ', 60000, 2, N'XL', 120000)
+INSERT [dbo].[cthoadon] ([sohd], [masanpham], [sanpham], [dongia], [soluong], [size], [tongtien]) VALUES (N'HD04', N'SP14', N'QUẦN SORT THUN', 145000, 3, N'XL', 435000)
+INSERT [dbo].[cthoadon] ([sohd], [masanpham], [sanpham], [dongia], [soluong], [size], [tongtien]) VALUES (N'HD05', N'SP10', N'QUẦN SORT KAKI TRƠN', 95000, 1, N'XL', 95000)
+INSERT [dbo].[cthoadon] ([sohd], [masanpham], [sanpham], [dongia], [soluong], [size], [tongtien]) VALUES (N'HD08', N'SP06', N'ÁO THUN TAY DÀI SỌC', 80000, 4, N'XL', 320000)
 
 
 

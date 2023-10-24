@@ -8,16 +8,17 @@ package DAL;
 import Entity.NhanVien;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import Interface.Interface_TaiKhoan;
+
 /**
  *
  * @author Aki
  */
-public class TaiKhoanDAL extends DataAcessHelper implements Interface_TaiKhoan{
+public class TaiKhoanDAL extends DataAcessHelper {
 
-    @Override
+    public final String GET_LOGIN = "select * from nhanvien where tendangnhap=? and matkhau=?";
+
     public String getLogin(String u, String p) {
-        String check ="";
+        String check = "";
         try {
             getConnect();
 
@@ -25,9 +26,9 @@ public class TaiKhoanDAL extends DataAcessHelper implements Interface_TaiKhoan{
             ps.setString(1, u);
             ps.setString(2, p);
             ResultSet rs = ps.executeQuery();
-            
-            if (rs != null && rs.next()) { 
-                
+
+            if (rs != null && rs.next()) {
+
                 check = rs.getString(9);
             }
             getClose();

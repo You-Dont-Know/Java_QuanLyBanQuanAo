@@ -13,6 +13,7 @@ import java.util.Date;
  * @author Aki
  */
 public class NhanVien {
+
     private String maNhanVien;
     private String tenNhanVien;
     private String gioiTinh;
@@ -23,14 +24,16 @@ public class NhanVien {
     private String matKhau;
     private String chucVu;
 
-    public NhanVien(){};
+    public NhanVien() {
+    }
+
+    ;
 
     public NhanVien(String maNhanVien, String tenNhanVien) {
         this.maNhanVien = maNhanVien;
         this.tenNhanVien = tenNhanVien;
     }
-      
-    
+
     public NhanVien(String maNhanVien, String tenNhanVien, String gioiTinh, Date ngaySinh, String diaChi, String sdt, String tenDangNhap, String matKhau, String chucVu) {
         this.maNhanVien = maNhanVien;
         this.tenNhanVien = tenNhanVien;
@@ -42,9 +45,7 @@ public class NhanVien {
         this.matKhau = matKhau;
         this.chucVu = chucVu;
     }
-    
-    
-    
+
     public String getMaNhanVien() {
         return maNhanVien;
     }
@@ -67,6 +68,11 @@ public class NhanVien {
 
     public void setGioiTinh(String gioiTinh) {
         this.gioiTinh = gioiTinh;
+    }
+
+    public String getNS() {
+        SimpleDateFormat df = new SimpleDateFormat("MM-dd-yyyy");
+        return df.format(ngaySinh);
     }
 
     public String getNgaySinh() {
@@ -117,8 +123,5 @@ public class NhanVien {
     public void setChucVu(String chucVu) {
         this.chucVu = chucVu;
     }
-    
 
-    
-    
 }

@@ -13,20 +13,20 @@ import java.util.List;
  */
 public class HoaDonDLL {
     HoaDonDAL hddal = new HoaDonDAL();
-    public List<HoaDon> getALLHoaDon(){
-        return hddal.getALLHoaDon();
+    public List<HoaDon> getALL(){
+        return hddal.getALL();
     }
     
-    public void UpdateHD(String sohd, String ngaylap, String nhanvienlap, String makh, String manhanvien){
-        hddal.UpdateHD(sohd, ngaylap, nhanvienlap, makh, manhanvien);
+    public void Update(HoaDon hd){
+        hddal.Update(hd);
     }
     
-    public int deleteHD(String maHD){
-        return hddal.deleteHD(maHD);
+    public int Delete(HoaDon hd){
+        return hddal.Delete(hd);
     }
     
-    public void AddHD(String sohd, String ngaylap, String nhanvienlap, String makh, String manhanvien){
-        hddal.AddHD(sohd, ngaylap, nhanvienlap, makh, manhanvien);
+    public void Add(HoaDon hd){
+        hddal.Add(hd);
     }
     
     public String getNgayLap(String s){

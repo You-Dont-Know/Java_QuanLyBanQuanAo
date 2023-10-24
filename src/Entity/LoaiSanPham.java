@@ -12,6 +12,9 @@ public class LoaiSanPham {
     private int maLoaiSanPham;
     private String tenLoaiSanPham;
 
+    public LoaiSanPham() {
+    }
+    
     public LoaiSanPham(int maLoaiSanPham, String tenLoaiSanPham) {
         this.maLoaiSanPham = maLoaiSanPham;
         this.tenLoaiSanPham = tenLoaiSanPham;

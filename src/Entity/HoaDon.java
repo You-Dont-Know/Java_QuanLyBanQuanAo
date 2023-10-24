@@ -27,6 +27,9 @@ public class HoaDon {
         this.maKH = maKH;
     }
 
+    public HoaDon() {
+    }
+
     
     public String getSoHD() {
         return soHD;
@@ -52,6 +55,11 @@ public class HoaDon {
         this.nhanVienLap = nhanVienLap;
     }
 
+    public String getNL() {
+        SimpleDateFormat df = new SimpleDateFormat("MM-dd-yyyy");
+        return df.format(ngayLap);
+    }
+    
     public String getNgayLap() {
         SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy");
         return df.format(ngayLap);

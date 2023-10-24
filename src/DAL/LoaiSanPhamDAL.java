@@ -3,45 +3,54 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package DAL;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import Entity.LoaiSanPham;
 import java.util.ArrayList;
 import java.util.List;
-import Interface.Interface_LoaiSanPham;
+import Interface.Interface_IQueryDatabase;
+
 /**
  *
  * @author hieun
  */
-public class LoaiSanPhamDAL extends DataAcessHelper implements Interface_LoaiSanPham{
-    
+public class LoaiSanPhamDAL extends DataAcessHelper implements Interface_IQueryDatabase<LoaiSanPham> {
+
+    public final String GET_LOAISANPHAM = "select * from loaisanpham";
+    public final String GET_TENLOAISANPHAM = "select tenloaisanpham from loaisanpham where maloaisanpham = ?";
+
+    public final String GET_ADDLOAISANPHAM = "INSERT INTO loaisanpham VALUES (?,?)";
+    public final String GET_UPDATELOAISANPHAM = "UPDATE loaisanpham SET tenloaisanpham = ? WHERE maloaisanpham= ?";
+    public final String GET_DELETELOAISANPHAM = "DELETE FROM loaisanpham WHERE maloaisanpham = ?";
+    public final String GET_MALSP = "SELECT maloaisanpham from loaisanpham where tenloaisanpham = ?";
+
     @Override
-    public List<LoaiSanPham> getALLLoaiSanPham(){
+    public List<LoaiSanPham> getALL() {
         getConnect();
-        try{
+        try {
             List<LoaiSanPham> list = new ArrayList<>();
-            PreparedStatement ps = con.prepareStatement(GET_LOAISANPHAM); 
+            PreparedStatement ps = con.prepareStatement(GET_LOAISANPHAM);
             ResultSet rs = ps.executeQuery();
-            while(rs.next()){
+            while (rs.next()) {
                 list.add(new LoaiSanPham(rs.getInt(1), rs.getString(2)));
             }
             return list;
-        }catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return null;
     }
-    
-    @Override
-    public String getTenLoaiKhachHang(String maLoaiSanPham){           
-        String check ="";
+
+    public String getTenLoaiKhachHang(String maLoaiSanPham) {
+        String check = "";
         try {
             getConnect();
             PreparedStatement ps = con.prepareStatement(GET_TENLOAISANPHAM);
             ps.setString(1, maLoaiSanPham);
-            ResultSet rs = ps.executeQuery();           
-            if (rs != null && rs.next()) {                 
-                check = rs.getString(1);              
+            ResultSet rs = ps.executeQuery();
+            if (rs != null && rs.next()) {
+                check = rs.getString(1);
             }
             getClose();
         } catch (Exception e) {
@@ -49,46 +58,43 @@ public class LoaiSanPhamDAL extends DataAcessHelper implements Interface_LoaiSan
         }
         return check;
     }
-    
+
     public int generateNewCustomerId() {
-        List<LoaiSanPham> addkh = getALLLoaiSanPham();
+        List<LoaiSanPham> addkh = getALL();
         List<Integer> saveMLSP = new ArrayList<Integer>();
-        for(LoaiSanPham kh : addkh){
+        for (LoaiSanPham kh : addkh) {
             saveMLSP.add(kh.getMaLoaiSanPham());
         }
-        
+
         for (int i = 0; i < saveMLSP.size() - 1; i++) {
-            if (saveMLSP.get(i + 1) - saveMLSP.get(i) != 1 ) {
-                return saveMLSP.get(i) + 1;               
+            if (saveMLSP.get(i + 1) - saveMLSP.get(i) != 1) {
+                return saveMLSP.get(i) + 1;
             }
-        }  
+        }
         return saveMLSP.size() + 1;
     }
-    
+
     @Override
-    public void AddLSP(String tenLoaiSanPHam) {                  
-        
-        List<LoaiSanPham> addLSP = getALLLoaiSanPham();
-        
-        try{
-                int makhachhang = generateNewCustomerId();
-                PreparedStatement ps = con.prepareStatement(GET_ADDLOAISANPHAM);
-                ps.setInt(1, makhachhang);
-                ps.setString(2, tenLoaiSanPHam);
-                ps.executeUpdate();               
+    public void Add(LoaiSanPham LSP) {
+        try {
+            int makhachhang = generateNewCustomerId();
+            PreparedStatement ps = con.prepareStatement(GET_ADDLOAISANPHAM);
+            ps.setInt(1, makhachhang);
+            ps.setString(2, LSP.getTenLoaiSanPham());
+            ps.executeUpdate();
             getClose();
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-    
+
     @Override
-    public void UpdateLSP(int maLoaiSanPham, String tenLoaiSanPHam) {
+    public void Update(LoaiSanPham LSP) {
         getConnect();
         try {
             PreparedStatement ps = con.prepareStatement(GET_UPDATELOAISANPHAM);
-            ps.setString(1, tenLoaiSanPHam);
-            ps.setInt(2, maLoaiSanPham);
+            ps.setString(1, LSP.getTenLoaiSanPham());
+            ps.setInt(2, LSP.getMaLoaiSanPham());
             ps.executeUpdate();
 
             getClose();
@@ -96,14 +102,14 @@ public class LoaiSanPhamDAL extends DataAcessHelper implements Interface_LoaiSan
             e.printStackTrace();
         }
     }
-    
+
     @Override
-    public int deleteLSP(int maLoaiSanPham) {
+    public int Delete(LoaiSanPham LSP) {
         getConnect();
         int row;
         try {
             PreparedStatement ps = con.prepareStatement(GET_DELETELOAISANPHAM);
-            ps.setInt(1, maLoaiSanPham);
+            ps.setInt(1, LSP.getMaLoaiSanPham());
             row = ps.executeUpdate();
             getClose();
             return row;
@@ -113,8 +119,8 @@ public class LoaiSanPhamDAL extends DataAcessHelper implements Interface_LoaiSan
         }
         return 0;
     }
+
     
-    @Override
     public int getMaLoaiSanPham(String s) {
         int check = 0;
         try {
@@ -123,11 +129,11 @@ public class LoaiSanPhamDAL extends DataAcessHelper implements Interface_LoaiSan
             PreparedStatement ps = con.prepareStatement(GET_MALSP);
             ps.setString(1, s);
             ResultSet rs = ps.executeQuery();
-            
-            if (rs != null && rs.next()) { 
-                
+
+            if (rs != null && rs.next()) {
+
                 check = rs.getInt(1);
-                
+
             }
             getClose();
         } catch (Exception e) {
